@@ -1,0 +1,9 @@
+---
+title: Welcome to Middleman
+---
+
+<ol>
+  <% all_events.each do |e| %>
+    <li><%= e.data.start %> <%= link_to e.data.title, e.url %></li>
+  <% end %>
+</ol>
