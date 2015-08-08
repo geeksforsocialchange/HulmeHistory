@@ -70,7 +70,11 @@
     var layers = document.getElementById('menu-ui');
 
     addLayer(L.mapbox.tileLayer('mapbox.streets'), 'Base Map', 1);
-    addLayer(L.mapbox.tileLayer('kimadactyl.1a3ac4ae'), '1871', 2);
+    // addLayer(L.mapbox.tileLayer('kimadactyl.1a3ac4ae'), '1871', 2);
+    addLayer(L.mapbox.featureLayer('./gis/1990_figure_ground.geojson'), '1990', 3);
+    addLayer(L.mapbox.featureLayer('./gis/1990_blocks.geojson'), '1990', 3);
+    addLayer(L.mapbox.featureLayer('./gis/1871_figure_ground.geojson'), '1871', 3);
+    addLayer(L.mapbox.featureLayer('./gis/1871_blocks.geojson'), '1871', 4);
     // addLayer(L.mapbox.tileLayer('kimadactyl.8edfbfbf'), '1990', 3);
 
     function addLayer(layer, name, zIndex) {
