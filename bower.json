@@ -4,6 +4,6 @@
   "dependencies": {
     "jquery": null,
     "requirejs": null,
-    "mapbox": null,
+    "mapbox.js": null
   }
 }
