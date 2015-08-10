@@ -35,12 +35,6 @@
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
-# Use github pages
-activate :deploy do |deploy|
-  deploy.method = :git
-  deploy.branch = 'master'
-  deploy.build_before = true
-end
 
 activate :directory_indexes
 
