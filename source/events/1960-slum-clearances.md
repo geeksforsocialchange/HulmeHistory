@@ -1,7 +1,7 @@
 ---
 start: 1960
 end: 1969
-title: \"Slum\" clearances
+title: "Slum" clearances
 timeline: news
 ---
 
