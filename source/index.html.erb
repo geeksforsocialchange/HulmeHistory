@@ -61,6 +61,16 @@ $.getJSON('./gis/1990_blocks.geojson', function(data) {
   l.setStyle({fillColor: blocks});
 });
 
+// 2015 layers
+var group2015 = L.layerGroup();
+addLayer(group2015, '2015', 4);
+
+$.getJSON('./gis/2015_blocks.geojson', function(data) {
+  l = L.mapbox.featureLayer(data);
+  l.addTo(group2015);
+  l.setStyle({fillColor: blocks});
+});
+
 function addLayer(layer, name, zIndex) {
   layer
   .setZIndex(zIndex)
