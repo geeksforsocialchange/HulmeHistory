@@ -2,6 +2,9 @@
 start: 1826
 end: 1830
 title: Church of St George
+lat: 53.4721
+lng: -2.2593
+timeline: buildings
 type: local
 ---
 
