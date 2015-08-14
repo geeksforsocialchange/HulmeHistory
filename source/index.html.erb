@@ -110,23 +110,47 @@ function handle_mousedown(e){
         var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
         $(crossbar.elem)
         .offset({top: top});
-        var scr_y = $("#timeline").offset().top -
-          ((top - $("#timeline").offset().top) * tl_scroll_range()) / tl_height()
-        $("#listholder").offset({top: scr_y});
+        var tl = $("#listholder");
+        var offt = - (top * tl_scroll_range() / tl_height());
+        tl.offset({top: offt})
     }
     function handle_mouseup(e){
         $('body')
         .off('mousemove', handle_dragging)
         .off('mouseup', handle_mouseup);
+        snap_to_row(e)
+    }
+    function scroll_tl(px) {
+      var top = -px / tl_scroll_range();
+      $("#listholder").offset({top:top});
     }
     function tl_height(){
       return $("#timeline").height()
     }
     function tl_scroll_range(){
-      return $("#listholder")[0].scrollHeight - $("#timeline").height()
+      return $("#listholder")[0].scrollHeight - $("#timeline").height();
     }
     function snap_to_row(e){
+      $("#listholder li").each(function(){
+        cb = $("#crossbar");
+        var top = $(this).offset().top;
 
+        // CASE: crossbar is over li
+        if (cb.offset().top > top &&
+          cb.offset().top < (top + $(this).outerHeight())) {
+            var midline = top + ($(this).height() - cb.height())/2;
+            cb.animate({top: midline});
+            if(!$(this).hasClass("active")){
+            activate($(this));
+            }
+        } else if($(this).hasClass("active")){
+          // CASE: Crossbar is not over li. Deactivate
+          $(this).removeClass("active");
+        }
+      });
+    }
+    function activate(elem) {
+      elem.addClass("active")
     }
     $('body')
     .on('mouseup', handle_mouseup)
