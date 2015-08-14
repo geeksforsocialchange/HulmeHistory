@@ -14,15 +14,36 @@ body
   width: 100%
 
 #timeline
-  position: absolute
+  position: relative
   top: 10px
   left: 10px
   bottom: 10px
   width: 30%
+  height: 95%
   z-index: 100
   background-color: rgba(200,200,200, 0.5)
-  li
-    list-style-type: none
+  padding: 0.5rem
+  #crossbar
+    position: absolute
+    width: 100%
+    height: 5px
+    background-color: #a00
+    opacity: 0.5
+    z-index: 1000
+    top: 20px
+  #listholder
+    position: absolute
+    height: 100%
+    display: flex
+    justify-content: space-around
+    flex-wrap: wrap
+    align-items: stretch
+    li
+      list-style-type: none
+      background-color: #bbffbb
+      padding: 0.5rem
+      border-radius: 0.25rem
+      margin: 0.25rem
 
 
 .leaflet-control-zoom

@@ -4,10 +4,11 @@ title: Hulme History
 <nav id='menu-ui' class='menu-ui'></nav>
 
 <section id='timeline'>
+  <div id='crossbar'> </div>
   <div id='listholder'>
-    <ol>
-      <% all_events.each do |e| %>
-        <li><%= e.data.start %> <%= link_to e.data.title, e.url %></li>
+    <ol class="button-group">
+      <% all_events.sort_by{|e| e.data.start}.reverse.each do |e| %>
+        <li class="item block"><%= e.data.start %> <%= e.data.title %></li>
       <% end %>
     </ol>
   </div>
@@ -98,4 +99,38 @@ function addLayer(layer, name, zIndex) {
 
   layers.appendChild(link);
 }
+
+// attempted Timeline interface
+function handle_mousedown(e){
+    window.crossbar = {};
+    crossbar.pageY0 = e.pageY;
+    crossbar.elem = this;
+    crossbar.offset0 = $(this).offset();
+    function handle_dragging(e){
+        var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
+        $(crossbar.elem)
+        .offset({top: top});
+        var scr_y = $("#timeline").offset().top -
+          ((top - $("#timeline").offset().top) * tl_scroll_range()) / tl_height()
+        $("#listholder").offset({top: scr_y});
+    }
+    function handle_mouseup(e){
+        $('body')
+        .off('mousemove', handle_dragging)
+        .off('mouseup', handle_mouseup);
+    }
+    function tl_height(){
+      return $("#timeline").height()
+    }
+    function tl_scroll_range(){
+      return $("#listholder")[0].scrollHeight - $("#timeline").height()
+    }
+    function snap_to_row(e){
+
+    }
+    $('body')
+    .on('mouseup', handle_mouseup)
+    .on('mousemove', handle_dragging);
+}
+$('#crossbar').mousedown(handle_mousedown);
 </script>
