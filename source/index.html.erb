@@ -8,7 +8,11 @@ title: Hulme History
   <div id='listholder'>
     <ol class="button-group">
       <% all_events.sort_by{|e| e.data.start}.reverse.each do |e| %>
-        <li class="item block"><%= e.data.start %> <%= e.data.title %></li>
+        <li class="item block"><%= e.data.start %> <%= e.data.title %>
+          <% if e.data.lat && e.data.lng %>
+          <%= "<span data-latlng='#{e.data.lat},#{e.data.lng}' class='hidden' />" %>
+          <% end %>
+        </li>
       <% end %>
     </ol>
   </div>
@@ -110,9 +114,8 @@ function handle_mousedown(e){
         var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
         $(crossbar.elem)
         .offset({top: top});
-        var tl = $("#listholder");
-        var offt = - (top * tl_scroll_range() / tl_height());
-        tl.offset({top: offt})
+        var tl_top = scroll_tl(top);
+        $("#listholder").offset({top:tl_top});
     }
     function handle_mouseup(e){
         $('body')
@@ -121,14 +124,14 @@ function handle_mousedown(e){
         snap_to_row(e)
     }
     function scroll_tl(px) {
-      var top = -px / tl_scroll_range();
-      $("#listholder").offset({top:top});
+      var tl_top = $("#timeline").offset().top + $("#listholder li").height() - px * tl_scroll_range() / tl_height();
+      return tl_top;
     }
     function tl_height(){
-      return $("#timeline").height()
+      return $("#timeline").innerHeight()
     }
     function tl_scroll_range(){
-      return $("#listholder")[0].scrollHeight - $("#timeline").height();
+      return $("#listholder")[0].scrollHeight - tl_height() - $("listholder li").height();
     }
     function snap_to_row(e){
       $("#listholder li").each(function(){
@@ -145,12 +148,17 @@ function handle_mousedown(e){
             }
         } else if($(this).hasClass("active")){
           // CASE: Crossbar is not over li. Deactivate
-          $(this).removeClass("active");
+          deactivate($(this));
         }
       });
     }
     function activate(elem) {
-      elem.addClass("active")
+      elem.addClass("active");
+      var latlng = elem.children()[0].getAttribute('data-latlng');
+      // TODO: TRIGGER POPUP? MARKER? WHATNOT?
+    }
+    function deactivate(elem) {
+      elem.removeClass("active");
     }
     $('body')
     .on('mouseup', handle_mouseup)
