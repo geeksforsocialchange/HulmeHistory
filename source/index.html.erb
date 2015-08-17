@@ -123,15 +123,17 @@ function handle_mousedown(e){
         .off('mouseup', handle_mouseup);
         snap_to_row(e)
     }
+    var tl_height = $("#timeline").innerHeight();
+    var tl_padding = parseInt($("#timeline").css('padding-top'));
+    var tl_top = $("#timeline").offset().top;
+    var button_height = $("#listholder li").outerHeight();
+    var scroll_range = $("#listholder")[0].scrollHeight - tl_height +
+      button_height;
     function scroll_offs(px) {
       // Check various geometry. Return correct scroll distance to drag handler
-      var tl_height = $("#timeline").innerHeight();
-      var button_height = $("#listholder li").outerHeight();
-      var scroll_range = $("#listholder")[0].scrollHeight - tl_height +
-        2 * button_height;
-      var listholder_scroll_offset = button_height - px * scroll_range /
-        tl_height + $("#timeline").offset().top;
-      return listholder_scroll_offset
+      var listholder_scroll_offset = tl_top + button_height + tl_padding - px *
+        scroll_range / tl_height;
+      return listholder_scroll_offset;
     }
     function snap_to_row(e){
       $("#listholder li").each(function(){
@@ -155,10 +157,11 @@ function handle_mousedown(e){
     function activate(elem) {
       elem.addClass("active");
       // var latlng = elem.children()[0].getAttribute('data-latlng');
-      // TODO: TRIGGER POPUP? MARKER? WHATNOT?
+      // TODO: TRIGGER Visualisation POPUP? MARKER? WHATNOT?
     }
     function deactivate(elem) {
       elem.removeClass("active");
+      // TODO: TRIGGER Visualisation hide.
     }
     $('body')
     .on('mouseup', handle_mouseup)
