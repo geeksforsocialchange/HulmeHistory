@@ -114,7 +114,7 @@ function handle_mousedown(e){
         var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
         $(crossbar.elem)
         .offset({top: top});
-        var tl_top = scroll_tl(top);
+        var tl_top = scroll_offs(top);
         $("#listholder").offset({top:tl_top});
     }
     function handle_mouseup(e){
@@ -123,15 +123,15 @@ function handle_mousedown(e){
         .off('mouseup', handle_mouseup);
         snap_to_row(e)
     }
-    function scroll_tl(px) {
-      var tl_top = $("#timeline").offset().top + $("#listholder li").height() - px * tl_scroll_range() / tl_height();
-      return tl_top;
-    }
-    function tl_height(){
-      return $("#timeline").innerHeight()
-    }
-    function tl_scroll_range(){
-      return $("#listholder")[0].scrollHeight - tl_height() - $("listholder li").height();
+    function scroll_offs(px) {
+      // Check various geometry. Return correct scroll distance to drag handler
+      var tl_height = $("#timeline").innerHeight();
+      var button_height = $("#listholder li").outerHeight();
+      var scroll_range = $("#listholder")[0].scrollHeight - tl_height +
+        2 * button_height;
+      var listholder_scroll_offset = button_height - px * scroll_range /
+        tl_height + $("#timeline").offset().top;
+      return listholder_scroll_offset
     }
     function snap_to_row(e){
       $("#listholder li").each(function(){
