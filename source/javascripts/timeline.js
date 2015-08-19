@@ -2,8 +2,8 @@
 function timeline_mousedown(e){
     window.crossbar = {};
     crossbar.pageY0 = e.pageY;
-    crossbar.elem = this;
-    crossbar.offset0 = $(this).offset();
+    crossbar.elem = $("#crossbar")[0];
+    crossbar.offset0 = $("#crossbar").offset();
     var tl_height = $("#timeline").innerHeight();
     var tl_padding = parseInt($("#timeline").css('padding-top'));
     var tl_top = $("#timeline").offset().top;
