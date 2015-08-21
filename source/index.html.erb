@@ -10,10 +10,11 @@ title: Hulme History
       <% timeline = all_events(1750, 2015) %>
       <% timeline.each do |decade, events| %>
         <li class="decade" value="<%= decade %>">
+          <time class="decade"><%= decade %></time>
           <% if events.length > 0 %>
             <ol class="events">
             <% events.each do |event| %>
-              <li class="event item block" value="<%= event.metadata[:page]["start"] %>"><%= event.metadata[:page]["title"] %></li>
+              <li class="event item block <%= event.metadata[:page]["timeline"] %>" value="<%= event.metadata[:page]["start"] %>"><%= event.metadata[:page]["title"] %></li>
             <% end %>
             </ol>
           <% end %>

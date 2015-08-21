@@ -7,11 +7,17 @@ body
   margin: 0
   padding: 0
 
+// Map itself
+
 #map
-  position: absolute
+  position: fixed
   top: 0
   bottom: 0
+  left: 0
+  right: 0
   width: 100%
+
+// Timeline canvas/background
 
 #timeline
   -webkit-touch-callout: none
@@ -24,8 +30,8 @@ body
   top: 0px
   left: 0px
   bottom: 0px
-  width: 30%
-  height: 95%
+  padding-bottom: 20em
+  width: 40%
   z-index: 100
   background-color: rgba(200,200,200, 0.5)
   padding: 0.5rem
@@ -45,20 +51,51 @@ body
   justify-content: space-around
   flex-wrap: wrap
   align-items: stretch
-  li
-    list-style-type: none
-    background-color: #bbffbb
-    padding: 0.5rem
-    border-radius: 0.25rem
-    margin: 0.25rem
   .active
     background-color: #ff0000
-ol
-  width: 100%
 
-li.decade, li.event
-  margin-left: 2em
+// Timeline list
+
+ol
+  margin: 0
+  padding: 0
+  text-align: center
+
+ol.decades > li
+  margin-left: 0em
   width: 100%
+  list-style-type: none
+  display: inline-block
+
+ol.decades li ol
+  margin-left: 2.5em
+
+time.decade
+  font-size: 80%
+  float: left
+  color: #666
+  padding-top: 0.1em
+
+li.event
+  font-size: 90%
+  display: inline-block
+  width: auto
+  padding: 0.5rem
+  border-radius: 0.25rem
+  margin: 0.25rem
+  // Default
+  background-color: #ED6D4A
+
+li.news
+  background-color: #FFCA64
+  float: left
+
+li.buildings
+  background-color: #3FD97F
+
+li.community
+  background-color: #ED6D4A
+  float: right
 
 .leaflet-control-zoom
   display: none
