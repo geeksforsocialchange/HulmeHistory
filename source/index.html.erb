@@ -3,17 +3,26 @@ title: Hulme History
 ---
 <nav id='menu-ui' class='menu-ui'></nav>
 
-<section id='timeline'>
+<section id='timeline-section'>
   <div id='crossbar'> </div>
-  <div id='listholder'>
-    <ol class="button-group">
-      <% all_events.sort_by{|e| e.data.start}.reverse.each do |e| %>
-        <li class="item block"><%= e.data.start %> <%= e.data.title %>
-          <% if e.data.lat && e.data.lng %>
-          <%= "<span latlng='#{e.data.lat},#{e.data.lng}' path='#{e.data.uid}' class='hidden'>" %>
+  <div id='timeline'>
+    <ol class="decades">
+      <% timeline = all_events(1750, 2015) %>
+      <% timeline.each do |decade, events| %>
+        <li class="decade" value="<%= decade %>">
+          <% if events.length > 0 %>
+            <ol class="events">
+            <% events.each do |event| %>
+              <li class="event item block" value="<%= event.metadata[:page]["start"] %>"><%= event.metadata[:page]["title"] %></li>
+            <% end %>
+            </ol>
           <% end %>
         </li>
       <% end %>
+    </ol>
+  </div>
+  <div id='listholder'>
+    <ol class="button-group">
     </ol>
   </div>
 </section>

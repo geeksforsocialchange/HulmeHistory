@@ -46,10 +46,20 @@ activate :directory_indexes
 
 # Methods defined in the helpers block are available in templates
 helpers do
-  def all_events
-    sitemap.resources.select do |resource|
-      resource.path.start_with?("events")
+  def all_events(start_year, end_year)
+    timeline = {}
+    (start_year..end_year).step(10).each do |y|
+      timeline[y] = events_in_decade(y)
     end
+    return timeline
+  end
+
+  def events_in_year year
+    sitemap.where(:start.equal => year).all
+  end
+
+  def events_in_decade starting_from
+    sitemap.where(:start.gte => starting_from).where(:start.lt => (starting_from + 10)).all
   end
 end
 
