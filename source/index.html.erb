@@ -14,7 +14,12 @@ title: Hulme History
           <% if events.length > 0 %>
             <ol class="events">
             <% events.each do |event| %>
-              <li class="event item block <%= event.metadata[:page]["timeline"] %>" value="<%= event.metadata[:page]["start"] %>"><%= event.metadata[:page]["title"] %></li>
+              <% md = event.metadata[:page] %>
+              <li class="event item block <%= md["timeline"] %>"
+                  lat="<%=md['lat']%>"
+                  lng="<%=md['lng']%>"
+                  data="<%=event.path.split('/')[-1].split('.')[0]%>"
+                  value="<%= md["start"] %>"><%= md["title"] %></li>
             <% end %>
             </ol>
           <% end %>
@@ -115,9 +120,13 @@ function addLayer(layer, name, zIndex) {
 }
 $('#timeline').mousedown(timeline_mousedown);
 
-$("#listholder li").each(function(){
+$("li.event.item").each(function(){
   this.activate = function(){
-
+    if (this.getAttribute('lat') != "") {
+      latlng = L.latLng(parseInt(this.getAttribute('lat'),
+                        parseInt(this.getAttribute('lng'))))
+      popup_text(this.getAttribute('data'),latlng)
+    }
   }
 });
 </script>

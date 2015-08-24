@@ -47,7 +47,12 @@ function timeline_mousedown(e){
     function activate(elem) {
       elem.addClass("active");
       // var latlng = elem.children()[0].getAttribute('data-latlng');
-      // TODO: TRIGGER Visualisation POPUP? MARKER? WHATNOT?
+      console.log(elem)
+      if (elem[0].getAttribute('lat') != "") {
+        latlng = L.latLng(parseInt(elem[0].getAttribute('lat'),
+                          parseInt(elem[0].getAttribute('lng'))))
+        popup_text(elem[0].getAttribute('data'),latlng)
+      }
     }
     function deactivate(elem) {
       elem.removeClass("active");
