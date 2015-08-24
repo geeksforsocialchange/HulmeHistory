@@ -33,7 +33,7 @@ function timeline_mousedown(e){
         // CASE: crossbar is over li
         if (cb.offset().top > top &&
           cb.offset().top < (top + $(this).outerHeight())) {
-            var midline = top + ($(this).height() - cb.height())/2;
+            var midline = top + ($(this).height())/2;
             cb.animate({top: midline});
             if(!$(this).hasClass("active")){
             activate($(this));
