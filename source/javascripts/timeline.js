@@ -1,22 +1,23 @@
 // attempted Timeline interface
 function timeline_mousedown(e){
+    var tl_height = $("#timeline").innerHeight();
+    var tl_top = $("#timeline").offset().top;
+    var button_height = $("li.event.item")[0].offsetHeight;
+    var scroll_range = $("ol.decades")[0].scrollHeight - tl_height + button_height;
+
     window.crossbar = {};
     crossbar.pageY0 = e.pageY;
     crossbar.elem = $("#crossbar")[0];
     crossbar.offset0 = $("#crossbar").offset();
-    var tl_height = $("#timeline").innerHeight();
-    var tl_padding = parseInt($("#timeline").css('padding-top'));
-    var tl_top = $("#timeline").offset().top;
-    var button_height = $("#listholder li").outerHeight();
-    var scroll_range = $("#listholder")[0].scrollHeight - tl_height +
-      2 * button_height;
     function handle_dragging(e){
         var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
-        $(crossbar.elem)
-        .offset({top: top});
-        var ol_offs = tl_top + tl_padding + button_height - top * scroll_range / tl_height;
-        console.log(tl_top);
-        $("#listholder").offset({top:ol_offs});
+        if (0 < top && top < tl_height - button_height/2){
+          $(crossbar.elem)
+          .offset({top: top});
+          var tl_offs = tl_top - (top - button_height/2) * scroll_range / tl_height;
+          console.log(tl_offs);
+          $("ol.decades").offset({top:tl_offs});
+        }
     }
     function handle_mouseup(e){
         $('body')
@@ -25,7 +26,7 @@ function timeline_mousedown(e){
         snap_to_row(e)
     }
     function snap_to_row(e){
-      $("#listholder li").each(function(){
+      $("li.event.item").each(function(){
         cb = $("#crossbar");
         var top = $(this).offset().top;
 
