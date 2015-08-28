@@ -122,11 +122,19 @@ $('#timeline').mousedown(timeline_mousedown);
 
 $("li.event.item").each(function(){
   this.activate = function(){
-    if (this.getAttribute('lat') != "") {
-      latlng = L.latLng(parseInt(this.getAttribute('lat'),
-                        parseInt(this.getAttribute('lng'))))
-      popup_text(this.getAttribute('data'),latlng)
+    attrs = this.attributes;
+    lat = attrs['lat'].value;
+    lng = attrs['lng'].value;
+    $(this).addClass("active");
+    if (lat && lat != "") {
+      var latlng = new L.latLng(parseFloat(lat),
+                        parseFloat(lng))
+      this.cleanup = popup_text(this.getAttribute('data'),latlng)
     }
+  }
+  this.deactivate = function(){
+    $(this).removeClass("active");
+    // TODO: Eliminate auld popups!
   }
 });
 </script>

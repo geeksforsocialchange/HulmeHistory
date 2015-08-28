@@ -15,7 +15,6 @@ function timeline_mousedown(e){
           $(crossbar.elem)
           .offset({top: top});
           var tl_offs = tl_top - (top - button_height/2) * scroll_range / tl_height;
-          console.log(tl_offs);
           $("ol.decades").offset({top:tl_offs});
         }
     }
@@ -45,18 +44,10 @@ function timeline_mousedown(e){
       });
     }
     function activate(elem) {
-      elem.addClass("active");
-      // var latlng = elem.children()[0].getAttribute('data-latlng');
-      console.log(elem)
-      if (elem[0].getAttribute('lat') != "") {
-        latlng = L.latLng(parseInt(elem[0].getAttribute('lat'),
-                          parseInt(elem[0].getAttribute('lng'))))
-        popup_text(elem[0].getAttribute('data'),latlng)
-      }
+      elem[0].activate();
     }
     function deactivate(elem) {
-      elem.removeClass("active");
-      // TODO: TRIGGER Visualisation hide.
+      elem[0].deactivate();
     }
     $('body')
     .on('mouseup', handle_mouseup)

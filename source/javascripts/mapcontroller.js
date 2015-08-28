@@ -8,9 +8,10 @@ popup_text = function(uid, location){
         // Default coordinates
         coords = L.latLng(53.4643,-2.2494);
       } else {
-        coords = L.latLng(location[0],location[1]);
+        coords = location;
       }
-      x = L.popup().setLatLng(coords).setContent(data).openOn(map);
+      popup = L.popup().setLatLng(coords).setContent(data);
+      map.addLayer(popup);
 
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {}
