@@ -1,15 +1,11 @@
 // attempted Timeline interface
 function cb_offs() {
-  // var tl_height = $("#tl-content").innerHeight();
-  // var tl_top = $("#tl-content").offset().top;
   var button_height = $("li.event.item")[0].offsetHeight;
-  // var scroll_range = $("tl-content")[0].scrollHeight - tl_height + button_height;
-  // var top = $("#crossbar")[0].offsetTop;
   var tl_top = $("#tl-content").offset()['top'];
   var tl_scr_top = $("#tl-content").scrollTop();
-  var tl_scr_ht = $("#tl-content")[0].scrollHeight
-  var tl_height = $("#timeline").innerHeight();
-  return tl_top + button_height/2 + tl_scr_top * (tl_scr_ht - tl_height)/ tl_scr_ht;
+  var tl_height = $("#tl-content").innerHeight();
+  var tl_scr_rng = $("#tl-content")[0].scrollHeight - tl_height
+  return tl_top + button_height/2 + (tl_height - button_height) * tl_scr_top / tl_scr_rng;
 }
 
 function timeline_mousedown(e){
