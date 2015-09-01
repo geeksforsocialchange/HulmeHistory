@@ -9,8 +9,10 @@ function cb_offs() {
 }
 
 function timeline_mousedown(e){
+  var ey = e.pageY;
+  var scr_top_init = $("#tl-content").scrollTop();
     function handle_dragging(e){
-      var dy = (e.pageY / window.innerHeight) * $("#tl-content")[0].scrollHeight;
+      var dy = scr_top_init + e.pageY - ey;
       $("#tl-content").scrollTop(dy);
     }
     function handle_mouseup(e){
