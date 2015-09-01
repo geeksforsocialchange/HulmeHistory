@@ -1,22 +1,21 @@
 // attempted Timeline interface
-function timeline_mousedown(e){
-    var tl_height = $("#tl-content").innerHeight();
-    var tl_top = $("#tl-content").offset().top;
-    var button_height = $("li.event.item")[0].offsetHeight;
-    var scroll_range = $("ol.decades")[0].scrollHeight - tl_height + button_height;
+function cb_offs() {
+  // var tl_height = $("#tl-content").innerHeight();
+  // var tl_top = $("#tl-content").offset().top;
+  var button_height = $("li.event.item")[0].offsetHeight;
+  // var scroll_range = $("tl-content")[0].scrollHeight - tl_height + button_height;
+  // var top = $("#crossbar")[0].offsetTop;
+  var tl_top = $("#tl-content").offset()['top'];
+  var tl_scr_top = $("#tl-content").scrollTop();
+  var tl_scr_ht = $("#tl-content")[0].scrollHeight
+  var tl_height = $("#timeline").innerHeight();
+  return tl_top + button_height/2 + tl_scr_top * (tl_scr_ht - tl_height)/ tl_scr_ht;
+}
 
-    window.crossbar = {};
-    crossbar.pageY0 = e.pageY;
-    crossbar.elem = $("#crossbar")[0];
-    crossbar.offset0 = $("#crossbar").offset();
+function timeline_mousedown(e){
     function handle_dragging(e){
-        var top = crossbar.offset0.top + (e.pageY - crossbar.pageY0);
-        if (0 < top && top < tl_height - button_height/2){
-          $(crossbar.elem)
-          .offset({top: top});
-          var tl_offs = (top - button_height/2) * scroll_range / tl_height - tl_top;
-          $("#tl-content").scrollTop(tl_offs);
-        }
+      var dy = (e.pageY / window.innerHeight) * $("#tl-content")[0].scrollHeight;
+      $("#tl-content").scrollTop(dy);
     }
     function handle_mouseup(e){
         $('body')
@@ -52,4 +51,8 @@ function timeline_mousedown(e){
     $('body')
     .on('mouseup', handle_mouseup)
     .on('mousemove', handle_dragging);
+}
+
+function timeline_scroll(e) {
+  $("#crossbar").offset({top:cb_offs()});
 }

@@ -122,6 +122,8 @@ function addLayer(layer, name, zIndex) {
 }
 $('#timeline').mousedown(timeline_mousedown);
 
+$('#tl-content').scroll(timeline_scroll)
+
 $("li.event.item").each(function(){
   this.activate = function(){
     attrs = this.attributes;
