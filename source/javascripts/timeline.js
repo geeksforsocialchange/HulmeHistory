@@ -1,7 +1,7 @@
 // attempted Timeline interface
 function timeline_mousedown(e){
-    var tl_height = $("#timeline").innerHeight();
-    var tl_top = $("#timeline").offset().top;
+    var tl_height = $("#tl-content").innerHeight();
+    var tl_top = $("#tl-content").offset().top;
     var button_height = $("li.event.item")[0].offsetHeight;
     var scroll_range = $("ol.decades")[0].scrollHeight - tl_height + button_height;
 
@@ -14,8 +14,8 @@ function timeline_mousedown(e){
         if (0 < top && top < tl_height - button_height/2){
           $(crossbar.elem)
           .offset({top: top});
-          var tl_offs = tl_top - (top - button_height/2) * scroll_range / tl_height;
-          $("ol.decades").offset({top:tl_offs});
+          var tl_offs = (top - button_height/2) * scroll_range / tl_height - tl_top;
+          $("#tl-content").scrollTop(tl_offs);
         }
     }
     function handle_mouseup(e){

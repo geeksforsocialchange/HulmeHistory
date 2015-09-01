@@ -6,26 +6,28 @@ title: Hulme History
 <section id='timeline-section'>
   <div id='crossbar'> </div>
   <div id='timeline'>
-    <ol class="decades">
-      <% timeline = all_events(1750, 2015) %>
-      <% timeline.each do |decade, events| %>
-        <li class="decade" value="<%= decade %>">
-          <time class="decade"><%= decade %></time>
-          <% if events.length > 0 %>
-            <ol class="events">
-            <% events.each do |event| %>
-              <% md = event.metadata[:page] %>
-              <li class="event item block <%= md["timeline"] %>"
-                  lat="<%=md['lat']%>"
-                  lng="<%=md['lng']%>"
-                  data="<%=event.path.split('/')[-1].split('.')[0]%>"
-                  value="<%= md["start"] %>"><%= md["title"] %></li>
+    <div id='tl-content'>
+      <ol class="decades">
+        <% timeline = all_events(1750, 2015) %>
+        <% timeline.each do |decade, events| %>
+          <li class="decade" value="<%= decade %>">
+            <time class="decade"><%= decade %></time>
+            <% if events.length > 0 %>
+              <ol class="events">
+              <% events.each do |event| %>
+                <% md = event.metadata[:page] %>
+                <li class="event item block <%= md["timeline"] %>"
+                    lat="<%=md['lat']%>"
+                    lng="<%=md['lng']%>"
+                    data="<%=event.path.split('/')[-1].split('.')[0]%>"
+                    value="<%= md["start"] %>"><%= md["title"] %></li>
+              <% end %>
+              </ol>
             <% end %>
-            </ol>
-          <% end %>
-        </li>
-      <% end %>
-    </ol>
+          </li>
+        <% end %>
+      </ol>
+    </div>
   </div>
   <div id='listholder'>
     <ol class="button-group">
