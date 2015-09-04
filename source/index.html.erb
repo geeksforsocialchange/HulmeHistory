@@ -4,9 +4,9 @@ title: Hulme History
 <nav id='menu-ui' class='menu-ui'></nav>
 
 <section id='timeline-section'>
-  <div id='crossbar'> </div>
   <div id='timeline'>
     <div id='tl-content'>
+      <div id='crossbar'> </div>
       <ol class="decades">
         <% timeline = all_events(1750, 2015) %>
         <% timeline.each do |decade, events| %>
@@ -133,12 +133,20 @@ $("li.event.item").each(function(){
     if (lat && lat != "") {
       var latlng = new L.latLng(parseFloat(lat),
                         parseFloat(lng))
-      this.cleanup = popup_text(this.getAttribute('data'),latlng)
+      this.popup = popup_text(this.getAttribute('data'),latlng)
     }
+    var midline = this.offsetTop + this.offsetHeight/2 - $("#crossbar").height();
+
+    // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
+    // $("#crossbar").stop()
+    //               .animate({top:midline, duration: 'fast'});
   }
   this.deactivate = function(){
     $(this).removeClass("active");
     // TODO: Eliminate auld popups!
+    if(this.popup) {
+      this.popup._close(); // Bad using private functions. Leaflet doesn't provide a cleanup function!
+    }
   }
 });
 </script>

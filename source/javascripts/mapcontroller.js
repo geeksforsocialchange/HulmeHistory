@@ -1,5 +1,6 @@
 popup_text = function(uid, location){
-  var popup = $.ajax({
+  var popup = L.popup();
+  $.ajax({
     type: 'GET',
     url: 'events/'+ uid +'/',
     timeout: 5000,
@@ -10,7 +11,7 @@ popup_text = function(uid, location){
       } else {
         coords = location;
       }
-      popup = L.popup().setLatLng(coords).setContent(data);
+      popup.setLatLng(coords).setContent(data);
       map.addLayer(popup);
 
     },
