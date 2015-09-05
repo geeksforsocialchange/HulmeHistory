@@ -14,7 +14,7 @@ title: Hulme History
             <time class="decade"><%= decade %></time>
             <% if events.length > 0 %>
               <ol class="events">
-              <% events.each do |event| %>
+              <% events.sort_by{|event| event.metadata[:page]["start"]}.each do |event| %>
                 <% md = event.metadata[:page] %>
                 <li class="event item block <%= md["timeline"] %>"
                     lat="<%=md['lat']%>"
