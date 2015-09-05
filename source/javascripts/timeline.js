@@ -49,6 +49,7 @@ function selecta() {
   $(selection).not(".active").each(function(){
     // important not to activate already activated events
     this.activate()
+    map.update();
   })
   return selection;
 }

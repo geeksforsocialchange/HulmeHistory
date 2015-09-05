@@ -69,7 +69,7 @@ $.getJSON('./gis/1871_blocks.geojson', function(data) {
 
 // 1990 map layers
 var group1990 = L.layerGroup();
-addLayer(group1990, '1990', 3);
+//addLayer(group1990, '1990', 3);
 
 $.getJSON('./gis/1990_figure_ground.geojson', function(data) {
   l = L.mapbox.featureLayer(data);
@@ -85,13 +85,45 @@ $.getJSON('./gis/1990_blocks.geojson', function(data) {
 
 // 2015 layers
 var group2015 = L.layerGroup();
-addLayer(group2015, '2015', 4);
+//addLayer(group2015, '2015', 4);
 
 $.getJSON('./gis/2015_blocks.geojson', function(data) {
   l = L.mapbox.featureLayer(data);
   l.addTo(group2015);
   l.setStyle({fillColor: blocks});
 });
+
+//
+map.present = group1871;
+map.update = function() {
+  current_year = parseInt($(".event.active").attr('value'));
+
+  // Pick the appropriate map
+  if(current_year < 1970){
+    new_map = group1871;
+  } else if(current_year < 1994) {
+    new_map = group1990;
+  } else {
+    new_map = group2015;
+  }
+
+  // Do we need to change it?
+  if(new_map != map.present){
+    // map.present
+    //     .getLayers()
+    //     .forEach(function(l){
+    //       // mess around with fading layer and then removing asynchronously.
+    //       l.setStyle({'opacity':0});
+    //     })
+    if(map.hasLayer(map.present)){
+      map.removeLayer(map.present);
+    }
+
+    // Perhaps similarly mess with fade in. If fade out and in async, should dissolve.
+    map.present = new_map;
+    map.addLayer(new_map);
+  }
+}
 
 function addLayer(layer, name, zIndex) {
   layer
