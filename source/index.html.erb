@@ -38,8 +38,29 @@ title: Hulme History
 <section id='map'></section>
 
 <script>
+// SET PANNING RANGE HERE
+var northeast = L.latLng(53.475634,-2.28168);
+var southwest = L.latLng(53.455451,-2.223401);
+
+if(southwest && northeast) {
+  bounds = L.latLngBounds(southwest, northeast);
+} else {
+  bounds = null;
+}
+
 L.mapbox.accessToken = 'pk.eyJ1Ijoia2ltYWRhY3R5bCIsImEiOiJCYzdNTTR3In0.hkjyGpEFYdSPrVp3e717eA';
-var map = L.mapbox.map('map').setView([53.468,-2.260], 15);
+var map = L.map('map', {
+  center: [53.468,-2.260],
+  minZoom: 15,
+  zoom:15,
+  maxZoon: 19,
+  maxBounds: bounds
+});
+
+  // { maxBounds: bounds,
+  //   maxZoom:19,
+  //   minZoom:11
+  // });
 var layers = document.getElementById('menu-ui');
 
 // Colour defs
