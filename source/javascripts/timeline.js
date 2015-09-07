@@ -1,22 +1,8 @@
 // attempted Timeline interface
 
-// // crossbar offset
-// function cb_offs() {
-//   var button_height = $("li.event.item")[0].offsetHeight;
-//   var tl_top = $("#tl-content").offset()['top'];
-//   var tl_scr_top = $("#tl-content").scrollTop();
-//   var tl_height = $("#tl-content").innerHeight();
-//   var tl_scr_rng = $("#tl-content")[0].scrollHeight - tl_height
-//   return tl_top + button_height/2 + (tl_height - button_height) * tl_scr_top / tl_scr_rng;
-// }
-
-function selecta() {
-  var events = $("li.event.item");
-  var i = 0;
-  var selection;
+function select_point(scroll_px){
   var container = $("#tl-content");
   var scroll_height = container.prop('scrollHeight');
-  var scroll_px = container.scrollTop();
   var view_height = container.height();
   var e_height = $(".event").outerHeight(true);
 
@@ -24,7 +10,27 @@ function selecta() {
   var scroll_range = scroll_height - view_height;
 
   // selection point:
-  var scroll_point = e_height/2 + scroll_px * (scroll_height - e_height) / (scroll_range);
+  var select_pt = e_height/2 + scroll_px * (scroll_height - e_height) / (scroll_range);
+  return select_pt
+}
+
+// inverter fn, finds necessary scrollTop to select event e by its .offsetTop
+// FIXME: Very marginally not quite right. Good enough for now.
+function s_p_inv(e_offs_top) {
+  var container = $("#tl-content");
+  var scr_h = container.prop('scrollHeight');
+  var v_h = container.height();
+  var e_h = $(".event").outerHeight();
+  return e_offs_top * (scr_h - v_h) / (scr_h - e_h);
+}
+
+function selecta() {
+  var scroll_px = $("#tl-content").scrollTop();
+  var events = $("li.event.item");
+  var i = 0;
+  var selection;
+
+  var scroll_point = select_point(scroll_px);
 
   // Smooth mode crossbar. See "event.activate()" in index.html for "clicky"
   $("#crossbar").css({'top':scroll_point});

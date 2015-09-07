@@ -202,4 +202,11 @@ $("li.event.item").each(function(){
     }
   }
 });
+
+
+$("li.event").click(function(){
+  // fixme: maths is wrong.
+  var scroll = s_p_inv(this.offsetTop);
+  $("#tl-content").animate({scrollTop:scroll});
+})
 </script>
