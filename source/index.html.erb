@@ -39,7 +39,7 @@ title: Hulme History
 
 <script>
 // SET PANNING RANGE HERE
-var northeast = L.latLng(53.475634,-2.28168);
+var northeast = L.latLng(53.495634,-2.28168);
 var southwest = L.latLng(53.455451,-2.223401);
 
 if(southwest && northeast) {
@@ -187,6 +187,7 @@ $("li.event.item").each(function(){
       var latlng = new L.latLng(parseFloat(lat),
                         parseFloat(lng))
       this.popup = popup_text(this.getAttribute('data'),latlng)
+      map.panTo(latlng);
     }
     var midline = this.offsetTop + this.offsetHeight/2 - $("#crossbar").height();
 
