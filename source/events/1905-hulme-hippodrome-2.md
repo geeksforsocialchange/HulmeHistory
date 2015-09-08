@@ -2,8 +2,8 @@
 start: 1901
 end: 2011
 title: Hulme Hippodrome
-lat: 53.4536965
-lng: -2.7303314
+lat: 53.464272
+lng: -2.249226
 timeline: buildings
 ---
 
