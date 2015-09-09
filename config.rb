@@ -61,6 +61,10 @@ helpers do
   def events_in_decade starting_from
     sitemap.where(:start.gte => starting_from).where(:start.lt => (starting_from + 10)).all
   end
+
+  def event_res_builder
+    events = sitemap.where(:start.gte => 1750).all
+  end
 end
 
 set :css_dir, 'stylesheets'

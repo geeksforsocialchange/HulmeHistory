@@ -2,3 +2,4 @@
 //= require vendor/mapbox.js/mapbox
 //= require timeline
 //= require mapcontroller
+//= require overlay

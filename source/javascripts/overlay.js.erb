@@ -1,0 +1,30 @@
+overlay_resources = {
+<%event_res_builder.each do |event|%>
+  <%path = event.path.gsub(".html","/")%>
+  "<%=path%>":{
+    title: '<%=event.metadata[:page]["title"]%>',
+    resources: [
+    <%resources = sitemap.resources.select{|resource| resource.path.start_with?(path)}%>
+    <%resources.each do |resource| %>
+      <%url = resource.path%>
+      <%if ['.jpg','.jpeg','.png','.gif','.svg'].include? resource.ext.downcase%>
+        <%res_type = "img"%>
+      <%elsif resource.path == ".pdf"%>
+        <%res_type = "pdf"%>
+      <%else next%>
+      <%end%>
+      {
+      url: "<%=url%>",
+      type: "<%=res_type%>"
+      },
+    <%end%>
+    ],
+    geojson:
+    <%if gj = resources.select{|resource| resource.ext.downcase == '.geojson'}.first%>
+      '<%=gj.path%>'
+    <%else%>
+      ''
+    <%end%>
+  },
+<%end%>
+}
