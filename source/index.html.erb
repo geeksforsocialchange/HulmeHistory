@@ -191,8 +191,10 @@ $("li.event.item").each(function(){
       this.popup = popup_text(this.getAttribute('data'),latlng)
       map.panTo(latlng);
     }
-    if(overlay_res['events/' + data + '/']) {
+    if(!this.gjobject && overlay_res['events/' + data + '/']) {
       geojson_popup(data);
+    } else if (this.gjobject) {
+      this.gjobject.addTo(map);
     }
     var midline = this.offsetTop + this.offsetHeight/2 - $("#crossbar").height();
 
