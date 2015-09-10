@@ -180,33 +180,43 @@ $('#tl-content').scroll(timeline_scroll)
 
 $("li.event.item").each(function(){
   this.activate = function(){
-    attrs = this.attributes;
-    var lat = attrs['lat'].value;
-    var lng = attrs['lng'].value;
-    var data = attrs['data'].value;
-    $(this).addClass("active");
-    if (lat && lat != "") {
-      var latlng = new L.latLng(parseFloat(lat),
-                        parseFloat(lng))
-      this.popup = popup_text(this.getAttribute('data'),latlng)
-      map.panTo(latlng);
-    }
-    if(!this.gjobject && overlay_res['events/' + data + '/']) {
-      geojson_popup(data);
-    } else if (this.gjobject) {
-      this.gjobject.addTo(map);
-    }
-    var midline = this.offsetTop + this.offsetHeight/2 - $("#crossbar").height();
+    elem = this;
+    $(elem).addClass("active");
+    setTimeout(function(){
+      // check if class is still active rather than just scrolling through.
+      if (elem.classList.contains("active")){
+        if(elem.popup){
+          elem.popup.addTo(map);
+        } else {
+          attrs = elem.attributes;
+          var lat = attrs['lat'].value;
+          var lng = attrs['lng'].value;
+          var data = attrs['data'].value;
+          if (lat && lat != "") {
+            var latlng = new L.latLng(parseFloat(lat),
+                              parseFloat(lng))
+            elem.popup = popup_text(elem.getAttribute('data'),latlng)
+            map.panTo(latlng);
+          }
+        }
+        if(!elem.gjobject && overlay_res['events/' + data + '/']) {
+          geojson_popup(data);
+        } else if (elem.gjobject ) {
+          elem.gjobject.addTo(map);
+        }
+        var midline = elem.offsetTop + elem.offsetHeight/2 - $("#crossbar").height();
 
-    // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
-    // $("#crossbar").stop()
-    //               .animate({top:midline, duration: 'fast'});
+          // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
+          // $("#crossbar").stop()
+          //               .animate({top:midline, duration: 'fast'});
+      }
+    }, 500);
   }
   this.deactivate = function(){
     $(this).removeClass("active");
     // TODO: Eliminate auld popups!
     if(this.popup) {
-      this.popup._close(); // Bad using private functions. Leaflet doesn't provide a cleanup function!
+      map.closePopup(this.popup); // Bad using private functions. Leaflet doesn't provide a cleanup function!
     }
     if(this.gjobject) {
       // remove geojson object layer
@@ -215,10 +225,16 @@ $("li.event.item").each(function(){
   }
 });
 
-
 $("li.event").click(function(){
   // fixme: maths is wrong.
   var scroll = s_p_inv(this.offsetTop);
   $("#tl-content").animate({scrollTop:scroll});
 })
+
+$(document).ready(function(){
+  // taking string from internet route. Sanitise thoroughly.
+  var target = window.location.hash.replace(/([^a-zA-Z\-\d])/g, '');
+  $('[data="'+target+'"]')[0].click();
+})
+
 </script>
