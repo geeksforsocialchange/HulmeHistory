@@ -1,4 +1,18 @@
-overlay_resources = {
+function geojson_popup(event_name) {
+  // takes path to geojson file, which can be found for a given event by found
+  var path = overlay_res['events/'+ event_name + "/"].geojson
+  console.log(path);
+  $.getJSON(path, function(data){
+    console.log(data)
+    var object_layer = L.geoJson(data).addTo(map);
+    console.log(object_layer);
+    var selector = "[data='" + event_name + "']";
+    $(selector)[0].gjobject = object_layer;
+  })//, function(data, event_name){
+  //});
+}
+
+overlay_res = {
 <%event_res_builder.each do |event|%>
   <%path = event.path.gsub(".html","/")%>
   "<%=path%>":{

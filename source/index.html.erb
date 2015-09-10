@@ -181,14 +181,18 @@ $('#tl-content').scroll(timeline_scroll)
 $("li.event.item").each(function(){
   this.activate = function(){
     attrs = this.attributes;
-    lat = attrs['lat'].value;
-    lng = attrs['lng'].value;
+    var lat = attrs['lat'].value;
+    var lng = attrs['lng'].value;
+    var data = attrs['data'].value;
     $(this).addClass("active");
     if (lat && lat != "") {
       var latlng = new L.latLng(parseFloat(lat),
                         parseFloat(lng))
       this.popup = popup_text(this.getAttribute('data'),latlng)
       map.panTo(latlng);
+    }
+    if(overlay_res['events/' + data + '/']) {
+      geojson_popup(data);
     }
     var midline = this.offsetTop + this.offsetHeight/2 - $("#crossbar").height();
 
@@ -201,6 +205,10 @@ $("li.event.item").each(function(){
     // TODO: Eliminate auld popups!
     if(this.popup) {
       this.popup._close(); // Bad using private functions. Leaflet doesn't provide a cleanup function!
+    }
+    if(this.gjobject) {
+      // remove geojson object layer
+      map.removeLayer(this.gjobject);
     }
   }
 });
