@@ -14,7 +14,7 @@ popup_text = function(uid, location){
     url: 'events/'+ uid +'/',
     timeout: 5000,
     success: function(data) {
-      if(typeof(coords) === "undefined"){
+      if(typeof(location) === "undefined"){
         // Default coordinates
         coords = L.latLng(53.4643,-2.2494);
       } else {
