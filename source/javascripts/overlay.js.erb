@@ -19,13 +19,13 @@ overlay_res = {
     <%resources.each do |resource| %>
       <%url = resource.path%>
       <%if ['.jpg','.jpeg','.png','.gif','.svg'].include? resource.ext.downcase%>
-        <%res_type = "img"%>
-      <%elsif resource.path == ".pdf"%>
-        <%res_type = "pdf"%>
+        <%res_type = "image"%>
+      <%elsif resource.ext.downcase == ".pdf"%>
+        <%res_type = "iframe"%>
       <%else next%>
       <%end%>
       {
-      url: "<%=url%>",
+      src: "<%=url%>",
       type: "<%=res_type%>"
       },
     <%end%>

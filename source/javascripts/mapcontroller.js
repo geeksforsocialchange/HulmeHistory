@@ -14,15 +14,28 @@ popup_text = function(uid, location){
     url: 'events/'+ uid +'/',
     timeout: 5000,
     success: function(data) {
+      //Prepare ajax data for magnific
+
+      var content_start = data.indexOf('<p>');
+      var content_finish = data.lastIndexOf('</p>') + "</p>".length;
+
+      var moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
+      var contents = data.substring(content_start, content_finish) + moreinfo;
       if(typeof(location) === "undefined"){
         // Default coordinates
         coords = L.latLng(53.4643,-2.2494);
       } else {
         coords = location;
       }
-      popup.setLatLng(coords).setContent(data);
+      popup.setLatLng(coords).setContent(contents);
       map.addLayer(popup);
-
+      $(".event-"+uid).magnificPopup({
+        items:overlay_res['events/'+uid+'/'].resources,
+        gallery: {
+          enabled: true
+        },
+        type: 'image'
+      });
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {}
   });

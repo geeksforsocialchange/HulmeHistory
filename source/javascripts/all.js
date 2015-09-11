@@ -3,3 +3,4 @@
 //= require timeline
 //= require mapcontroller
 //= require overlay
+//= require magnific
