@@ -7,4 +7,4 @@ lat: 53.471977
 lng: -2.264471
 ---
 
-[Click for more info](#1845-hulme-hall)
+Stub
