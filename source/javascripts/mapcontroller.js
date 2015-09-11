@@ -33,16 +33,6 @@ popup_text = function(uid, location){
       }
       popup.setLatLng(coords).setContent(contents);
       map.addLayer(popup);
-      if(res.length > 0){
-        // Only add more info link if we have more info
-        $(".event-"+uid).magnificPopup({
-          items:overlay_res['events/'+uid+'/'].resources,
-          gallery: {
-            enabled: true
-          },
-          type: 'image'
-        });
-      }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {}
   });

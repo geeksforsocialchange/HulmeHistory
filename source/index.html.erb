@@ -185,13 +185,14 @@ $("li.event.item").each(function(){
     setTimeout(function(){
       // check if class is still active rather than just scrolling through.
       if (elem.classList.contains("active")){
+        var attrs = elem.attributes;
+        var lat = attrs['lat'].value;
+        var lng = attrs['lng'].value;
+        var data = attrs['data'].value;
+
         if(elem.popup){
           elem.popup.addTo(map);
         } else {
-          attrs = elem.attributes;
-          var lat = attrs['lat'].value;
-          var lng = attrs['lng'].value;
-          var data = attrs['data'].value;
           if (lat && lat != "") {
             var latlng = new L.latLng(parseFloat(lat),
                               parseFloat(lng))
@@ -199,16 +200,29 @@ $("li.event.item").each(function(){
             map.panTo(latlng);
           }
         }
+        // Set up magnific
+        var more_info_link = $(".event-"+data);
+        if(more_info_link.length > 0){
+          var res = overlay_res['events/'+data+'/'].resources;
+          more_info_link.magnificPopup({
+            items:overlay_res['events/'+data+'/'].resources,
+            gallery: {
+              enabled: true
+            },
+            type: 'image'
+          });
+        }
+
         if(!elem.gjobject && overlay_res['events/' + data + '/']) {
           geojson_popup(data);
         } else if (elem.gjobject ) {
           elem.gjobject.addTo(map);
         }
-        var midline = elem.offsetTop + elem.offsetHeight/2 - $("#crossbar").height();
+        // var midline = elem.offsetTop + elem.offsetHeight/2 - $("#crossbar").height();
 
-          // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
-          // $("#crossbar").stop()
-          //               .animate({top:midline, duration: 'fast'});
+        // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
+        // $("#crossbar").stop()
+        //               .animate({top:midline, duration: 'fast'});
       }
     }, 500);
   }
