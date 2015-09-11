@@ -19,7 +19,11 @@ popup_text = function(uid, location){
       var content_start = data.indexOf('<p>');
       var content_finish = data.lastIndexOf('</p>') + "</p>".length;
 
-      var moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
+      var res = overlay_res['events/'+uid+'/'].resources;
+      var moreinfo = "";
+      if(res.length > 0){
+        var moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
+      }
       var contents = data.substring(content_start, content_finish) + moreinfo;
       if(typeof(location) === "undefined"){
         // Default coordinates
@@ -29,13 +33,16 @@ popup_text = function(uid, location){
       }
       popup.setLatLng(coords).setContent(contents);
       map.addLayer(popup);
-      $(".event-"+uid).magnificPopup({
-        items:overlay_res['events/'+uid+'/'].resources,
-        gallery: {
-          enabled: true
-        },
-        type: 'image'
-      });
+      if(res.length > 0){
+        // Only add more info link if we have more info
+        $(".event-"+uid).magnificPopup({
+          items:overlay_res['events/'+uid+'/'].resources,
+          gallery: {
+            enabled: true
+          },
+          type: 'image'
+        });
+      }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {}
   });
