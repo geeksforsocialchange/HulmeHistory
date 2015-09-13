@@ -21,7 +21,8 @@ overlay_res = {
       <%if ['.jpg','.jpeg','.png','.gif','.svg'].include? resource.ext.downcase%>
         <%res_type = "image"%>
       <%elsif resource.ext.downcase == ".pdf"%>
-        <%res_type = "iframe"%>
+        <%res_type = "inline"%>
+        <%url = "<div class='embeddedpdf'><embed src='"+url+"' type='application/pdf'></div>"%>
       <%else next%>
       <%end%>
       {
