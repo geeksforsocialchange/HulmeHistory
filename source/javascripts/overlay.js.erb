@@ -13,7 +13,7 @@ overlay_res = {
 <%event_res_builder.each do |event|%>
   <%path = event.path.gsub(".html","/")%>
   "<%=path%>":{
-    title: '<%=event.metadata[:page]["title"]%>',
+    title: "<%=event.metadata[:page]["title"]%>",
     resources: [
     <%resources = sitemap.resources.select{|resource| resource.path.start_with?(path)}%>
     <%resources.each do |resource| %>
