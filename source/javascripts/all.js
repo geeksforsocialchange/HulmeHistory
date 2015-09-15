@@ -4,6 +4,5 @@
 //= require vendor/datatables/media/js/jquery.dataTables.min
 //= require vendor/datatables/media/js/dataTables.foundation.min
 //= require timeline
-//= require mapcontroller
 //= require overlay
 //= require magnific
