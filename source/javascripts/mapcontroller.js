@@ -1,14 +1,5 @@
-popup_text = function(uid, location){
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  if(w > 0 && h > 0){
-    var max_w = w /2;
-    var max_h = h / 2;
-  } else {
-    var max_w = 400; // Defaults is all else goes wrong
-    var max_h = 400; // Allows for scrollable popups.
-  }
-  var popup = L.popup({maxWidth: max_w, maxHeight: max_h});
+popup_text = function(uid){
+  var popup = $('#popup-text')
   $.ajax({
     type: 'GET',
     url: 'events/'+ uid +'/',
@@ -25,14 +16,17 @@ popup_text = function(uid, location){
         var moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
       }
       var contents = data.substring(content_start, content_finish) + moreinfo;
-      if(typeof(location) === "undefined"){
-        // Default coordinates
-        coords = L.latLng(53.4643,-2.2494);
-      } else {
-        coords = location;
-      }
-      popup.setLatLng(coords).setContent(contents);
-      map.addLayer(popup);
+
+      popup.html(contents);
+      popup.fadeIn();
+      var more_info_link = $(".event-"+uid);
+      more_info_link.magnificPopup({
+        items:res,
+        gallery: {
+          enabled: true
+        },
+        type: 'image'
+      });
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {}
   });

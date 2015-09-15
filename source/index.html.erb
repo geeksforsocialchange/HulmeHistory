@@ -37,6 +37,11 @@ title: Hulme History
   </div>
 </section>
 
+<section id='popup-data'>
+  <div id="popup-text">
+  </div>
+</section>
+
 <section id='map'></section>
 
 <script>
@@ -188,32 +193,28 @@ $("li.event.item").each(function(){
       // check if class is still active rather than just scrolling through.
       if (elem.classList.contains("active")){
         var attrs = elem.attributes;
-        var lat = attrs['lat'].value;
-        var lng = attrs['lng'].value;
+        // var lat = attrs['lat'].value;
+        // var lng = attrs['lng'].value;
         var data = attrs['data'].value;
 
-        if(elem.popup){
-          elem.popup.addTo(map);
-        } else {
-          if (lat && lat != "") {
-            var latlng = new L.latLng(parseFloat(lat),
-                              parseFloat(lng))
-            elem.popup = popup_text(elem.getAttribute('data'),latlng)
-            map.panTo(latlng);
-          }
-        }
+        popup_text(data);
+
+
+
+
         // Set up magnific
-        var more_info_link = $(".event-"+data);
-        if(more_info_link.length > 0){
-          var res = overlay_res['events/'+data+'/'].resources;
-          more_info_link.magnificPopup({
-            items:overlay_res['events/'+data+'/'].resources,
-            gallery: {
-              enabled: true
-            },
-            type: 'image'
-          });
-        }
+        // var more_info_link = $(".event-"+data);
+        // console.log(more_info_link);
+        // if(more_info_link.length > 0){
+        //   var res = overlay_res['events/'+data+'/'].resources;
+        //   more_info_link.magnificPopup({
+        //     items:overlay_res['events/'+data+'/'].resources,
+        //     gallery: {
+        //       enabled: true
+        //     },
+        //     type: 'image'
+        //   });
+        // }
 
         if(!elem.gjobject && overlay_res['events/' + data + '/']) {
           geojson_popup(data);
@@ -230,14 +231,16 @@ $("li.event.item").each(function(){
   }
   this.deactivate = function(){
     $(this).removeClass("active");
+    $("popup-text").fadeOut();
+
     // TODO: Eliminate auld popups!
-    if(this.popup) {
-      map.closePopup(this.popup); // Bad using private functions. Leaflet doesn't provide a cleanup function!
-    }
-    if(this.gjobject) {
-      // remove geojson object layer
-      map.removeLayer(this.gjobject);
-    }
+    // if(this.popup) {
+    //   map.closePopup(this.popup); // Bad using private functions. Leaflet doesn't provide a cleanup function!
+    // }
+    // if(this.gjobject) {
+    //   // remove geojson object layer
+    //   map.removeLayer(this.gjobject);
+    // }
   }
 });
 
