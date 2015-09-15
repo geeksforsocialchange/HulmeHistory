@@ -1,6 +1,7 @@
 ---
 start: 1985
 title: Hulme Tenant's Alliance
+desc: Umbrella group formed to share information and support on Hulme-wide issues
 file: hulme_tenants_alliance_establishment.pdf
 photo: hulme_tenants_alliance.jpg
 author: urbed

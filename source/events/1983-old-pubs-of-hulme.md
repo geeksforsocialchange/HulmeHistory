@@ -1,6 +1,8 @@
 ---
 start: 1983
 title: The Old Pubs of Hulme
+desc: 'Guide to pubs in old Hulme published. "There was also a dancing bear outside the pubs on Chester Road, which per­formed for our pennies"'
+author: urbed
 ---
 
 Different people from Hulme tell us about the old pubs in a publication by Bob Potts in 1983.
