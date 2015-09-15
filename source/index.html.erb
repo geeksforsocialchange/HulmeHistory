@@ -199,48 +199,22 @@ $("li.event.item").each(function(){
 
         popup_text(data);
 
-
-
-
-        // Set up magnific
-        // var more_info_link = $(".event-"+data);
-        // console.log(more_info_link);
-        // if(more_info_link.length > 0){
-        //   var res = overlay_res['events/'+data+'/'].resources;
-        //   more_info_link.magnificPopup({
-        //     items:overlay_res['events/'+data+'/'].resources,
-        //     gallery: {
-        //       enabled: true
-        //     },
-        //     type: 'image'
-        //   });
-        // }
-
         if(!elem.gjobject && overlay_res['events/' + data + '/']) {
           geojson_popup(data);
-        } else if (elem.gjobject ) {
+        } else if (elem.gjobject) {
           elem.gjobject.addTo(map);
         }
-        // var midline = elem.offsetTop + elem.offsetHeight/2 - $("#crossbar").height();
-
-        // // Sticky mode crossbar See timeline.js selecta() for smooth mode crossbar.
-        // $("#crossbar").stop()
-        //               .animate({top:midline, duration: 'fast'});
       }
-    }, 500);
+    }, 200);
   }
   this.deactivate = function(){
+    console.log('deactivating');
+    if(this.gjobject) {
+      // remove geojson object layer
+      map.removeLayer(this.gjobject);
+    }
     $(this).removeClass("active");
-    $("popup-text").fadeOut();
-
-    // TODO: Eliminate auld popups!
-    // if(this.popup) {
-    //   map.closePopup(this.popup); // Bad using private functions. Leaflet doesn't provide a cleanup function!
-    // }
-    // if(this.gjobject) {
-    //   // remove geojson object layer
-    //   map.removeLayer(this.gjobject);
-    // }
+    $("#popup-text").fadeOut();
   }
 });
 

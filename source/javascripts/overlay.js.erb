@@ -18,7 +18,8 @@ overlay_res = {
     <%resources = sitemap.resources.select{|resource| resource.path.start_with?(path)}%>
     <%resources.each do |resource| %>
       <%url = resource.path%>
-      <%if ['.jpg','.jpeg','.png','.gif','.svg'].include? resource.ext.downcase%>
+      <%if File.basename(resource.path).start_with?('cover') then next %>
+      <%elsif ['.jpg','.jpeg','.png','.gif','.svg'].include? resource.ext.downcase%>
         <%res_type = "image"%>
       <%elsif resource.ext.downcase == ".pdf"%>
         <%res_type = "inline"%>
@@ -33,7 +34,13 @@ overlay_res = {
     ],
     geojson:
     <%if gj = resources.select{|resource| resource.ext.downcase == '.geojson'}.first%>
-      '<%=gj.path%>'
+      '<%=gj.path%>',
+    <%else%>
+      '',
+    <%end%>
+    cover:
+    <%if cover = resources.select{|resource| File.basename(resource.path).start_with?('cover')}.first%>
+      '<%=cover.path%>'
     <%else%>
       ''
     <%end%>

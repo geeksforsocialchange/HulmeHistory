@@ -49,6 +49,7 @@ function selecta() {
     selection = events[i];
   }
   $(".event.active").not(selection).each(function(){
+    console.log(this);
     // clean up formerly selected events
     this.deactivate();
   });
