@@ -6,10 +6,21 @@ title: URBED archive
     <h1>URBED archive</h1>
 
     <p>We have now catalogued our entire Hulme archive. The highlights are on the map: if you want to come in, here's a list of what we've got!</p>
+
+    <p id="archive-toggle">
+      Toggle column: <a class="toggle-vis" data-column="3">Sorting #</a> -
+                      <a class="toggle-vis visible" data-column="4">Item #</a> -
+                      <a class="toggle-vis visible" data-column="5">Box #</a> -
+                      <a class="toggle-vis" data-column="6">Cross #</a> -
+                      <a class="toggle-vis visible" data-column="7">What?</a> -
+                      <a class="toggle-vis visible" data-column="8">Condition</a> -
+                      <a class="toggle-vis" data-column="9">Scanned?</a> -
+                      <a class="toggle-vis" data-column="10">Copyright?</a>
+    </p>
   </div>
 </div>
 
-<table id="archive">
+<table id="archive" class="display" cellspacing="0" width="100%">
   <thead>
     <tr>
       <td>Title</td>
@@ -20,7 +31,7 @@ title: URBED archive
       <td>Box #</td>
       <td>Cross #</td>
       <td>What?</td>
-      <td>Physical condition</td>
+      <td>Condition</td>
       <td>Scanned?</td>
       <td>Copyright?</td>
     </tr>
@@ -38,6 +49,46 @@ title: URBED archive
 
 <script>
   $(document).ready(function() {
-    $('#archive').DataTable();
-  } );
+
+    // Start our datatable
+    var table = $('#archive').DataTable({
+      "pageLength":   25,
+      "columnDefs": [
+      {
+        // Sorting #
+        "targets": [ 3 ],
+        "visible": false,
+      },
+      {
+        // Cross #
+        "targets": [ 6 ],
+        "visible": false
+      },
+      {
+        // Scanned?
+        "targets": [ 9 ],
+        "visible": false
+      },
+      {
+        // Copyright?
+        "targets": [ 10 ],
+        "visible": false
+      }
+      ]
+    });
+
+    // Hide or show columns
+    $('a.toggle-vis').on( 'click', function (e) {
+      // Disable normal click event
+      e.preventDefault();
+
+      // Get the column API object
+      var column = table.column( $(this).attr('data-column') );
+
+      $(this).toggleClass('visible');
+
+      // Toggle the visibility
+      column.visible( ! column.visible() );
+    });
+  });
 </script>

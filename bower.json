@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery": null,
-    "requirejs": null,
+    "datatables": null,
     "mapbox.js": null,
     "foundation": null
   }

@@ -1,5 +1,6 @@
 @import "normalize.scss"
 @import "foundation.scss"
+@import "dataTables.foundation.min"
 @import "magnific"
 
 $grey: #CDCCCC
@@ -148,3 +149,14 @@ li.community
       color: #FFF
       &:hover
         background: #3074a4
+
+
+// Catalog
+
+#archive-toggle
+  a
+    text-decoration: line-through
+    color: $grey
+  a.visible
+    text-decoration: none
+    color:  $anchor-font-color
