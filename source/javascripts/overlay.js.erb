@@ -16,20 +16,37 @@ popup_text = function(uid){
     url: 'events/'+ uid +'/',
     timeout: 5000,
     success: function(data) {
-      //Prepare ajax data for magnific
 
+      var eventdata = overlay_res['events/'+uid+'/'];
+
+      // Clean up event html
       var content_start = data.indexOf('<p>');
       var content_finish = data.lastIndexOf('</p>') + "</p>".length;
 
-      var res = overlay_res['events/'+uid+'/'].resources;
+      var res = eventdata.resources;
       var moreinfo = "";
+
+      // Fetch Event cover and display
+      if(eventdata.cover != "") {
+        $(".cover").attr('src', eventdata.cover);
+        $(".cover").show();
+      } else {
+        $(".cover").hide();
+      }
+
+      // Build header
+      $("#popup-year").text(eventdata.year);
+      $("#popup-title").text(eventdata.title);
+
+
+
       if(res.length > 0){
-        var moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
+        moreinfo = "<p><a class='event-"+ uid + "' href='#" + uid + "'>Click for more info</a></p>"
       }
       var contents = data.substring(content_start, content_finish) + moreinfo;
 
-      popup.html(contents);
-      popup.fadeIn();
+      $("#popup-text").html(contents);
+      $("#popup").fadeIn();
       var more_info_link = $(".event-"+uid);
       more_info_link.magnificPopup({
         items:res,
@@ -49,6 +66,7 @@ overlay_res = {
   <%path = event.path.gsub(".html","/")%>
   "<%=path%>":{
     title: "<%=event.metadata[:page]["title"]%>",
+    year: "<%=event.metadata[:page]["start"]%>",
     resources: [
     <%resources = sitemap.resources.select{|resource| resource.path.start_with?(path)}%>
     <%resources.each do |resource| %>
