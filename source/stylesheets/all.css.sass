@@ -10,21 +10,45 @@ body
   padding: 0
   margin: 45px 0 0 0
 
-#popup
+#popup-data
   position: absolute
   margin: 10px
   padding: 5px
   right: 0
   border-radius: 10px
-  width: 30%
+  width: 66%
   z-index: 40
   background-color: rgba(255,255,255,0.9)
-#popup-controls
+#popup
+  margin-left: 50px
+  margin-right: 50px
+#cover
+  float: right
+  img
+    max-height: 300px
+    max-width: 300px
+  display: inline-block
+.popup-controls
+  border-radius: 50%
+  background-color: $green
+  color: white
+  font-size: 200%
   position: absolute
-  border-radius: 10%
-  background-color: rgba(255,255,255,.5)
-  li
-    display: inline
+  top: 40%
+  width: 40px
+  height: 40px
+  text-align: center
+  line-height: 1.1
+.popup-controls-left
+  left: 5px
+.popup-controls-right
+  right: 5px
+.popup-controls-close
+  font-size: 150%
+  width: 32px
+  height: 32px
+  top: 5px
+  right: 5px
 
 // Map itself
 
@@ -66,11 +90,10 @@ $tl_width: 30%
   top: 0px
   left: 0px
   bottom: 0px
-  padding-bottom: 20em
+  padding: 0.5em 0.5em 0px 0.5em
   width: $tl_width
   z-index: 100
   background-color: rgba(200,200,200, 0.5)
-  padding: 0.5rem
   overflow: hidden
 #tl-content
   width: 100%
@@ -100,7 +123,6 @@ $tl_width: 30%
 ol
   margin: 0
   padding: 0
-  text-align: center
 
 ol.decades > li
   margin-left: 0em
@@ -128,6 +150,10 @@ li.event
   margin-bottom: 1rem
   // Default
   background-color: $green
+
+li.active
+  border: 3px solid $green
+  background-color: white
 
 li.news
   background-color: #FFCA64
