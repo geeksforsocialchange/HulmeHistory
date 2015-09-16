@@ -208,6 +208,7 @@ $('#tl-content').scroll(timeline_scroll)
 $("li.event.item").each(function(){
   this.activate = function(){
     elem = this;
+    window.location.hash = this.attributes.data.value;
     $(elem).addClass("active");
     setTimeout(function(){
       // check if class is still active rather than just scrolling through.
@@ -246,7 +247,9 @@ $("li.event").click(function(){
 $(document).ready(function(){
   // taking string from internet route. Sanitise thoroughly.
   var target = window.location.hash.replace(/([^a-zA-Z\-\d])/g, '');
-  $('[data="'+target+'"]')[0].click();
+  if(target != "") {
+    $('[data="'+target+'"]')[0].click();
+  }
 })
 
 </script>
