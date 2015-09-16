@@ -40,14 +40,25 @@ title: Hulme History
 
   <section id='popup-data'>
     <div id='popup'>
+        <ul id='popup-controls'>
+          <li id='ctl-prev'>
+            prev
+          </li>
+          <li id='ctl-next'>
+            next
+          </li>
+          <li id='ctl-close'>
+            X
+          </li>
+        </ul>
       <div id='cover'>
         <img class="cover" src="">
       </div>
       <div id='popup-header'>
-        <strong>
+        <h2>
           <span id='popup-year'> </span>
           <span id='popup-title'> </span>
-        </strong>
+        </h2>
       </div>
       <div id="popup-text">
       </div>
@@ -261,6 +272,10 @@ $(document).ready(function(){
   if(target != "") {
     $('[data="'+target+'"]')[0].click();
   }
+
+  $("#ctl-close").click(function(){
+    $("#popup").fadeOut();
+  });
 })
 
 </script>
