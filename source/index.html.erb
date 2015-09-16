@@ -39,7 +39,18 @@ title: Hulme History
   </section>
 
   <section id='popup-data'>
-    <div id="popup-text">
+    <div id='popup'>
+      <div id='cover'>
+        <img class="cover" src="">
+      </div>
+      <div id='popup-header'>
+        <strong>
+          <span id='popup-year'> </span>
+          <span id='popup-title'> </span>
+        </strong>
+      </div>
+      <div id="popup-text">
+      </div>
     </div>
   </section>
 
@@ -234,7 +245,7 @@ $("li.event.item").each(function(){
       map.removeLayer(this.gjobject);
     }
     $(this).removeClass("active");
-    $("#popup-text").fadeOut();
+    $("#popup").fadeOut();
   }
 });
 
