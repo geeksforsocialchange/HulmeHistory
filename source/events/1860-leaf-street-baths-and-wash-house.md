@@ -1,7 +1,7 @@
 ---
 start: 1860
 title: Leaf Street Baths and Wash House
-desc: blah
+desc: Manchester and Salford Baths and Laundries Company establish first bathhouse in Hulme
 author: sylvia
 ---
 

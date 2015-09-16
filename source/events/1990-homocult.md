@@ -2,8 +2,7 @@
 start: 1990
 title: Homocult
 author: urbed
-photo: homocult/1.jpg
-album: homocult
+desc: Controversial working class queer artists publish their manifesto
 ---
 
 HOMOCULT produce often confrontational art at the boundary of class and queer politics.

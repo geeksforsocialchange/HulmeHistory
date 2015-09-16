@@ -1,6 +1,7 @@
 ---
 start: 1992
 title: Gaia 92 and bLoOm Arts
+desc: "Artists' collective formed to introduce art to the Hulme City Challenge and pressure public agencies for more funding"
 ---
 
 Gaia '92 was an art project created in 1992 by Hulme residents. It was later renamed bLoOm arts.

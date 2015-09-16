@@ -1,6 +1,7 @@
 ---
 title: Hulme Guide To Development
 start: 1994
+desc: "Hulme Regeneration Ltd. publishes guide to what they learned working on Hulme"
 author: urbed
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Hulme City Challenge
 start: 1992
+desc: "Manchester City Council submits proposal for transforming Hulme to central government"
 ---
 
 The City Council's submission to Government for the Hulme City Challenge defined its overall objectives as:

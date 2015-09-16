@@ -1,8 +1,7 @@
 ---
 start: 1985
 title: Second Hulme Conference
-file: second_hulme_conference.pdf
-photo: second_hulme_conference.png
+desc: Conference to discuss future of Hulme at Birley High School
 author: urbed
 ---
 
