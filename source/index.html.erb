@@ -1,48 +1,50 @@
 ---
 title: Hulme History
 ---
-<nav id='menu-ui' class='menu-ui'></nav>
+<div id="map-wrapper">
+  <nav id='menu-ui' class='menu-ui'></nav>
 
-<section id='timeline-section'>
-  <div id='timeline'>
-    <div id='tl-content'>
-      <div id='crossbar'> </div>
-      <ol class="decades">
-        <% timeline = all_events(1920, 2015) %>
-        <% timeline.each do |decade, events| %>
-          <li class="decade" value="<%= decade %>">
-            <time class="decade"><%= decade %></time>
-            <% if events.length > 0 %>
-              <ol class="events">
-              <% events.sort_by{|event| event.metadata[:page]["start"]}.each do |event| %>
-                <% md = event.metadata[:page] %>
-                <li class="event item block <%= md["timeline"] %>"
-                    lat="<%=md['lat']%>"
-                    lng="<%=md['lng']%>"
-                    data="<%=event.path.split('/')[-1].split('.')[0]%>"
-                    value="<%= md["start"] %>">
-                    <strong><%= md["title"] %></strong><%= ". " + md["desc"] if md["desc"] %>
-                </li>
+  <section id='timeline-section'>
+    <div id='timeline'>
+      <div id='tl-content'>
+        <div id='crossbar'> </div>
+        <ol class="decades">
+          <% timeline = all_events(1860, 2015) %>
+          <% timeline.each do |decade, events| %>
+            <li class="decade" value="<%= decade %>">
+              <time class="decade"><%= decade %></time>
+              <% if events.length > 0 %>
+                <ol class="events">
+                <% events.sort_by{|event| event.metadata[:page]["start"]}.each do |event| %>
+                  <% md = event.metadata[:page] %>
+                  <li class="event item block <%= md["timeline"] %>"
+                      lat="<%=md['lat']%>"
+                      lng="<%=md['lng']%>"
+                      data="<%=event.path.split('/')[-1].split('.')[0]%>"
+                      value="<%= md["start"] %>">
+                      <strong><%= md["title"] %></strong><%= ". " + md["desc"] if md["desc"] %>
+                  </li>
+                <% end %>
+                </ol>
               <% end %>
-              </ol>
-            <% end %>
-          </li>
-        <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+    <div id='listholder'>
+      <ol class="button-group">
       </ol>
     </div>
-  </div>
-  <div id='listholder'>
-    <ol class="button-group">
-    </ol>
-  </div>
-</section>
+  </section>
 
-<section id='popup-data'>
-  <div id="popup-text">
-  </div>
-</section>
+  <section id='popup-data'>
+    <div id="popup-text">
+    </div>
+  </section>
 
-<section id='map'></section>
+  <section id='map'></section>
+</div>
 
 <script>
 // SET PANNING RANGE HERE
