@@ -276,6 +276,20 @@ $(document).ready(function(){
   $("#ctl-close").click(function(){
     $("#popup").fadeOut();
   });
+  $("#ctl-prev").click(function(){
+    var ev_array = $(".event.item");
+    var curr_idx = ev_array.index(selecta());
+    if(curr_idx > 0) {
+      $(ev_array[curr_idx - 1]).click();
+    }
+  });
+  $("#ctl-next").click(function(){
+    var ev_array = $(".event.item");
+    var curr_idx = ev_array.index(selecta());
+    if (curr_idx < ev_array.length - 1) {
+      $(ev_array[curr_idx + 1]).click();
+    }
+  })
 })
 
 </script>
