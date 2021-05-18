@@ -81,7 +81,7 @@ var mapopts = {
   maxBounds: bounds
 }
 
-L.mapbox.accessToken = 'pk.eyJ1Ijoia2ltYWRhY3R5bCIsImEiOiJCYzdNTTR3In0.hkjyGpEFYdSPrVp3e717eA';
+L.mapbox.accessToken = 'pk.eyJ1IjoiZ2ZzYyIsImEiOiJja290ejV0am4wMGtyMndtcGhieGNudWJoIn0.G8-r6VnivqTLfLVwer_uqg';
 var map = L.map('map', mapopts);
 
   // { maxBounds: bounds,
@@ -95,8 +95,22 @@ var buildings = "#7FBB71";
 var blocks = "#CDCCCC";
 
 // Base map
-var old_map = L.mapbox.tileLayer('mapbox.light');
-var modern_map = L.mapbox.tileLayer('mapbox.wheatpaste');
+  var old_map = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+  tileSize: 512,
+  maxZoom: 19,
+  zoomOffset: -1,
+  id: 'mapbox/light-v10',
+  accessToken: 'pk.eyJ1IjoiZ2ZzYyIsImEiOiJja290ejV0am4wMGtyMndtcGhieGNudWJoIn0.G8-r6VnivqTLfLVwer_uqg'
+});
+var modern_map = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+  tileSize: 512,
+  maxZoom: 19,
+  zoomOffset: -1,
+  id: 'mapbox/light-v10',
+  accessToken: 'pk.eyJ1IjoiZ2ZzYyIsImEiOiJja290ejV0am4wMGtyMndtcGhieGNudWJoIn0.G8-r6VnivqTLfLVwer_uqg'
+  });
 addLayer(old_map, 'Base Map', 1);
 
 // 1871 map layers
