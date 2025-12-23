@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact - Hulme History">
+  <div class="contact-page">
+    <h1>Contact</h1>
+    <ul>
+      <li>Want to access Urbed's archive? Ring them on 0161 200 5500 or email <a href="mailto:info@urbed.coop">info@urbed.coop</a>.</li>
+      <li>Want to contribute to the project? Email <a href="mailto:kim@alliscalm.net">kim@alliscalm.net</a> or send a <a href="https://github.com/kimadactyl/HulmeHistory">pull request on GitHub</a>.</li>
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .contact-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-buildings);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

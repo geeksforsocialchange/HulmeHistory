@@ -1,0 +1,134 @@
+---
+interface Props {
+  decades: Record<number, Array<{
+    id: string;
+    data: {
+      start: number;
+      title: string;
+      timeline?: string;
+    };
+  }>>;
+}
+
+const { decades } = Astro.props;
+---
+
+<aside id="sidebar">
+  <header>
+    <h1>Hulme History</h1>
+    <p class="era-display">
+      <span id="current-year">1860</span> · <span id="current-era">Victorian Hulme</span>
+    </p>
+  </header>
+  <div id="timeline">
+    {Object.entries(decades).sort(([a], [b]) => Number(a) - Number(b)).map(([decade, decadeEvents]) => (
+      <div class="decade">
+        <div class="decade-label">{decade}s</div>
+        {decadeEvents.map(event => (
+          <div
+            class={`event ${event.data.timeline || 'buildings'}`}
+            data-id={event.id.replace('.md', '')}
+            data-year={event.data.start}
+          >
+            <span class="event-year">{event.data.start}</span>
+            <span class="event-title">{event.data.title}</span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</aside>
+
+<style>
+  #sidebar {
+    width: 300px;
+    background: #f5f3f0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #d0c8b8;
+  }
+
+  header {
+    padding: 20px;
+    border-bottom: 1px solid #d0c8b8;
+    background: #fff;
+  }
+
+  h1 {
+    margin: 0 0 4px 0;
+    font-size: 1.5rem;
+    color: #2a2520;
+  }
+
+  .era-display {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #8b7355;
+  }
+
+  #timeline {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  .decade {
+    margin-bottom: 16px;
+  }
+
+  .decade-label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #8b7355;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e0d8c8;
+  }
+
+  .event {
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    background: #fff;
+    border-left: 3px solid #aaa;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .event:hover {
+    background: #f0ebe3;
+  }
+
+  .event:global(.active) {
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border-left-width: 4px;
+  }
+
+  .event.buildings { border-left-color: #5a8a4a; }
+  .event.community { border-left-color: #c4854c; }
+  .event.news { border-left-color: #c4a84c; }
+
+  .event-year {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 2px;
+  }
+
+  .event-title {
+    display: block;
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 800px) {
+    #sidebar {
+      width: 100%;
+      height: 45%;
+      order: 2;
+    }
+  }
+</style>

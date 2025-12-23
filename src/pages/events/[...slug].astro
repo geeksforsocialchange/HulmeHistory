@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+---
+
+<Layout title={`${event.data.title} - Hulme History`}>
+  <article class="event-page">
+    <header>
+      <time>{event.data.start}{event.data.end ? ` - ${event.data.end}` : ''}</time>
+      <h1>{event.data.title}</h1>
+      {event.data.desc && <p class="desc">{event.data.desc}</p>}
+      {event.data.author && <p class="author">By {event.data.author}</p>}
+    </header>
+    <div class="content">
+      <Content />
+    </div>
+    <footer>
+      <a href="/">&larr; Back to Map</a>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .event-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  time {
+    display: block;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  .author {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .content {
+    line-height: 1.7;
+  }
+
+  .content :global(p) {
+    margin-bottom: 1em;
+  }
+
+  .content :global(blockquote) {
+    border-left: 3px solid #ddd;
+    padding-left: 1rem;
+    margin: 1.5em 0;
+    color: #555;
+    font-style: italic;
+  }
+
+  .content :global(ul), .content :global(ol) {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+  }
+
+  footer a {
+    color: var(--color-buildings);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>

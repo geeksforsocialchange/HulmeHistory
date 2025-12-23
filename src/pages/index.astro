@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Timeline from '../components/Timeline.astro';
+import MapControls from '../components/MapControls.astro';
+import DetailPanel from '../components/DetailPanel.astro';
+import { getCollection } from 'astro:content';
+
+// Load and sort events
+const allEvents = await getCollection('events');
+const events = allEvents.sort((a, b) => a.data.start - b.data.start);
+
+// Group events by decade
+const decades: Record<number, typeof events> = {};
+for (const event of events) {
+  const decade = Math.floor(event.data.start / 10) * 10;
+  if (!decades[decade]) decades[decade] = [];
+  decades[decade].push(event);
+}
+
+// Prepare event data for client-side use
+const eventData = events.map(event => ({
+  id: event.id.replace('.md', ''),
+  title: event.data.title,
+  desc: event.data.desc || '',
+  year: event.data.start,
+}));
+---
+
+<Layout title="Hulme History" fullWidth>
+  <div id="app">
+    <Timeline decades={decades} />
+
+    <main id="map-container">
+      <div id="map"></div>
+      <MapControls />
+    </main>
+
+    <DetailPanel />
+  </div>
+</Layout>
+
+<style>
+  #app {
+    display: flex;
+    height: calc(100vh - 50px);
+    background: #1a1a1a;
+  }
+
+  #map-container {
+    flex: 1;
+    position: relative;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 800px) {
+    #app {
+      flex-direction: column;
+    }
+
+    #map-container {
+      height: 55%;
+      order: 1;
+    }
+  }
+</style>
+
+<script define:vars={{ eventData }}>
+  window.eventData = eventData;
+</script>
+
+<script>
+  import { initApp } from '../lib/app';
+
+  // Initialize app when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    initApp((window as any).eventData);
+  });
+</script>
