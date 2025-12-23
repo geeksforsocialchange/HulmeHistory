@@ -207,3 +207,29 @@ Map is centered on Hulme at `[-2.252, 53.465]` with no bounds restrictions to al
 - Year < 1970: Victorian era (1871 layers)
 - Year 1970-1993: Pre-demolition (1990 layers)
 - Year >= 1994: Modern (2015 layers)
+
+## Session Notes - December 2024
+
+### Historical Aerial Photos
+
+Downloaded two aerial photos of the Crescents area:
+
+1. **1971 Aerofilms** (`public/images/aerial-1971.jpg`)
+   - Source: Historic England Archive via Google Arts & Culture
+   - URL: https://artsandculture.google.com/asset/hulme-crescents-hulme-manchester-aerofilms-ltd/dAHCMk3pxgOOCQ
+   - Shows Crescents shortly after construction
+   - Oblique angle (looking NE)
+
+2. **2003 Manchester Archives** (`public/images/aerial-2003.jpg`)
+   - Source: Manchester Archives Flickr
+   - URL: https://www.flickr.com/photos/manchesterarchiveplus/albums/72157636253411366/
+   - Shows cleared demolition sites (Crescents demolished 1993-95)
+   - Looking south, Birley Fields and former Crescents site visible
+
+**Note**: These are oblique aerial photos that cannot be accurately overlaid on the map without proper georeferencing in QGIS (requires scale, rotate, skew, perspective correction). Plan is to show them as reference photos in the detail panel instead of map overlays.
+
+### Pending Tasks
+
+- [ ] Add historical aerial photos to detail panel as reference images (not map overlays)
+- [ ] Link photos to their source pages (Flickr, Google Arts & Culture)
+- [ ] Consider adding more photos from Manchester Archives Flickr album (35 photos of Crescents demolition/murals)
