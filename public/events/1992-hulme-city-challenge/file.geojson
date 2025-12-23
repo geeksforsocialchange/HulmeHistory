@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme City Challenge area",
+        "note": "Central Hulme regeneration zone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.252,
+          53.465
+        ]
+      }
+    }
+  ]
+}
