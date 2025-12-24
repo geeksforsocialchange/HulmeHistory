@@ -21,7 +21,10 @@
 <div id="detail-lightbox" class="lightbox">
   <button class="lightbox-close">&times;</button>
   <button class="lightbox-nav lightbox-prev">&larr;</button>
-  <img src="" alt="" />
+  <div class="lightbox-content">
+    <img src="" alt="" />
+    <iframe src="" title="PDF viewer"></iframe>
+  </div>
   <button class="lightbox-nav lightbox-next">&rarr;</button>
   <div class="lightbox-caption"></div>
 </div>
@@ -179,13 +182,13 @@
     letter-spacing: 0.05em;
   }
 
-  .detail-gallery-grid {
+  #detail-gallery :global(.detail-gallery-grid) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
-  .detail-gallery-item {
+  #detail-gallery :global(.detail-gallery-item) {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -197,18 +200,18 @@
     transition: transform 0.15s, box-shadow 0.15s;
   }
 
-  .detail-gallery-item:hover {
+  #detail-gallery :global(.detail-gallery-item:hover) {
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   }
 
-  .detail-gallery-item img {
+  #detail-gallery :global(.detail-gallery-item img) {
     width: 100%;
     height: 60px;
     object-fit: cover;
   }
 
-  .detail-gallery-item .file-icon {
+  #detail-gallery :global(.detail-gallery-item .file-icon) {
     width: 100%;
     height: 60px;
     display: flex;
@@ -218,7 +221,7 @@
     font-size: 1.5rem;
   }
 
-  .detail-gallery-item .file-name {
+  #detail-gallery :global(.detail-gallery-item .file-name) {
     padding: 4px 6px;
     font-size: 0.65rem;
     line-height: 1.2;
@@ -248,11 +251,36 @@
     visibility: visible;
   }
 
-  .lightbox img {
+  .lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-content img {
     max-width: 90vw;
     max-height: 85vh;
     object-fit: contain;
     border-radius: 4px;
+  }
+
+  .lightbox-content iframe {
+    width: 85vw;
+    height: 85vh;
+    border: none;
+    border-radius: 4px;
+    background: white;
+  }
+
+  /* Hide inactive content type */
+  .lightbox[data-type="image"] .lightbox-content iframe,
+  .lightbox[data-type="pdf"] .lightbox-content img {
+    display: none;
+  }
+
+  .lightbox-content img,
+  .lightbox-content iframe {
+    display: block;
   }
 
   .lightbox-close {

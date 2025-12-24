@@ -5,6 +5,7 @@ interface EventData {
   title: string;
   desc: string;
   year: number;
+  end: number | null;
 }
 
 interface GalleryFile {
@@ -22,9 +23,10 @@ export class DetailPanel {
   private galleryEl: HTMLElement;
   private lightbox: HTMLElement;
   private lightboxImg: HTMLImageElement;
+  private lightboxIframe: HTMLIFrameElement;
   private lightboxCaption: HTMLElement;
-  private images: GalleryFile[] = [];
-  private currentImageIndex = 0;
+  private galleryItems: GalleryFile[] = [];
+  private currentItemIndex = 0;
 
   constructor() {
     this.panel = document.getElementById('detail-panel')!;
@@ -35,6 +37,7 @@ export class DetailPanel {
     this.galleryEl = document.getElementById('detail-gallery')!;
     this.lightbox = document.getElementById('detail-lightbox')!;
     this.lightboxImg = this.lightbox.querySelector('img')!;
+    this.lightboxIframe = this.lightbox.querySelector('iframe')!;
     this.lightboxCaption = this.lightbox.querySelector('.lightbox-caption')!;
 
     this.setupLightbox();
@@ -46,8 +49,8 @@ export class DetailPanel {
     const nextBtn = this.lightbox.querySelector('.lightbox-next');
 
     closeBtn?.addEventListener('click', () => this.closeLightbox());
-    prevBtn?.addEventListener('click', () => this.showPrevImage());
-    nextBtn?.addEventListener('click', () => this.showNextImage());
+    prevBtn?.addEventListener('click', () => this.showPrevItem());
+    nextBtn?.addEventListener('click', () => this.showNextItem());
 
     this.lightbox.addEventListener('click', (e) => {
       if (e.target === this.lightbox) {
@@ -57,16 +60,23 @@ export class DetailPanel {
 
     document.addEventListener('keydown', (e) => {
       if (!this.lightbox.classList.contains('active')) return;
+      // Stop propagation to prevent event navigation while lightbox is open
+      e.stopPropagation();
       if (e.key === 'Escape') this.closeLightbox();
-      if (e.key === 'ArrowLeft') this.showPrevImage();
-      if (e.key === 'ArrowRight') this.showNextImage();
+      if (e.key === 'ArrowLeft') this.showPrevItem();
+      if (e.key === 'ArrowRight') this.showNextItem();
     });
   }
 
   async show(eventId: string, year: number, eventData: EventData[]): Promise<void> {
     const event = eventData.find(e => e.id === eventId);
 
-    this.yearEl.textContent = String(year);
+    // Display year range if end date exists
+    if (event?.end) {
+      this.yearEl.textContent = `${year} - ${event.end}`;
+    } else {
+      this.yearEl.textContent = String(year);
+    }
     this.titleEl.textContent = event?.title || eventId;
 
     // Load cover image
@@ -135,26 +145,28 @@ export class DetailPanel {
       return;
     }
 
-    this.images = files.filter(f => f.type === 'image');
+    // Store images and PDFs for lightbox navigation
+    this.galleryItems = files.filter(f => f.type === 'image' || f.type === 'pdf');
 
     const html = `
       <h4>Documents & Images</h4>
       <div class="detail-gallery-grid">
-        ${files.map((file, index) => {
+        ${files.map((file) => {
           if (file.type === 'image') {
-            const imgIndex = this.images.findIndex(img => img.url === file.url);
+            const itemIndex = this.galleryItems.findIndex(item => item.url === file.url);
             return `
-              <div class="detail-gallery-item" data-type="image" data-index="${imgIndex}">
+              <div class="detail-gallery-item" data-type="image" data-index="${itemIndex}">
                 <img src="${file.url}" alt="${file.name}" loading="lazy" />
                 <span class="file-name">${file.name}</span>
               </div>
             `;
           } else if (file.type === 'pdf') {
+            const itemIndex = this.galleryItems.findIndex(item => item.url === file.url);
             return `
-              <a href="${file.url}" class="detail-gallery-item" data-type="pdf" target="_blank">
+              <div class="detail-gallery-item" data-type="pdf" data-index="${itemIndex}">
                 <div class="file-icon">📄</div>
                 <span class="file-name">${file.name}</span>
-              </a>
+              </div>
             `;
           } else {
             return `
@@ -170,8 +182,8 @@ export class DetailPanel {
 
     this.galleryEl.innerHTML = html;
 
-    // Add click handlers for images
-    this.galleryEl.querySelectorAll('.detail-gallery-item[data-type="image"]').forEach(item => {
+    // Add click handlers for images and PDFs
+    this.galleryEl.querySelectorAll('.detail-gallery-item[data-type="image"], .detail-gallery-item[data-type="pdf"]').forEach(item => {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         const index = parseInt((item as HTMLElement).dataset.index || '0', 10);
@@ -181,30 +193,42 @@ export class DetailPanel {
   }
 
   private openLightbox(index: number): void {
-    this.currentImageIndex = index;
-    this.showImage(index);
+    this.currentItemIndex = index;
+    this.showItem(index);
     this.lightbox.classList.add('active');
   }
 
   private closeLightbox(): void {
     this.lightbox.classList.remove('active');
+    // Clear iframe src to stop any PDF loading
+    this.lightboxIframe.src = '';
   }
 
-  private showImage(index: number): void {
-    if (this.images[index]) {
-      this.lightboxImg.src = this.images[index].url;
-      this.lightboxCaption.textContent = this.images[index].name;
+  private showItem(index: number): void {
+    const item = this.galleryItems[index];
+    if (!item) return;
+
+    // Set data-type attribute to control which element is visible
+    this.lightbox.dataset.type = item.type;
+    this.lightboxCaption.textContent = item.name;
+
+    if (item.type === 'image') {
+      this.lightboxImg.src = item.url;
+      this.lightboxIframe.src = '';
+    } else if (item.type === 'pdf') {
+      this.lightboxImg.src = '';
+      this.lightboxIframe.src = item.url;
     }
   }
 
-  private showPrevImage(): void {
-    this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-    this.showImage(this.currentImageIndex);
+  private showPrevItem(): void {
+    this.currentItemIndex = (this.currentItemIndex - 1 + this.galleryItems.length) % this.galleryItems.length;
+    this.showItem(this.currentItemIndex);
   }
 
-  private showNextImage(): void {
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    this.showImage(this.currentImageIndex);
+  private showNextItem(): void {
+    this.currentItemIndex = (this.currentItemIndex + 1) % this.galleryItems.length;
+    this.showItem(this.currentItemIndex);
   }
 
   hide(): void {

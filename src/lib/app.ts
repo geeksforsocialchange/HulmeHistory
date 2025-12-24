@@ -9,6 +9,7 @@ interface EventData {
   title: string;
   desc: string;
   year: number;
+  end: number | null;
 }
 
 export function initApp(eventData: EventData[]): void {
