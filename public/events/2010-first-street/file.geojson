@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "First Street Development",
+        "note": "Mixed-use regeneration on former Gaythorn Gas Works",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2470, 53.4735]
+      }
+    }
+  ]
+}

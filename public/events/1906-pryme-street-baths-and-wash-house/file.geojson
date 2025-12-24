@@ -3,24 +3,14 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Pryme Street Baths and Wash House",
+        "note": "Near Chester Road, Hulme (M15 4AX area)",
+        "source": "Nominatim geocoding"
+      },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -2.2469723224639893,
-          53.46820719167238
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.255491018295288,
-          53.47188248676974
-        ]
+        "coordinates": [-2.2540100, 53.4722400]
       }
     }
   ]
