@@ -20,6 +20,9 @@ const { decades } = Astro.props;
 function getCoverImage(eventId: string): string | null {
   const publicDir = path.join(process.cwd(), 'public', 'events', eventId);
   try {
+    if (fs.existsSync(path.join(publicDir, 'cover.webp'))) {
+      return `/events/${eventId}/cover.webp`;
+    }
     if (fs.existsSync(path.join(publicDir, 'cover.jpg'))) {
       return `/events/${eventId}/cover.jpg`;
     }

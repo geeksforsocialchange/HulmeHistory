@@ -127,6 +127,12 @@ export class DetailPanel {
     this.image.src = '';
 
     try {
+      const webpRes = await fetch(`/events/${eventId}/cover.webp`, { method: 'HEAD' });
+      if (webpRes.ok) {
+        this.image.src = `/events/${eventId}/cover.webp`;
+        return;
+      }
+
       const jpgRes = await fetch(`/events/${eventId}/cover.jpg`, { method: 'HEAD' });
       if (jpgRes.ok) {
         this.image.src = `/events/${eventId}/cover.jpg`;

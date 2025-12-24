@@ -28,3 +28,4 @@ The Old Abbey Taphouse remains a community pub and has embraced its civil rights
 
 - [The Old Abbey Taphouse - Breaking the Colour Bar](https://www.theoldabbeytaphouse.org/breaking-the-colour-bar.html)
 - [Manchester Evening News - Len Johnson and the Colour Bar](https://www.manchestereveningnews.co.uk/news/greater-manchester-news/len-johnson-hulme-colour-bar-15859656)
+- [A Walk Along the Cornbrook Part 2: The Old Abbey Taphouse](https://medium.com/special-collections/a-walk-along-the-cornbrook-part-2-the-old-abbey-taphouse-a5760ee1bd3e)
