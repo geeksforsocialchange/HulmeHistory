@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme Slum Clearance Area",
+        "note": "General area where Victorian terraces were demolished 1960-1972",
+        "source": "Historical maps"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2550, 53.4680]
+      }
+    }
+  ]
+}

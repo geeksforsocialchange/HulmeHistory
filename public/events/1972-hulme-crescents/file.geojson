@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme Crescents (former)",
+        "note": "Four deck-access blocks: Adam, Nash, Barry, Kent - demolished 1993",
+        "source": "Historical maps"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2500, 53.4640]
+      }
+    }
+  ]
+}

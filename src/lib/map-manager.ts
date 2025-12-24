@@ -190,44 +190,115 @@ export class MapManager {
       const res = await fetch(`/events/${eventId}/file.geojson`);
       if (res.ok) {
         const data = await res.json();
-        const geomType = data.features?.[0]?.geometry?.type;
+        const features = data.features || [];
+        if (features.length === 0) return;
 
-        if (geomType === 'Point') {
-          const coords = data.features[0].geometry.coordinates;
+        // Check what geometry types are present
+        const geomTypes = new Set(features.map((f: any) => f.geometry?.type));
+        const hasPoint = geomTypes.has('Point');
+        const hasPolygon = geomTypes.has('Polygon') || geomTypes.has('MultiPolygon');
+        const hasLine = geomTypes.has('LineString') || geomTypes.has('MultiLineString');
+
+        // Offset to center on full screen (timeline is 340px on left, outside map container)
+        // Adding right padding shifts the visual center leftward to compensate
+        const padding = { top: 60, bottom: 60, left: 60, right: 340 };
+
+        if (hasPoint && !hasPolygon && !hasLine) {
+          // Point-only: use marker and center on it
+          const coords = features[0].geometry.coordinates;
           this.marker = new maplibregl.Marker({ color: '#8b4513' })
             .setLngLat(coords)
             .addTo(this.map);
-          this.map.flyTo({ center: coords, zoom: 15.5 });
-        } else if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
-          // Add polygon as a layer
+          this.map.flyTo({ center: coords, zoom: 15.5, padding });
+        } else {
+          // Mixed or polygon/line: use layers
           this.map.addSource('event-polygon', { type: 'geojson', data });
-          this.map.addLayer({
-            id: 'event-polygon-fill',
-            type: 'fill',
-            source: 'event-polygon',
-            paint: {
-              'fill-color': '#ff00ff',
-              'fill-opacity': 0.15,
-            },
-          });
-          this.map.addLayer({
-            id: 'event-polygon-line',
-            type: 'line',
-            source: 'event-polygon',
-            paint: {
-              'line-color': '#ff00ff',
-              'line-width': 3,
-            },
-          });
 
-          // Calculate centroid and fly to it
-          const center = this.getGeometryCentroid(data.features[0].geometry);
-          this.map.flyTo({ center, zoom: 15.5 });
+          if (hasPolygon) {
+            this.map.addLayer({
+              id: 'event-polygon-fill',
+              type: 'fill',
+              source: 'event-polygon',
+              filter: ['in', ['geometry-type'], ['literal', ['Polygon', 'MultiPolygon']]],
+              paint: {
+                'fill-color': '#ff00ff',
+                'fill-opacity': 0.15,
+              },
+            });
+          }
+
+          if (hasPolygon || hasLine) {
+            this.map.addLayer({
+              id: 'event-polygon-line',
+              type: 'line',
+              source: 'event-polygon',
+              paint: {
+                'line-color': '#ff00ff',
+                'line-width': hasLine ? 4 : 3,
+              },
+            });
+          }
+
+          // Calculate bounds and fit to center the feature
+          const bounds = this.getFeaturesBounds(features);
+          if (bounds) {
+            this.map.fitBounds(bounds, {
+              padding,
+              maxZoom: 16,
+              duration: 1000,
+            });
+          } else {
+            // Fallback to centroid
+            const center = this.getGeometryCentroid(features[0].geometry);
+            this.map.flyTo({ center, zoom: 15, padding });
+          }
         }
       }
     } catch (e) {
       // No marker for this event
     }
+  }
+
+  private getFeaturesBounds(features: any[]): [[number, number], [number, number]] | null {
+    let minLng = Infinity, minLat = Infinity;
+    let maxLng = -Infinity, maxLat = -Infinity;
+
+    const processCoords = (coords: number[][]) => {
+      for (const [lng, lat] of coords) {
+        if (lng < minLng) minLng = lng;
+        if (lng > maxLng) maxLng = lng;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      }
+    };
+
+    for (const feature of features) {
+      const geom = feature.geometry;
+      if (!geom) continue;
+
+      if (geom.type === 'Point') {
+        const [lng, lat] = geom.coordinates;
+        if (lng < minLng) minLng = lng;
+        if (lng > maxLng) maxLng = lng;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      } else if (geom.type === 'LineString') {
+        processCoords(geom.coordinates);
+      } else if (geom.type === 'MultiLineString') {
+        for (const line of geom.coordinates) {
+          processCoords(line);
+        }
+      } else if (geom.type === 'Polygon') {
+        processCoords(geom.coordinates[0]);
+      } else if (geom.type === 'MultiPolygon') {
+        for (const poly of geom.coordinates) {
+          processCoords(poly[0]);
+        }
+      }
+    }
+
+    if (minLng === Infinity) return null;
+    return [[minLng, minLat], [maxLng, maxLat]];
   }
 
   private getGeometryCentroid(geometry: any): [number, number] {
@@ -238,6 +309,11 @@ export class MapManager {
     } else if (geometry.type === 'MultiPolygon') {
       // Use first polygon for centroid
       coords = geometry.coordinates[0][0];
+    } else if (geometry.type === 'LineString') {
+      coords = geometry.coordinates;
+    } else if (geometry.type === 'MultiLineString') {
+      // Flatten all line coordinates
+      coords = geometry.coordinates.flat();
     }
 
     if (coords.length === 0) return HULME_CENTER;
