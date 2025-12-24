@@ -52,6 +52,15 @@ export function initApp(eventData: EventData[]): void {
 
     document.getElementById('prev-event')?.addEventListener('click', () => navEvent(-1));
     document.getElementById('next-event')?.addEventListener('click', () => navEvent(1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        navEvent(-1);
+      } else if (e.key === 'ArrowRight') {
+        navEvent(1);
+      }
+    });
   }
 
   function updateTracedButtons(): void {
@@ -63,6 +72,7 @@ export function initApp(eventData: EventData[]): void {
 
   async function selectEvent(el: HTMLElement): Promise<void> {
     const id = el.dataset.id!;
+    const year = parseInt(el.dataset.year!);
 
     // Update active state
     document.querySelectorAll('.event').forEach(e => e.classList.remove('active'));
@@ -72,12 +82,26 @@ export function initApp(eventData: EventData[]): void {
     // Update URL hash
     history.pushState(null, '', `#${id}`);
 
+    // Update base map to appropriate era
+    const sliderValue = getSliderValueForYear(year);
+    const slider = document.getElementById('os-slider') as HTMLInputElement;
+    if (slider) {
+      slider.value = String(sliderValue);
+      mapManager.updateSlider(sliderValue);
+    }
+
     // Set marker
     await mapManager.setMarker(id);
 
     // Show panel
-    const year = parseInt(el.dataset.year!);
     await detailPanel.show(id, year, eventData);
+  }
+
+  function getSliderValueForYear(year: number): number {
+    if (year < 1940) return 0;       // Victorian 1890s
+    if (year < 1990) return 33;      // 1940s
+    if (year < 2014) return 66;      // 2014 aerial
+    return 100;                       // Modern
   }
 
   function navEvent(direction: number): void {
