@@ -190,55 +190,55 @@ export class MapManager {
       const res = await fetch(`/events/${eventId}/file.geojson`);
       if (res.ok) {
         const data = await res.json();
-        const geomType = data.features?.[0]?.geometry?.type;
+        const features = data.features || [];
+        if (features.length === 0) return;
 
-        if (geomType === 'Point') {
-          const coords = data.features[0].geometry.coordinates;
+        // Check what geometry types are present
+        const geomTypes = new Set(features.map((f: any) => f.geometry?.type));
+        const hasPoint = geomTypes.has('Point');
+        const hasPolygon = geomTypes.has('Polygon') || geomTypes.has('MultiPolygon');
+        const hasLine = geomTypes.has('LineString') || geomTypes.has('MultiLineString');
+
+        if (hasPoint && !hasPolygon && !hasLine) {
+          // Point-only: use marker
+          const coords = features[0].geometry.coordinates;
           this.marker = new maplibregl.Marker({ color: '#8b4513' })
             .setLngLat(coords)
             .addTo(this.map);
           this.map.flyTo({ center: coords, zoom: 15.5 });
-        } else if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
-          // Add polygon as a layer
+        } else {
+          // Mixed or polygon/line: use layers
           this.map.addSource('event-polygon', { type: 'geojson', data });
-          this.map.addLayer({
-            id: 'event-polygon-fill',
-            type: 'fill',
-            source: 'event-polygon',
-            paint: {
-              'fill-color': '#ff00ff',
-              'fill-opacity': 0.15,
-            },
-          });
-          this.map.addLayer({
-            id: 'event-polygon-line',
-            type: 'line',
-            source: 'event-polygon',
-            paint: {
-              'line-color': '#ff00ff',
-              'line-width': 3,
-            },
-          });
 
-          // Calculate centroid and fly to it
-          const center = this.getGeometryCentroid(data.features[0].geometry);
-          this.map.flyTo({ center, zoom: 15.5 });
-        } else if (geomType === 'LineString' || geomType === 'MultiLineString') {
-          // Add line as a layer
-          this.map.addSource('event-polygon', { type: 'geojson', data });
-          this.map.addLayer({
-            id: 'event-polygon-line',
-            type: 'line',
-            source: 'event-polygon',
-            paint: {
-              'line-color': '#ff00ff',
-              'line-width': 4,
-            },
-          });
+          if (hasPolygon) {
+            this.map.addLayer({
+              id: 'event-polygon-fill',
+              type: 'fill',
+              source: 'event-polygon',
+              filter: ['in', ['geometry-type'], ['literal', ['Polygon', 'MultiPolygon']]],
+              paint: {
+                'fill-color': '#ff00ff',
+                'fill-opacity': 0.15,
+              },
+            });
+          }
 
-          // Calculate centroid and fly to it
-          const center = this.getGeometryCentroid(data.features[0].geometry);
-          this.map.flyTo({ center, zoom: 14.5 });
+          if (hasPolygon || hasLine) {
+            this.map.addLayer({
+              id: 'event-polygon-line',
+              type: 'line',
+              source: 'event-polygon',
+              paint: {
+                'line-color': '#ff00ff',
+                'line-width': hasLine ? 4 : 3,
+              },
+            });
+          }
+
+          // Calculate centroid from first feature and fly to it
+          const center = this.getGeometryCentroid(features[0].geometry);
+          const zoom = hasLine && !hasPolygon ? 14.5 : 15.5;
+          this.map.flyTo({ center, zoom });
         }
       }
     } catch (e) {
