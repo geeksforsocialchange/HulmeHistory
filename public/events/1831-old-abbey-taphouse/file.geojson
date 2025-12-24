@@ -1,0 +1,23 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Old Abbey Taphouse",
+        "note": "Historic pub, site of 1953 colour bar protest",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-2.2374925, 53.4620991],
+          [-2.2374398, 53.4622992],
+          [-2.2373144, 53.4622875],
+          [-2.2373671, 53.4620874],
+          [-2.2374925, 53.4620991]
+        ]]
+      }
+    }
+  ]
+}
