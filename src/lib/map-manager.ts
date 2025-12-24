@@ -141,6 +141,9 @@ export class MapManager {
   }
 
   updateSlider(value: number): void {
+    // Clear event polygon when slider moves (polygon may not be relevant to new era)
+    this.clearEventPolygon();
+
     // 0 = 1890s Victorian, 33 = 1940s, 66 = 2014, 100 = Modern
     let victorianOpacity = 0;
     let os1940sOpacity = 0;
@@ -167,25 +170,85 @@ export class MapManager {
     this.map.setPaintProperty('carto', 'raster-opacity', cartoOpacity);
   }
 
+  clearEventPolygon(): void {
+    if (this.map.getLayer('event-polygon-fill')) {
+      this.map.removeLayer('event-polygon-fill');
+    }
+    if (this.map.getLayer('event-polygon-line')) {
+      this.map.removeLayer('event-polygon-line');
+    }
+    if (this.map.getSource('event-polygon')) {
+      this.map.removeSource('event-polygon');
+    }
+  }
+
   async setMarker(eventId: string): Promise<void> {
     this.marker?.remove();
     this.marker = null;
+    this.clearEventPolygon();
 
     try {
       const res = await fetch(`/events/${eventId}/file.geojson`);
       if (res.ok) {
         const data = await res.json();
-        if (data.features?.[0]?.geometry?.type === 'Point') {
+        const geomType = data.features?.[0]?.geometry?.type;
+
+        if (geomType === 'Point') {
           const coords = data.features[0].geometry.coordinates;
           this.marker = new maplibregl.Marker({ color: '#8b4513' })
             .setLngLat(coords)
             .addTo(this.map);
           this.map.flyTo({ center: coords, zoom: 15.5 });
+        } else if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
+          // Add polygon as a layer
+          this.map.addSource('event-polygon', { type: 'geojson', data });
+          this.map.addLayer({
+            id: 'event-polygon-fill',
+            type: 'fill',
+            source: 'event-polygon',
+            paint: {
+              'fill-color': '#ff00ff',
+              'fill-opacity': 0.15,
+            },
+          });
+          this.map.addLayer({
+            id: 'event-polygon-line',
+            type: 'line',
+            source: 'event-polygon',
+            paint: {
+              'line-color': '#ff00ff',
+              'line-width': 3,
+            },
+          });
+
+          // Calculate centroid and fly to it
+          const center = this.getGeometryCentroid(data.features[0].geometry);
+          this.map.flyTo({ center, zoom: 15.5 });
         }
       }
     } catch (e) {
       // No marker for this event
     }
+  }
+
+  private getGeometryCentroid(geometry: any): [number, number] {
+    let coords: number[][] = [];
+
+    if (geometry.type === 'Polygon') {
+      coords = geometry.coordinates[0];
+    } else if (geometry.type === 'MultiPolygon') {
+      // Use first polygon for centroid
+      coords = geometry.coordinates[0][0];
+    }
+
+    if (coords.length === 0) return HULME_CENTER;
+
+    let sumLng = 0, sumLat = 0;
+    for (const [lng, lat] of coords) {
+      sumLng += lng;
+      sumLat += lat;
+    }
+    return [sumLng / coords.length, sumLat / coords.length];
   }
 
   onLoad(callback: () => void): void {

@@ -7,13 +7,18 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "astro": "^5.0.0",
     "maplibre-gl": "^4.7.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0"
+    "@testing-library/dom": "^10.4.1",
+    "@types/node": "^22.0.0",
+    "jsdom": "^27.3.0",
+    "vitest": "^4.0.16"
   }
 }

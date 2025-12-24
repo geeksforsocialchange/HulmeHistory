@@ -21,7 +21,7 @@ const { decades } = Astro.props;
         {decadeEvents.map(event => (
           <div
             class={`event ${event.data.timeline || 'buildings'}`}
-            data-id={event.id.replace('.md', '')}
+            data-id={event.id.replace('/index', '').replace('.md', '')}
             data-year={event.data.start}
           >
             <span class="event-year">{event.data.start}</span>

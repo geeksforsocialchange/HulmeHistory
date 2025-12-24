@@ -19,7 +19,7 @@ for (const event of events) {
 
 // Prepare event data for client-side use
 const eventData = events.map(event => ({
-  id: event.id.replace('.md', ''),
+  id: event.id.replace('/index', '').replace('.md', ''),
   title: event.data.title,
   desc: event.data.desc || '',
   year: event.data.start,
