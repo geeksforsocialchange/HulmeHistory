@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Timeline from '../components/Timeline.astro';
+import MapControls from '../components/MapControls.astro';
+import DetailPanel from '../components/DetailPanel.astro';
+import { getCollection } from 'astro:content';
+
+// Load and sort events
+const allEvents = await getCollection('events');
+const events = allEvents.sort((a, b) => a.data.start - b.data.start);
+
+// Group events by decade
+const decades: Record<number, typeof events> = {};
+for (const event of events) {
+  const decade = Math.floor(event.data.start / 10) * 10;
+  if (!decades[decade]) decades[decade] = [];
+  decades[decade].push(event);
+}
+
+// Prepare event data for client-side use
+const eventData = events.map(event => ({
+  id: event.id.replace('.md', ''),
+  title: event.data.title,
+  desc: event.data.desc || '',
+  year: event.data.start,
+}));
+---
+
+<Layout title="Hulme History" fullWidth>
+  <div id="app">
+    <!-- Left: Timeline -->
+    <Timeline decades={decades} />
+
+    <!-- Map with floating overlays -->
+    <div id="map-layer">
+      <div id="map"></div>
+      <MapControls />
+      <DetailPanel />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  #app {
+    position: relative;
+    height: calc(100vh - 50px);
+    background: #1a1a1a;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Map takes remaining space */
+  #map-layer {
+    flex: 1;
+    position: relative;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hide default MapLibre control container - controls moved to grid */
+  #map :global(.maplibregl-ctrl-bottom-left) {
+    display: none;
+  }
+
+  /* Style controls when inside our grid */
+  #map-controls :global(.maplibregl-ctrl-group) {
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib) {
+    font-size: 9px;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib a) {
+    color: #555;
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib-button) {
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    #app {
+      flex-direction: column;
+    }
+
+    #map-layer {
+      flex: 1;
+      order: 1;
+    }
+  }
+</style>
+
+<script define:vars={{ eventData }}>
+  window.eventData = eventData;
+</script>
+
+<script>
+  import { initApp } from '../lib/app';
+
+  // Initialize app when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    initApp((window as any).eventData);
+  });
+</script>

@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme Community Architecture Project",
+        "note": "Produced the Hulme Guide to Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.248,
+          53.465
+        ]
+      }
+    }
+  ]
+}

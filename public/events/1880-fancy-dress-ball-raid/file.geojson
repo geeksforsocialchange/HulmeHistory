@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Temperance Hall (site)",
+        "note": "Located at Hulme Place, York Street, Chester Road - now under A57 roundabout"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.2545,
+          53.4685
+        ]
+      }
+    }
+  ]
+}

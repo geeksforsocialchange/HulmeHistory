@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Egerton Street area",
+        "note": "Egerton Inn was on Egerton Street off Chester Road"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.254,
+          53.466
+        ]
+      }
+    }
+  ]
+}

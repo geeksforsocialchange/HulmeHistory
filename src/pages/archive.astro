@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Read CSV file
+const csvPath = path.join(process.cwd(), 'public', 'urbed-hulme-archive.csv');
+const csvContent = fs.readFileSync(csvPath, 'utf-8');
+const rows = csvContent.split('\n').filter(row => row.trim()).map(row => {
+  // Simple CSV parsing (handles basic cases)
+  const cells: string[] = [];
+  let current = '';
+  let inQuotes = false;
+  for (const char of row) {
+    if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === ',' && !inQuotes) {
+      cells.push(current.trim());
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+  cells.push(current.trim());
+  return cells;
+});
+---
+
+<Layout title="URBED Archive - Hulme History">
+  <div class="archive-page">
+    <h1>URBED Archive</h1>
+
+    <div class="intro">
+      <p>Archives+ has worked in collaboration with URBED to release a catalogue of their archive about Hulme's redevelopment in the 1980s and 1990s. The Hulme archive held at URBED is made of 13 boxes where you can find information about the Hulme redevelopment process including:</p>
+
+      <ul>
+        <li>Hulme City Challenge</li>
+        <li>Homes for Change & Work for Change initiatives</li>
+        <li>Moss Side & Hulme Development Trust</li>
+        <li>Gaia and bLoOm initiative</li>
+        <li>Hulme High Street</li>
+        <li>Hulme Park</li>
+        <li>Hulme Guide to Development</li>
+        <li>Manchester Guide to Development</li>
+      </ul>
+
+      <p>You can browse the contents below. Use the search box to filter results.</p>
+    </div>
+
+    <div class="table-controls">
+      <input type="text" id="search" placeholder="Search archive..." />
+      <div class="column-toggles">
+        <span>Toggle columns:</span>
+        <button data-col="3" class="toggle">Sorting #</button>
+        <button data-col="4" class="toggle active">Item #</button>
+        <button data-col="5" class="toggle active">Box #</button>
+        <button data-col="6" class="toggle">Cross #</button>
+        <button data-col="7" class="toggle active">What?</button>
+        <button data-col="8" class="toggle active">Condition</button>
+        <button data-col="9" class="toggle">Scanned?</button>
+        <button data-col="10" class="toggle">Copyright?</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="archive-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Creator(s)</th>
+            <th>Date</th>
+            <th class="hidden">Sorting #</th>
+            <th>Item #</th>
+            <th>Box #</th>
+            <th class="hidden">Cross #</th>
+            <th>What?</th>
+            <th>Condition</th>
+            <th class="hidden">Scanned?</th>
+            <th class="hidden">Copyright?</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr>
+              {row.map((cell, j) => (
+                <td class:list={[{ hidden: [3, 6, 9, 10].includes(j) }]}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .archive-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .intro {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .intro ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .intro li {
+    margin-bottom: 0.3rem;
+  }
+
+  .table-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  #search {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 250px;
+  }
+
+  .column-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .column-toggles span {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .toggle {
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  .toggle.active {
+    background: var(--color-buildings);
+    color: white;
+    border-color: var(--color-buildings);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background: #f5f5f5;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+
+  tr:hover {
+    background: #fafafa;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .table-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #search {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Search functionality
+  const searchInput = document.getElementById('search') as HTMLInputElement;
+  const table = document.getElementById('archive-table');
+  const rows = table?.querySelectorAll('tbody tr');
+
+  searchInput?.addEventListener('input', () => {
+    const term = searchInput.value.toLowerCase();
+    rows?.forEach(row => {
+      const text = row.textContent?.toLowerCase() || '';
+      (row as HTMLElement).style.display = text.includes(term) ? '' : 'none';
+    });
+  });
+
+  // Column toggle functionality
+  const toggles = document.querySelectorAll('.toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const col = parseInt((toggle as HTMLElement).dataset.col || '0');
+      toggle.classList.toggle('active');
+      const isVisible = toggle.classList.contains('active');
+
+      // Toggle all cells in that column
+      const cells = document.querySelectorAll(`#archive-table th:nth-child(${col + 1}), #archive-table td:nth-child(${col + 1})`);
+      cells.forEach(cell => {
+        (cell as HTMLElement).classList.toggle('hidden', !isVisible);
+      });
+    });
+  });
+</script>
