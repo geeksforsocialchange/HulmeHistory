@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "Church of the Ascension",
+        "note": "Site where Viraj Mendis claimed sanctuary 1986-1989"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2502061,
+          53.4674165
         ]
       }
     }

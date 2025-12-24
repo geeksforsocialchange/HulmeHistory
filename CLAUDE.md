@@ -26,12 +26,8 @@ This is an Astro-based static site that displays historical events from Hulme, M
 ```
 /
 ├── src/
-│   ├── content/events/       # Event folders with markdown + assets
-│   │   └── YYYY-event-slug/
-│   │       ├── index.md      # Event content (frontmatter + markdown)
-│   │       ├── cover.jpg     # Cover image
-│   │       ├── file.geojson  # Map marker/polygon
-│   │       └── *.pdf         # Additional documents
+│   ├── content/
+│   │   └── config.ts         # Content collection schema (loads from public/events)
 │   ├── lib/
 │   │   ├── app.ts            # Main app initialization
 │   │   ├── map-manager.ts    # Map layers, markers, polygons
@@ -54,11 +50,12 @@ This is an Astro-based static site that displays historical events from Hulme, M
 │   │   ├── 1871_figure_ground.geojson
 │   │   ├── 1990_blocks.geojson
 │   │   └── 1990_figure_ground.geojson
-│   ├── events/               # Static event assets (for URL access)
-│   │   └── [event-id]/
-│   │       ├── cover.jpg
-│   │       ├── file.geojson
-│   │       └── *.pdf
+│   ├── events/               # ALL event content (markdown + assets)
+│   │   └── YYYY-event-slug/
+│   │       ├── index.md      # Event content (frontmatter + markdown)
+│   │       ├── cover.jpg     # Cover image
+│   │       ├── file.geojson  # Map marker/polygon
+│   │       └── *.pdf         # Additional documents
 │   └── urbed-hulme-archive.csv
 ├── tests/                    # Vitest test suite
 │   ├── map-config.test.ts    # Map configuration tests
@@ -70,7 +67,7 @@ This is an Astro-based static site that displays historical events from Hulme, M
 
 ## Content Schema
 
-Events are stored as folders in `src/content/events/` with an `index.md` file:
+Events are stored as folders in `public/events/` with an `index.md` file and assets together:
 
 ```yaml
 ---
@@ -88,9 +85,9 @@ Event content in markdown...
 Assets in the same folder:
 - `cover.jpg` or `cover.png` - Main event image
 - `file.geojson` - GeoJSON Point, Polygon, or MultiPolygon for map
-- Additional images and PDFs appear in detail panel
+- Additional images and PDFs appear in lightbox gallery
 
-**Note**: Assets must also exist in `public/events/[event-id]/` for URL access.
+The content collection uses Astro's glob loader to read from `public/events/` (see `src/content/config.ts`).
 
 ## Development
 
@@ -150,10 +147,9 @@ When an event is selected, the slider auto-adjusts:
 
 ## Adding New Events
 
-1. Create folder `src/content/events/YYYY-event-slug/`
+1. Create folder `public/events/YYYY-event-slug/`
 2. Add `index.md` with required frontmatter
-3. Add assets (`cover.jpg`, `file.geojson`, PDFs)
-4. Copy assets to `public/events/YYYY-event-slug/` for URL access
+3. Add assets (`cover.jpg`, `file.geojson`, PDFs) in the same folder
 
 ### GeoJSON Support
 
@@ -190,7 +186,7 @@ Events can have Point, Polygon, or MultiPolygon geometries:
 
 ## Testing
 
-42 tests covering:
+41 tests covering:
 - Map configuration (tile sources, eras, slider stops)
 - Event content validation (frontmatter, structure)
 - GeoJSON validation (geometry types, coordinates)

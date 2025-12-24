@@ -6,6 +6,7 @@ interface EventData {
   desc: string;
   year: number;
   end: number | null;
+  author: string | null;
 }
 
 interface GalleryFile {
@@ -19,6 +20,8 @@ export class DetailPanel {
   private image: HTMLImageElement;
   private yearEl: HTMLElement;
   private titleEl: HTMLElement;
+  private authorEl: HTMLElement;
+  private authorNameEl: HTMLElement;
   private textEl: HTMLElement;
   private galleryEl: HTMLElement;
   private lightbox: HTMLElement;
@@ -33,6 +36,8 @@ export class DetailPanel {
     this.image = document.getElementById('detail-image') as HTMLImageElement;
     this.yearEl = document.getElementById('detail-year')!;
     this.titleEl = document.getElementById('detail-title')!;
+    this.authorEl = document.getElementById('detail-author')!;
+    this.authorNameEl = this.authorEl.querySelector('.author-name')!;
     this.textEl = document.getElementById('detail-text')!;
     this.galleryEl = document.getElementById('detail-gallery')!;
     this.lightbox = document.getElementById('detail-lightbox')!;
@@ -41,6 +46,27 @@ export class DetailPanel {
     this.lightboxCaption = this.lightbox.querySelector('.lightbox-caption')!;
 
     this.setupLightbox();
+    this.setupCoverImageClick();
+  }
+
+  private setupCoverImageClick(): void {
+    this.image.addEventListener('click', () => {
+      // Find the cover image in galleryItems
+      const coverIndex = this.galleryItems.findIndex(item =>
+        item.url.includes('cover.') && item.type === 'image'
+      );
+      if (coverIndex >= 0) {
+        this.openLightbox(coverIndex);
+      } else if (this.image.src) {
+        // Fallback: show the cover image directly
+        this.lightboxImg.src = this.image.src;
+        this.lightboxIframe.src = '';
+        this.lightbox.dataset.type = 'image';
+        this.lightboxCaption.textContent = 'Cover image';
+        this.lightbox.classList.add('active');
+      }
+    });
+    this.image.style.cursor = 'pointer';
   }
 
   private setupLightbox(): void {
@@ -79,6 +105,15 @@ export class DetailPanel {
     }
     this.titleEl.textContent = event?.title || eventId;
 
+    // Display author if present
+    if (event?.author) {
+      this.authorNameEl.textContent = event.author;
+      this.authorEl.classList.remove('hidden');
+    } else {
+      this.authorNameEl.textContent = '';
+      this.authorEl.classList.add('hidden');
+    }
+
     // Load cover image
     await this.loadCoverImage(eventId);
 
@@ -92,6 +127,12 @@ export class DetailPanel {
     this.image.src = '';
 
     try {
+      const webpRes = await fetch(`/events/${eventId}/cover.webp`, { method: 'HEAD' });
+      if (webpRes.ok) {
+        this.image.src = `/events/${eventId}/cover.webp`;
+        return;
+      }
+
       const jpgRes = await fetch(`/events/${eventId}/cover.jpg`, { method: 'HEAD' });
       if (jpgRes.ok) {
         this.image.src = `/events/${eventId}/cover.jpg`;
@@ -110,7 +151,7 @@ export class DetailPanel {
   private async loadContent(eventId: string, defaultDesc: string): Promise<void> {
     this.textEl.innerHTML = `<p>${defaultDesc}</p>`;
     this.galleryEl.innerHTML = '';
-    this.images = [];
+    this.galleryItems = [];
 
     try {
       const res = await fetch(`/events/${eventId}/`);

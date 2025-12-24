@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme Hippodrome",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -2.2498854,
+              53.4647488
+            ],
+            [
+              -2.2502394,
+              53.4645188
+            ],
+            [
+              -2.2498139,
+              53.4642189
+            ],
+            [
+              -2.2494191,
+              53.464437
+            ],
+            [
+              -2.2498854,
+              53.4647488
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

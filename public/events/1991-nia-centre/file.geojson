@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "NIAMOS (Nia Centre)",
+        "note": "UK's first purpose-built Black arts centre, Warwick Street"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2493761,
+          53.4644937
         ]
       }
     }
