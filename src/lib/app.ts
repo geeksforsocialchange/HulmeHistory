@@ -3,7 +3,7 @@
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapManager } from './map-manager';
 import { DetailPanel } from './detail-panel';
-import { ERA_CONFIG, getEraForYear, type EraKey } from './map-config';
+import { ERA_CONFIG, type EraKey } from './map-config';
 
 interface EventData {
   id: string;
@@ -80,12 +80,6 @@ export function initApp(eventData: EventData[]): void {
 
     // Update year display
     document.getElementById('current-year')!.textContent = String(year);
-
-    // Auto-select appropriate traced layer
-    const targetEra = getEraForYear(year);
-    mapManager.addTracedLayer(targetEra);
-    updateTracedButtons();
-    document.getElementById('current-era')!.textContent = ERA_CONFIG[targetEra].label;
 
     // Set marker
     await mapManager.setMarker(id);

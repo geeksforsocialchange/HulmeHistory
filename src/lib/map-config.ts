@@ -15,11 +15,6 @@ export const ERA_CONFIG = {
     buildings: { fill: '#4a5a6a', stroke: '#3a4a5a' },
     blocks: { fill: '#8a9aa8', stroke: '#6a7a88' },
   },
-  '2015': {
-    label: 'Modern Hulme',
-    buildings: { fill: '#4a7c59', stroke: '#3a6649' },
-    blocks: { fill: '#7aaa88', stroke: '#5a8a68' },
-  },
 } as const;
 
 export type EraKey = keyof typeof ERA_CONFIG;
@@ -28,7 +23,7 @@ export type EraKey = keyof typeof ERA_CONFIG;
 export const TILE_SOURCES = {
   carto: {
     type: 'raster' as const,
-    tiles: ['https://basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png'],
+    tiles: ['https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
     tileSize: 256,
   },
   'os-victorian': {
@@ -92,7 +87,6 @@ export const SLIDER_STOPS = [
 
 // Determine which era to show based on event year
 export function getEraForYear(year: number): EraKey {
-  if (year >= 1994) return '2015';
   if (year >= 1970) return '1990';
   return '1871';
 }

@@ -18,9 +18,29 @@ export class MapManager {
       },
       center: HULME_CENTER,
       zoom: DEFAULT_ZOOM,
+      attributionControl: false,
     });
 
-    this.map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+    // Add controls temporarily, then move into grid
+    this.map.addControl(new maplibregl.AttributionControl({ compact: false }), 'bottom-left');
+    this.map.addControl(new maplibregl.NavigationControl({ showCompass: true }), 'bottom-left');
+
+    // Move controls into grid slots after render
+    setTimeout(() => {
+      const zoomSlot = document.getElementById('zoom-slot');
+      const creditSlot = document.getElementById('credit-slot');
+      const navCtrl = document.querySelector('.maplibregl-ctrl-group');
+      const attrCtrl = document.querySelector('.maplibregl-ctrl-attrib');
+
+      if (zoomSlot && navCtrl) {
+        zoomSlot.appendChild(navCtrl);
+      }
+      if (creditSlot && attrCtrl) {
+        // Move just the inner content, not the wrapper
+        creditSlot.innerHTML = attrCtrl.innerHTML;
+        attrCtrl.remove();
+      }
+    }, 100);
   }
 
   async loadTracedLayers(): Promise<void> {

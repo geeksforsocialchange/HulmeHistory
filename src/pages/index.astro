@@ -28,25 +28,29 @@ const eventData = events.map(event => ({
 
 <Layout title="Hulme History" fullWidth>
   <div id="app">
+    <!-- Left: Timeline -->
     <Timeline decades={decades} />
 
-    <main id="map-container">
+    <!-- Map with floating overlays -->
+    <div id="map-layer">
       <div id="map"></div>
       <MapControls />
-    </main>
-
-    <DetailPanel />
+      <DetailPanel />
+    </div>
   </div>
 </Layout>
 
 <style>
   #app {
-    display: flex;
+    position: relative;
     height: calc(100vh - 50px);
     background: #1a1a1a;
+    overflow: hidden;
+    display: flex;
   }
 
-  #map-container {
+  /* Map takes remaining space */
+  #map-layer {
     flex: 1;
     position: relative;
   }
@@ -56,13 +60,39 @@ const eventData = events.map(event => ({
     height: 100%;
   }
 
+  /* Hide default MapLibre control container - controls moved to grid */
+  #map :global(.maplibregl-ctrl-bottom-left) {
+    display: none;
+  }
+
+  /* Style controls when inside our grid */
+  #map-controls :global(.maplibregl-ctrl-group) {
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib) {
+    font-size: 9px;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib a) {
+    color: #555;
+  }
+
+  #map-controls :global(.maplibregl-ctrl-attrib-button) {
+    display: none;
+  }
+
   @media (max-width: 800px) {
     #app {
       flex-direction: column;
     }
 
-    #map-container {
-      height: 55%;
+    #map-layer {
+      flex: 1;
       order: 1;
     }
   }
