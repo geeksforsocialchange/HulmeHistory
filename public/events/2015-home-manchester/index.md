@@ -34,7 +34,14 @@ The £25 million venue includes:
 
 2 Tony Wilson Place, First Street, Manchester
 
+## See Also
+
+- [2010 First Street Development](/events/2010-first-street/) - The wider regeneration project of which HOME is part
+- [1825 Gaythorn Gasworks](/events/1825-gaythorn-gasworks/) - The industrial history of the First Street site
+- [1982 The Haçienda](/events/1982-the-hacienda/) - Legendary nightclub that was nearby on Whitworth Street West
+- [2017 Engels Statue](/events/2017-engels-statue/) - Soviet-era sculpture now at Tony Wilson Place, next to HOME
+
 ## Sources
 
 - <a href="https://homemcr.org/" target="_blank">HOME Manchester</a>
-- <a href="https://en.wikipedia.org/wiki/HOME_(Manchester" target="_blank">HOME - Wikipedia</a>)
+- <a href="https://en.wikipedia.org/wiki/HOME_(Manchester)" target="_blank">HOME - Wikipedia</a>

@@ -32,6 +32,11 @@ The Hulme Hippodrome is now a shuttered Grade II listed building, a proscenium a
 
 Following rumours in 2020 of redevelopment to residential units, a campaign group **Save Hulme Hippodrome** formed with the ambition to save, restore and reopen the building as a community, music and arts hub.
 
+## See Also
+
+- [1991 Nia Centre](/events/1991-nia-centre/) - Another historic Hulme theatre (the Playhouse), opened as Black-led arts centre
+- [1839 St Wilfrid's Church](/events/1839-st-wilfrids-church/) - Another at-risk Grade II listed building in Hulme
+
 ## Sources
 
 - <a href="https://en.wikipedia.org/wiki/Hulme_Hippodrome" target="_blank">Hulme Hippodrome - Wikipedia</a>

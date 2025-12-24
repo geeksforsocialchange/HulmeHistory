@@ -1,5 +1,5 @@
 ---
-start: 1978
+start: 1980
 end: 1995
 title: "Abasindi Co-operative"
 desc: "Black women's educational and political organisation in Moss Side"
@@ -7,11 +7,13 @@ timeline: community
 author: AI summary of listed sources
 ---
 
-The **Abasindi Co-operative** was a Black women's educational, cultural, and political organisation founded in Moss Side in the late 1970s.
+The **Abasindi Co-operative** was a Black women's educational, cultural, and political organisation based in Moss Side.
 
 ## Origins
 
-The co-operative was formed in response to social, political, educational, and economic challenges facing Black women in Manchester. Notable founders included **Diana Watt**, who later became an academic.
+In 1975, **Kath Locke** and her sisters helped establish the Manchester Black Women's Co-operative (MBWC), which provided training for Black mothers seeking to re-enter the workforce. On 26 October 1979, when organisers tried to relocate the women's group, the founding members staged a ten-day occupation. On 1 January 1980, the MBWC reformed as the **Abasindi Co-operative**, completely autonomous from external institutions.
+
+Founders included Kath Locke, **Elouise Edwards**, Duduzile Lethlaku, Yvonne Hypolite, Maria Noble, Popgee Manderson, Madge Gordon, Abena Braithwaite, and Shirley Inniss. The women came from Barbados, Trinidad, Aruba, South Africa, Jamaica, and Britain.
 
 ## Activities
 
@@ -37,3 +39,5 @@ The co-operative lost momentum in the 1990s, partly due to early deaths among fo
 ## Sources
 
 - <a href="https://news-archive.hud.ac.uk/news/2015/december/blackwomensabasindico-operativeintroubled1980smossside.php" target="_blank">Black Women's Abasindi Co-operative - Huddersfield University News</a>
+- <a href="https://manchesterarchiveplus.wordpress.com/2018/10/23/abasindi-co-operative-black-history-month/" target="_blank">Abasindi Co-operative - Manchester Archives</a>
+- <a href="https://aiucentre.wordpress.com/2015/03/06/abasindi-women/" target="_blank">Autonomous Women at the Abasindi Women's Co-op - AIU Centre</a>

@@ -33,6 +33,12 @@ After closure, the building was used for two free parties organised by the Manch
 
 The Haçienda's influence on British music and club culture remains immense. Its story has been told in numerous books, films and documentaries, and "Haçienda" nights continue to be held around the world.
 
+## See Also
+
+- [2015 HOME Manchester](/events/2015-home-manchester/) - The former Haçienda site is now part of the First Street development where HOME is located
+- [1825 Gaythorn Gasworks](/events/1825-gaythorn-gasworks/) - The industrial history of the First Street area
+- [2017 Engels Statue](/events/2017-engels-statue/) - Soviet-era statue now at Tony Wilson Place, near the former Haçienda site
+
 ## Sources
 
 - <a href="https://en.wikipedia.org/wiki/The_Ha%C3%A7ienda" target="_blank">The Haçienda - Wikipedia</a>

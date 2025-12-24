@@ -33,9 +33,15 @@ Johnson also created the 'New International Club' - an explicitly anti-racist so
 
 A petition has been launched to have Johnson commemorated with a statue in Manchester, supported by boxers Anthony Joshua and Ricky Hatton, and Mayor of Greater Manchester Andy Burnham.
 
+## See Also
+
+- [1831 The Old Abbey Taphouse](/events/1831-old-abbey-taphouse/) - The pub where Len Johnson broke the colour bar in 1953
+- [1980 Abasindi Co-operative](/events/1980-abasindi-coop/) - Black women's organisation in neighbouring Moss Side
+- [2017 Deyika Nzeribe](/events/2017-deyika-nzeribe/) - Another Black activist who fought for equality in Manchester
+
 ## Sources
 
-- <a href="https://en.wikipedia.org/wiki/Len_Johnson_(boxer" target="_blank">Len Johnson (boxer) - Wikipedia</a>)
+- <a href="https://en.wikipedia.org/wiki/Len_Johnson_(boxer)" target="_blank">Len Johnson (boxer) - Wikipedia</a>
 - <a href="https://www.manchestereveningnews.co.uk/news/greater-manchester-news/len-johnson-hulme-colour-bar-15859656" target="_blank">Manchester Evening News - Len Johnson and the Colour Bar</a>
 - <a href="https://tribunemag.co.uk/2020/06/manchesters-black-champion" target="_blank">Tribune - Manchester's Black Champion</a>
 - <a href="https://www.theoldabbeytaphouse.org/breaking-the-colour-bar.html" target="_blank">The Old Abbey Taphouse - Breaking the Colour Bar</a>
