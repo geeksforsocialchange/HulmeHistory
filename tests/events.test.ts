@@ -2,8 +2,8 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const EVENTS_DIR = join(__dirname, '../src/content/events');
-const PUBLIC_EVENTS_DIR = join(__dirname, '../public/events');
+// All events (markdown + assets) are now in public/events
+const EVENTS_DIR = join(__dirname, '../public/events');
 
 interface EventFrontmatter {
   start: number;
@@ -132,32 +132,18 @@ describe('Event Content', () => {
 });
 
 describe('Event Assets', () => {
-  let publicEventDirs: string[];
+  let eventDirs: string[];
 
   beforeAll(() => {
-    publicEventDirs = readdirSync(PUBLIC_EVENTS_DIR, { withFileTypes: true })
+    eventDirs = readdirSync(EVENTS_DIR, { withFileTypes: true })
       .filter(d => d.isDirectory())
       .map(d => d.name);
-  });
-
-  it('should have matching public assets for content events', () => {
-    const contentEventDirs = readdirSync(EVENTS_DIR, { withFileTypes: true })
-      .filter(d => d.isDirectory())
-      .map(d => d.name);
-
-    // Check that content events have corresponding public folders
-    for (const dir of contentEventDirs) {
-      if (existsSync(join(PUBLIC_EVENTS_DIR, dir))) {
-        // Has public folder - that's good
-        expect(true).toBe(true);
-      }
-    }
   });
 
   describe('GeoJSON Files', () => {
     it('file.geojson should be valid GeoJSON when present', () => {
-      for (const dir of publicEventDirs) {
-        const geojsonPath = join(PUBLIC_EVENTS_DIR, dir, 'file.geojson');
+      for (const dir of eventDirs) {
+        const geojsonPath = join(EVENTS_DIR, dir, 'file.geojson');
         if (existsSync(geojsonPath)) {
           const content = readFileSync(geojsonPath, 'utf-8');
           const data = JSON.parse(content);
@@ -175,9 +161,9 @@ describe('Event Assets', () => {
 
   describe('Cover Images', () => {
     it('cover images should exist in jpg or png format when present', () => {
-      for (const dir of publicEventDirs) {
-        const jpgPath = join(PUBLIC_EVENTS_DIR, dir, 'cover.jpg');
-        const pngPath = join(PUBLIC_EVENTS_DIR, dir, 'cover.png');
+      for (const dir of eventDirs) {
+        const jpgPath = join(EVENTS_DIR, dir, 'cover.jpg');
+        const pngPath = join(EVENTS_DIR, dir, 'cover.png');
 
         // At least one should exist if this is a properly set up event
         if (existsSync(jpgPath) || existsSync(pngPath)) {
