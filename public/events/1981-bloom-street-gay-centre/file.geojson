@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bloom Street Gay Centre",
+        "note": "61A Bloom Street, Gay Village (1981-1988)",
+        "source": "Nominatim geocoding"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2383389, 53.4768875]
+      }
+    }
+  ]
+}
