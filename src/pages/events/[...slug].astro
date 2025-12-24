@@ -32,10 +32,11 @@ try {
     const entries = fs.readdirSync(publicDir);
     files = entries
       .filter(f => {
-        // Exclude cover images, .orig files, and geojson
+        // Exclude cover images, .orig files, geojson, and markdown
         if (f.startsWith('cover.')) return false;
         if (f.endsWith('.orig')) return false;
         if (f.endsWith('.geojson')) return false;
+        if (f.endsWith('.md')) return false;
         return true;
       })
       .map(f => {
