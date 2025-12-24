@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manchester Gay Alliance",
+        "note": "First Gay Centre, 178 Waterloo Place basement (1978-1981)",
+        "source": "Nominatim geocoding"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2348670, 53.4676209]
+      }
+    }
+  ]
+}

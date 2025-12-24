@@ -37,9 +37,6 @@ npm run build
 
 ```
 src/
-├── content/events/          # Event markdown content
-│   └── YYYY-event-slug/
-│       └── index.md         # Event content (frontmatter + markdown)
 ├── lib/                     # TypeScript modules
 │   ├── app.ts               # Main app initialization
 │   ├── map-manager.ts       # Map layer and marker handling
@@ -49,8 +46,9 @@ src/
 
 public/
 ├── gis/                     # Hand-traced historical GeoJSON layers
-└── events/                  # Event assets (images, PDFs, GeoJSON)
+└── events/                  # Event content and assets
     └── YYYY-event-slug/
+        ├── index.md            # Event content (frontmatter + markdown)
         ├── cover.webp/jpg/png  # Cover image
         ├── file.geojson        # Map marker/polygon
         └── *.jpg/*.pdf         # Gallery items
@@ -60,21 +58,21 @@ tests/                       # Vitest test suite
 
 ## Adding Events
 
-1. Create `src/content/events/YYYY-event-slug/index.md` with frontmatter:
+1. Create `public/events/YYYY-event-slug/` folder with:
 
-   ```yaml
-   ---
-   start: 1991
-   end: 1997 # Optional
-   title: "Event Title"
-   desc: "Short description"
-   author: "contributor" # Optional
-   timeline: buildings # buildings | community | news
-   ---
-   Event content in markdown...
-   ```
+   - `index.md` - Event content with frontmatter:
 
-2. Create `public/events/YYYY-event-slug/` folder with assets:
+     ```yaml
+     ---
+     start: 1991
+     end: 1997 # Optional
+     title: "Event Title"
+     desc: "Short description"
+     author: "contributor" # Optional
+     timeline: buildings # buildings | community | news
+     ---
+     Event content in markdown...
+     ```
 
    - `cover.webp`, `cover.jpg`, or `cover.png` - Cover image
    - `file.geojson` - GeoJSON Point, Polygon, or MultiPolygon for map

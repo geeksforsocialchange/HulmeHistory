@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Proud Place",
+        "note": "New LGBT+ youth centre opened 2022",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-2.2373047, 53.4712376],
+          [-2.2374176, 53.4712007],
+          [-2.2374056, 53.4711877],
+          [-2.2374328, 53.4711788],
+          [-2.2374768, 53.4711645],
+          [-2.2373763, 53.4710557],
+          [-2.2371923, 53.4711159],
+          [-2.2373047, 53.4712376]
+        ]]
+      }
+    }
+  ]
+}
