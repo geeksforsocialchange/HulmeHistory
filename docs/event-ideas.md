@@ -33,17 +33,6 @@ These have stubs in `draft_events/` with some content or assets:
 | `1980-madchester.md` | Madchester | Music scene context for Haçienda |
 | `1920-poc-immigrant-communities.md` | PoC Immigrant Communities | Early 20th century migration |
 
-### Lower Priority (duplicates or need research)
-
-| Draft File | Notes |
-|------------|-------|
-| `1901-hulme-hippodrome.md` | Already published |
-| `1905-hulme-hippodrome-2.md` | Duplicate? |
-| `1986-viraj-mendis.md` | Already published |
-| `1911-zion-centre.md` | Building history (Z-arts published) |
-| `1999-garden-centre.md` | Already published as 1998 |
-| `2000-hulme-park.md` | Already published as 1990 |
-
 ---
 
 ## New Event Ideas (From Research)
