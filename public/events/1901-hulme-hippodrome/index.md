@@ -4,7 +4,7 @@ end: 1986
 title: "Hulme Hippodrome"
 desc: "Historic theatre and music hall, now at risk but subject of community campaign"
 timeline: buildings
-author: AI generated summary
+author: AI Summary
 ---
 
 The Hulme Hippodrome opened on 7 October 1901 as the **Grand Junction Theatre and Floral Hall** on Preston Street. Designed by renowned theatre architect JJ Alley and built by the Broadhead family company, it originally seated up to 3,300 people crammed on long benches.

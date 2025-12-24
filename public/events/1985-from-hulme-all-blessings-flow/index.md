@@ -2,7 +2,7 @@
 title: From Hulme All Blessings Flow
 start: 1985
 desc: Memoirs of a Henry Watkin, a Hulme resident published, who grew up around 1900
-author: urbed
+author: URBED
 ---
 "From Hulme All Blessings Flow, A Collection of Manchester Memories" is the memoirs of Harry Watkin, who was born and grew up in Hulme in the beginning of the 20th century.
 

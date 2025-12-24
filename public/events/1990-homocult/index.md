@@ -1,7 +1,7 @@
 ---
 start: 1990
 title: Homocult
-author: urbed
+author: URBED
 desc: Controversial working class queer artists publish their manifesto
 ---
 

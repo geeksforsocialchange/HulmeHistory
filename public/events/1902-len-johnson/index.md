@@ -4,7 +4,7 @@ end: 1974
 title: "Len Johnson"
 desc: "Black boxing champion who fought the colour bar in sport and society"
 timeline: community
-author: AI generated summary
+author: AI Summary
 ---
 
 **Leonard Benker Johnson** (22 October 1902 - 1974) was born in Clayton, Manchester to an English mother of Irish descent and a father from Sierra Leone. He became one of Britain's greatest boxers - and a pioneering anti-racism activist who helped break down the colour bar.

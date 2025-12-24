@@ -4,7 +4,7 @@ end: 1914
 title: "Hulme Barracks"
 desc: "Georgian military barracks, home to cavalry involved in the Peterloo Massacre"
 timeline: buildings
-author: AI generated summary
+author: AI Summary
 ---
 
 Hulme Barracks was a military installation completed in 1804, built in the Georgian style near Manchester city centre. The barracks served as a base for cavalry soldiers for over a century.

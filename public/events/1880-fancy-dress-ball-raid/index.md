@@ -2,7 +2,7 @@
 start: 1880
 title: Fancy Dress Ball Raid
 desc: '"One of the foulest orgies to ever disgrace any town": Famous raid on a drag (?) ball in a temperance hall by Det Jerome Caminada'
-author: sylvia
+author: Sylvia
 ---
 
 In late September 1880, a Temperance Hall in Hulme was booked under the auspices of the Pawnbrokers Association. This Hall was subsequently raided when something that was salaciously called "one of the foulest orgies to ever disgrace any town." 47 men were arrested, 22 of whom were in beautiful female dresses.

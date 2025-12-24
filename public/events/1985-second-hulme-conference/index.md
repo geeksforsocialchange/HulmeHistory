@@ -2,7 +2,7 @@
 start: 1985
 title: Second Hulme Conference
 desc: Conference to discuss future of Hulme at Birley High School
-author: urbed
+author: URBED
 ---
 
 Report of the Conference held at Birley High School, Hulme on 16th November 1985. Published by the System-built and Tower Block Housing Project Limited in February 1985.

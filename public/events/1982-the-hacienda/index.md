@@ -4,7 +4,7 @@ end: 1997
 title: "The Haçienda"
 desc: "Legendary nightclub that pioneered acid house and the Madchester scene"
 timeline: community
-author: AI generated summary
+author: AI Summary
 ---
 
 **The Haçienda** (FAC 51) was a nightclub and music venue in Manchester that became world-famous during the Madchester years of the 1980s and early 1990s. Run by Factory Records and the band New Order, it opened in 1982 and helped pioneer the Manchester acid house and rave scene.

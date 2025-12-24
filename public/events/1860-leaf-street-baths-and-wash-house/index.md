@@ -3,7 +3,7 @@ start: 1860
 end: 1976
 title: Leaf Street Baths and Wash House
 desc: Manchester and Salford Baths and Laundries Company establish first bathhouse in Hulme
-author: sylvia
+author: Sylvia
 ---
 
 In 1860, the Manchester and Salford Baths and Laundries Company asked Thomas Worthington to build their third bath and wash house in Salford and Manchester. The first one was on Collier Street in Salford in 1855, the second one in Ardwick in 1858.
