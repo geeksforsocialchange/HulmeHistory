@@ -145,7 +145,7 @@ export class DetailPanel {
   private async loadContent(eventId: string, defaultDesc: string): Promise<void> {
     this.textEl.innerHTML = `<p>${defaultDesc}</p>`;
     this.galleryEl.innerHTML = '';
-    this.images = [];
+    this.galleryItems = [];
 
     try {
       const res = await fetch(`/events/${eventId}/`);

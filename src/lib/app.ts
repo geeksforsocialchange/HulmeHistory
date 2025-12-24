@@ -54,8 +54,11 @@ export function initApp(eventData: EventData[]): void {
     document.getElementById('prev-event')?.addEventListener('click', () => navEvent(-1));
     document.getElementById('next-event')?.addEventListener('click', () => navEvent(1));
 
-    // Keyboard navigation
+    // Keyboard navigation (skip if lightbox is open)
     document.addEventListener('keydown', (e) => {
+      const lightbox = document.getElementById('detail-lightbox');
+      if (lightbox?.classList.contains('active')) return;
+
       if (e.key === 'ArrowLeft') {
         navEvent(-1);
       } else if (e.key === 'ArrowRight') {
