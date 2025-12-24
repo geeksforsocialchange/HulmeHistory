@@ -199,13 +199,17 @@ export class MapManager {
         const hasPolygon = geomTypes.has('Polygon') || geomTypes.has('MultiPolygon');
         const hasLine = geomTypes.has('LineString') || geomTypes.has('MultiLineString');
 
+        // Offset to center on full screen (timeline is 340px on left, outside map container)
+        // Adding right padding shifts the visual center leftward to compensate
+        const padding = { top: 60, bottom: 60, left: 60, right: 340 };
+
         if (hasPoint && !hasPolygon && !hasLine) {
           // Point-only: use marker and center on it
           const coords = features[0].geometry.coordinates;
           this.marker = new maplibregl.Marker({ color: '#8b4513' })
             .setLngLat(coords)
             .addTo(this.map);
-          this.map.flyTo({ center: coords, zoom: 15.5 });
+          this.map.flyTo({ center: coords, zoom: 15.5, padding });
         } else {
           // Mixed or polygon/line: use layers
           this.map.addSource('event-polygon', { type: 'geojson', data });
@@ -239,14 +243,14 @@ export class MapManager {
           const bounds = this.getFeaturesBounds(features);
           if (bounds) {
             this.map.fitBounds(bounds, {
-              padding: 60,
+              padding,
               maxZoom: 16,
               duration: 1000,
             });
           } else {
             // Fallback to centroid
             const center = this.getGeometryCentroid(features[0].geometry);
-            this.map.flyTo({ center, zoom: 15 });
+            this.map.flyTo({ center, zoom: 15, padding });
           }
         }
       }
