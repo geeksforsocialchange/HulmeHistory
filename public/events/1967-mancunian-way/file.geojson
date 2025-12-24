@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mancunian Way",
+        "note": "Elevated motorway opened 1967, dividing Hulme from city centre",
+        "source": "Central point of elevated section"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2420, 53.4710]
+      }
+    }
+  ]
+}

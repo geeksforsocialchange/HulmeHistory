@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Deyika Nzeribe",
+        "note": "Poet and activist who stood for Hulme council seat",
+        "source": "Central Hulme location"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2480, 53.4650]
+      }
+    }
+  ]
+}

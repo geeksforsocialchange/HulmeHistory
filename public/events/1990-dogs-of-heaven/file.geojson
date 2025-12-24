@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dogs of Heaven performances",
+        "note": "Performances staged at the Hulme Crescents",
+        "source": "Historical reference"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2500, 53.4660]
+      }
+    }
+  ]
+}

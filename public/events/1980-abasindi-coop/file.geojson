@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Abasindi Co-operative",
+        "note": "Black women's organisation in Moss Side",
+        "source": "Historical reference"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2320, 53.4540]
+      }
+    }
+  ]
+}

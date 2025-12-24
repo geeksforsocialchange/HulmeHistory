@@ -30,7 +30,13 @@ The first event held at the new centre was the opening party on **27th November 
 
 The original 1988 building was demolished and replaced with a new three-storey facility, reopening as **The Proud Place** in 2022.
 
+## See Also
+
+- [1978 Manchester Gay Alliance](/events/1978-manchester-gay-alliance/) - The first gay centre, in a basement on Waterloo Place
+- [1981 Bloom Street Gay Centre](/events/1981-bloom-street-gay-centre/) - The predecessor centre in the Gay Village
+- [2022 The Proud Place](/events/2022-the-proud-place/) - The current three-storey building on the same site
+
 ## Sources
 
-- [The Proud Trust - History of The Proud Place](https://www.theproudtrust.org/the-proud-place/history/)
-- [We Were Born in the 80s - LGBT Centre History Tour](https://wewereborninthe80s.wordpress.com/)
+- <a href="https://www.theproudtrust.org/the-proud-place/history/" target="_blank">The Proud Trust - History of The Proud Place</a>
+- <a href="https://wewereborninthe80s.wordpress.com/" target="_blank">We Were Born in the 80s - LGBT Centre History Tour</a>

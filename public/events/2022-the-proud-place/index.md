@@ -37,5 +37,5 @@ The Proud Place continues over 40 years of LGBT+ community provision on the same
 
 ## Sources
 
-- [The Proud Trust - The Proud Place](https://www.theproudtrust.org/the-proud-place/)
-- [The Proud Trust - History](https://www.theproudtrust.org/the-proud-place/history/)
+- <a href="https://www.theproudtrust.org/the-proud-place/" target="_blank">The Proud Trust - The Proud Place</a>
+- <a href="https://www.theproudtrust.org/the-proud-place/history/" target="_blank">The Proud Trust - History</a>

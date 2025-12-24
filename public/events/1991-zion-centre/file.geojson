@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Zion Community Health & Resource Centre",
+        "note": "Community health centre, precursor to Big Life Group",
+        "source": "Historical reference"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2500, 53.4650]
+      }
+    }
+  ]
+}

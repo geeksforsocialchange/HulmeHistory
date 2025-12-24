@@ -28,5 +28,5 @@ Kay's photos capture a lifestyle "out of step with a world that's been increasin
 
 ## Sources
 
-- [VICE - Manchester's Hulme Loonies](https://www.vice.com/en/article/hulme-loonies-anni-kay-manchester-photos/)
-- [@hulmeloonies on Instagram](https://www.instagram.com/hulmeloonies/)
+- <a href="https://www.vice.com/en/article/hulme-loonies-anni-kay-manchester-photos/" target="_blank">VICE - Manchester's Hulme Loonies</a>
+- <a href="https://www.instagram.com/hulmeloonies/" target="_blank">@hulmeloonies on Instagram</a>

@@ -31,9 +31,15 @@ The theatre stood mostly unused through the 2000s, briefly used as a church, unt
 
 Today NIAMOS is a community hub providing spaces to create, learn, dance and share - a co-operatively run visual arts centre, music studio, micro-bakery and arts venue, reclaiming this historic building for the community.
 
+## See Also
+
+- [1901 Hulme Hippodrome](/events/1901-hulme-hippodrome/) - Another historic Hulme theatre, built one year before the original Playhouse
+- [1980 Abasindi Co-operative](/events/1980-abasindi-coop/) - Black women's organisation in neighbouring Moss Side
+- [2017 Deyika Nzeribe](/events/2017-deyika-nzeribe/) - Poet and activist who championed Black arts in Manchester
+
 ## Sources
 
-- [History of the Nia Centre - NIAMOS](https://www.niamos.co.uk/history-of-the-nia-centre)
-- [NIAMOS Official Site](https://www.niamos.co.uk/)
-- [I Love Manchester - The Niamos Centre](https://ilovemanchester.com/the-niamos-centre-hulme)
-- [Playhouse Theatre, Manchester - Wikipedia](https://en.wikipedia.org/wiki/Playhouse_Theatre,_Manchester)
+- <a href="https://www.niamos.co.uk/history-of-the-nia-centre" target="_blank">History of the Nia Centre - NIAMOS</a>
+- <a href="https://www.niamos.co.uk/" target="_blank">NIAMOS Official Site</a>
+- <a href="https://ilovemanchester.com/the-niamos-centre-hulme" target="_blank">I Love Manchester - The Niamos Centre</a>
+- <a href="https://en.wikipedia.org/wiki/Playhouse_Theatre,_Manchester" target="_blank">Playhouse Theatre, Manchester - Wikipedia</a>

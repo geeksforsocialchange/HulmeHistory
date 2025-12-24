@@ -35,6 +35,6 @@ Mendis died on 16 August 2024. His archive has been deposited at the Church of t
 
 ## Sources
 
-- [Viraj Mendis - Wikipedia](https://en.wikipedia.org/wiki/Viraj_Mendis)
-- [Church of the Ascension - Our Legacy](https://ascensionchurchhulme.co.uk/legacy)
-- [Working Class Movement Library - Viraj Mendis Defence Campaign](https://wcml.org.uk/blog/archive-encounter-the-viraj-mendis-defence-campaign/)
+- <a href="https://en.wikipedia.org/wiki/Viraj_Mendis" target="_blank">Viraj Mendis - Wikipedia</a>
+- <a href="https://ascensionchurchhulme.co.uk/legacy" target="_blank">Church of the Ascension - Our Legacy</a>
+- <a href="https://wcml.org.uk/blog/archive-encounter-the-viraj-mendis-defence-campaign/" target="_blank">Working Class Movement Library - Viraj Mendis Defence Campaign</a>

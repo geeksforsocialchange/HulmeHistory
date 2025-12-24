@@ -31,5 +31,5 @@ Facing declining enrollment, the parish was suppressed and the church was decons
 
 ## Sources
 
-- [St Wilfrid's Church, Hulme - Wikipedia](https://en.wikipedia.org/wiki/St_Wilfrid%27s_Church,_Hulme)
-- [Victorian Web - St Wilfrid's Church by A.W.N. Pugin](https://victorianweb.org/art/architecture/pugin/38.html)
+- <a href="https://en.wikipedia.org/wiki/St_Wilfrid%27s_Church,_Hulme" target="_blank">St Wilfrid's Church, Hulme - Wikipedia</a>
+- <a href="https://victorianweb.org/art/architecture/pugin/38.html" target="_blank">Victorian Web - St Wilfrid's Church by A.W.N. Pugin</a>

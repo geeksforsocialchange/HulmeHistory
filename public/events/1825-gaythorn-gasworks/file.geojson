@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gaythorn Gas Works",
+        "note": "Former gas works, now First Street development",
+        "source": "Historical reference"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2470, 53.4735]
+      }
+    }
+  ]
+}

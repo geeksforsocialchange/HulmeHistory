@@ -30,7 +30,7 @@ In 2025, Hulme Community Garden Centre celebrates its 25th anniversary - a quart
 
 ## Sources
 
-- [Hulme Community Garden Centre - Wikipedia](https://en.wikipedia.org/wiki/Hulme_Community_Garden_Centre)
-- [Hulme Community Garden Centre Official Site](https://hulmegardencentre.org.uk/)
-- [Greener Greater Manchester - 25 Years Celebration](https://greenergreatermanchester.com/posts/hulme-community-garden-centre-celebrates-25-years-of-growth-and-community/)
-- [Radical Manchester - A Green Regeneration](https://radicalmanchester.wordpress.com/2011/06/08/hulme-community-garden-centre-a-green-regeneration/)
+- <a href="https://en.wikipedia.org/wiki/Hulme_Community_Garden_Centre" target="_blank">Hulme Community Garden Centre - Wikipedia</a>
+- <a href="https://hulmegardencentre.org.uk/" target="_blank">Hulme Community Garden Centre Official Site</a>
+- <a href="https://greenergreatermanchester.com/posts/hulme-community-garden-centre-celebrates-25-years-of-growth-and-community/" target="_blank">Greener Greater Manchester - 25 Years Celebration</a>
+- <a href="https://radicalmanchester.wordpress.com/2011/06/08/hulme-community-garden-centre-a-green-regeneration/" target="_blank">Radical Manchester - A Green Regeneration</a>

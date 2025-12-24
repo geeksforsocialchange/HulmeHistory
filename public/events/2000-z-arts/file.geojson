@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Z-arts",
+        "note": "Multi-arts venue at 335 Stretford Road",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2523819, 53.4666378]
+      }
+    }
+  ]
+}
