@@ -2,19 +2,23 @@
 
 Ideas for new events to add to Hulme History, gathered from research and the `draft_events/` folder.
 
+## Completed Events
+
+These high-priority drafts have been published:
+
+| Event | Published As | Notes |
+|-------|--------------|-------|
+| Work For Change / Homes for Change | [1997-homes-work-for-change](/events/1997-homes-work-for-change/) | Cooperative housing |
+| Church of St George | [1826-church-st-george](/events/1826-church-st-george/) | Gothic Revival church by Francis Goodwin |
+| Hulme Hall | [1840-hulme-hall](/events/1840-hulme-hall/) | Medieval manor house |
+| Hulme City Challenge | [1992-hulme-city-challenge](/events/1992-hulme-city-challenge/) | £37.5m regeneration programme |
+| Mancunian Way | [1967-mancunian-way](/events/1967-mancunian-way/) | Elevated motorway |
+
+---
+
 ## Draft Events (Ready to Develop)
 
 These have stubs in `draft_events/` with some content or assets:
-
-### High Priority (have assets or partial content)
-
-| Draft File | Title | Notes |
-|------------|-------|-------|
-| `1993-yellowbricks.md` | Work For Change / Homes for Change | Has PDFs, photos, GeoJSON - cooperative housing |
-| `1826-church-st-george.md` | Church of St George | Has GeoJSON, Gothic Revival church by Francis Goodwin |
-| `1845-hulme-hall.md` | Hulme Hall | Has photo - medieval hall, oldest building in area |
-| `1992-hulme-city-challenge.md` | Hulme City Challenge | Has content - £37.5m regeneration programme |
-| `1961-the-mancunian-way.md` | Mancunian Way | Has content - elevated motorway |
 
 ### Medium Priority (stubs only)
 
@@ -68,7 +72,6 @@ These have stubs in `draft_events/` with some content or assets:
 ### Housing & Planning
 - **Hulme V Replan** - Community alternative to City Challenge
 - **Hulme Views Project** (1990-1991) - Produced "Views from the Crescents" book
-- **Homes for Change** - Housing cooperative from yellowbricks draft
 
 ### People
 - **Charles Royce** - Founded Royce Ltd in Hulme (later Rolls-Royce)

@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hulme Hall (former site)",
+        "note": "Medieval manor house demolished c.1840 for Bridgewater Canal works",
+        "source": "Approximate location near Irwell/Medlock confluence"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2645, 53.4720]
+      }
+    }
+  ]
+}
