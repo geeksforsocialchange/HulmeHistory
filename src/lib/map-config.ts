@@ -23,9 +23,9 @@ export type EraKey = keyof typeof ERA_CONFIG;
 export const TILE_SOURCES = {
   carto: {
     type: 'raster' as const,
-    tiles: ['https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'],
+    tiles: ['https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png?api_key=45b1e8ca-1c29-48ae-89fa-77624620c57a'],
     tileSize: 256,
-    attribution: '© CARTO / OpenStreetMap',
+    attribution: '© Stadia Maps / Stamen / OpenStreetMap',
   },
   'os-victorian': {
     type: 'raster' as const,
