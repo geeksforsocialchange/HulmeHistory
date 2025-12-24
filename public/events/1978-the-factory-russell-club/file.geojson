@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Factory / Russell Club (former)",
+        "note": "11 Royce Road, Hulme - demolished",
+        "source": "Historical records"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2530, 53.4660]
+      }
+    }
+  ]
+}

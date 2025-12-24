@@ -4,7 +4,7 @@ Ideas for new events to add to Hulme History, gathered from research and the `dr
 
 ## Completed Events
 
-These high-priority drafts have been published:
+These events have been published:
 
 | Event | Published As | Notes |
 |-------|--------------|-------|
@@ -13,25 +13,16 @@ These high-priority drafts have been published:
 | Hulme Hall | [1840-hulme-hall](/events/1840-hulme-hall/) | Medieval manor house |
 | Hulme City Challenge | [1992-hulme-city-challenge](/events/1992-hulme-city-challenge/) | £37.5m regeneration programme |
 | Mancunian Way | [1967-mancunian-way](/events/1967-mancunian-way/) | Elevated motorway |
-
----
-
-## Draft Events (Ready to Develop)
-
-These have stubs in `draft_events/` with some content or assets:
-
-### Medium Priority (stubs only)
-
-| Draft File | Title | Suggested Content |
-|------------|-------|-------------------|
-| `1761-bridgewater-canal-connected.md` | Bridgewater Canal | First modern canal, reached Castlefield |
-| `1884-rolls-royce.md` | Rolls Royce Factory | Royce's first workshop was in Hulme |
-| `1974-crescents-built.md` | Hulme Crescents Built | Deck-access housing, later demolished |
-| `1960-slum-clearances.md` | Slum Clearances | Victorian terraces demolished |
-| `2014-birley-fields-campus.md` | Birley Fields Campus | MMU campus on former Crescents site |
-| `1988-russell-club.md` | PSV/Russell Club | Music venue, Joy Division connection |
-| `1980-madchester.md` | Madchester | Music scene context for Haçienda |
-| `1920-poc-immigrant-communities.md` | PoC Immigrant Communities | Early 20th century migration |
+| Bridgewater Canal | [1761-bridgewater-canal](/events/1761-bridgewater-canal/) | First industrial canal |
+| Royce's Workshop | [1884-royce-workshop](/events/1884-royce-workshop/) | Origin of Rolls-Royce |
+| Hulme Crescents | [1972-hulme-crescents](/events/1972-hulme-crescents/) | Deck-access housing, demolished 1993 |
+| Slum Clearances | [1960-slum-clearances](/events/1960-slum-clearances/) | Victorian terraces demolished |
+| Birley Fields Campus | [2014-birley-fields-campus](/events/2014-birley-fields-campus/) | MMU campus on former Crescents site |
+| The Factory / Russell Club | [1978-the-factory-russell-club](/events/1978-the-factory-russell-club/) | Factory Records venue |
+| Windrush Generation | [1948-windrush-generation](/events/1948-windrush-generation/) | Caribbean migration to Manchester |
+| Rekindle School | [2022-rekindle-school](/events/2022-rekindle-school/) | Youth-led alternative education |
+| Nello James Centre | [1971-nello-james-centre](/events/1971-nello-james-centre/) | Community centre in Whalley Range |
+| Emory Douglas Exhibition | [2008-emory-douglas-exhibition](/events/2008-emory-douglas-exhibition/) | Black Panther art at Urbis |
 
 ---
 
@@ -63,7 +54,6 @@ These have stubs in `draft_events/` with some content or assets:
 - **Hulme Views Project** (1990-1991) - Produced "Views from the Crescents" book
 
 ### People
-- **Charles Royce** - Founded Royce Ltd in Hulme (later Rolls-Royce)
 - **Emmeline Pankhurst** - Born in Moss Side, connections to area
 - **LS Lowry** - Painted Hulme scenes
 

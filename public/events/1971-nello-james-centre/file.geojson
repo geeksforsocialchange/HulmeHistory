@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nello James Centre",
+        "note": "136 Withington Road, Whalley Range",
+        "source": "Address geocoding"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2620, 53.4480]
+      }
+    }
+  ]
+}

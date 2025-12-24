@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Royce's Workshop (former)",
+        "note": "Cooke Street, Hulme - where F.H. Royce and Company began",
+        "source": "Blue plaque location"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2510, 53.4680]
+      }
+    }
+  ]
+}

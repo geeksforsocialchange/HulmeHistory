@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Moss Side",
+        "note": "Heart of Manchester's Caribbean community from 1948",
+        "source": "Historical settlement patterns"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2350, 53.4550]
+      }
+    }
+  ]
+}

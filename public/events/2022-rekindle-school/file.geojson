@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rekindle School",
+        "note": "Youth-led education project in St Mary's Courtyard, Hulme",
+        "source": "Nominatim geocoding"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2480, 53.4630]
+      }
+    }
+  ]
+}

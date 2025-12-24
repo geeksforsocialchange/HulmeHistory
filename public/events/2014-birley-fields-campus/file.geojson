@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MMU Birley Fields Campus",
+        "note": "Manchester Metropolitan University campus on former Crescents site",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2480, 53.4650]
+      }
+    }
+  ]
+}

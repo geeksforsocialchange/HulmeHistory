@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Urbis (former)",
+        "note": "Exhibition centre in Cathedral Gardens, now National Football Museum",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2420, 53.4858]
+      }
+    }
+  ]
+}
