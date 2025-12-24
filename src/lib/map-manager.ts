@@ -141,8 +141,7 @@ export class MapManager {
   }
 
   updateSlider(value: number): void {
-    // Clear event polygon when slider moves (polygon may not be relevant to new era)
-    this.clearEventPolygon();
+    // Keep event polygon visible across era changes - don't clear it here
 
     // 0 = 1890s Victorian, 33 = 1940s, 66 = 2014, 100 = Modern
     let victorianOpacity = 0;
