@@ -46,6 +46,27 @@ export class DetailPanel {
     this.lightboxCaption = this.lightbox.querySelector('.lightbox-caption')!;
 
     this.setupLightbox();
+    this.setupCoverImageClick();
+  }
+
+  private setupCoverImageClick(): void {
+    this.image.addEventListener('click', () => {
+      // Find the cover image in galleryItems
+      const coverIndex = this.galleryItems.findIndex(item =>
+        item.url.includes('cover.') && item.type === 'image'
+      );
+      if (coverIndex >= 0) {
+        this.openLightbox(coverIndex);
+      } else if (this.image.src) {
+        // Fallback: show the cover image directly
+        this.lightboxImg.src = this.image.src;
+        this.lightboxIframe.src = '';
+        this.lightbox.dataset.type = 'image';
+        this.lightboxCaption.textContent = 'Cover image';
+        this.lightbox.classList.add('active');
+      }
+    });
+    this.image.style.cursor = 'pointer';
   }
 
   private setupLightbox(): void {
