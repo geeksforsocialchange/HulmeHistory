@@ -223,6 +223,22 @@ export class MapManager {
           // Calculate centroid and fly to it
           const center = this.getGeometryCentroid(data.features[0].geometry);
           this.map.flyTo({ center, zoom: 15.5 });
+        } else if (geomType === 'LineString' || geomType === 'MultiLineString') {
+          // Add line as a layer
+          this.map.addSource('event-polygon', { type: 'geojson', data });
+          this.map.addLayer({
+            id: 'event-polygon-line',
+            type: 'line',
+            source: 'event-polygon',
+            paint: {
+              'line-color': '#ff00ff',
+              'line-width': 4,
+            },
+          });
+
+          // Calculate centroid and fly to it
+          const center = this.getGeometryCentroid(data.features[0].geometry);
+          this.map.flyTo({ center, zoom: 14.5 });
         }
       }
     } catch (e) {
@@ -238,6 +254,11 @@ export class MapManager {
     } else if (geometry.type === 'MultiPolygon') {
       // Use first polygon for centroid
       coords = geometry.coordinates[0][0];
+    } else if (geometry.type === 'LineString') {
+      coords = geometry.coordinates;
+    } else if (geometry.type === 'MultiLineString') {
+      // Flatten all line coordinates
+      coords = geometry.coordinates.flat();
     }
 
     if (coords.length === 0) return HULME_CENTER;
