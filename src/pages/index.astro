@@ -24,6 +24,7 @@ const eventData = events.map(event => ({
   desc: event.data.desc || '',
   year: event.data.start,
   end: event.data.end || null,
+  author: event.data.author || null,
 }));
 ---
 

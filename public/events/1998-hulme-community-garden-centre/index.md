@@ -3,7 +3,7 @@ start: 1998
 title: "Hulme Community Garden Centre"
 desc: "A garden centre with a difference that makes a difference"
 timeline: community
-author: Hulme History Team
+author: AI generated summary
 ---
 
 **Hulme Community Garden Centre** was founded in 1998 by four local residents following Manchester City Council's decision to demolish the Hulme Crescents. After decades of decline, Hulme was being regenerated in the 1990s - but the regeneration failed to create green spaces open to all.

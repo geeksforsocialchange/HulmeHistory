@@ -4,7 +4,7 @@ end: 1990
 title: "St Wilfrid's Church"
 desc: "Augustus Pugin's only church in Manchester, serving the Irish community"
 timeline: buildings
-author: Hulme History Team
+author: AI generated summary
 ---
 
 St Wilfrid's Church on George Street was a Roman Catholic church designed by the renowned Gothic Revival architect **Augustus Welby Pugin** - his only known church building in Manchester. Construction began in 1839 and was completed in 1842, though a planned tower was never built.

@@ -4,7 +4,7 @@ end: 2000
 title: "The Nia Centre"
 desc: "The UK's first Black-led arts centre, opened by Nina Simone"
 timeline: community
-author: Hulme History Team
+author: AI generated summary
 ---
 
 The **Nia Cultural Centre** was established as a steering committee in 1983, with the goal of creating a major arts venue celebrating African and Caribbean cultures. In 1989, the group purchased a historic theatre building from the BBC - the former Playhouse Theatre on Warwick Street.

@@ -4,7 +4,7 @@ end: 1989
 title: "Viraj Mendis Sanctuary"
 desc: "Sri Lankan activist claimed sanctuary at Church of the Ascension for two years"
 timeline: community
-author: Hulme History Team
+author: AI generated summary
 ---
 
 **Viraj Mendis** (died 16 August 2024) was a Sri Lankan national who claimed the ancient right of sanctuary at the Church of the Ascension in Hulme - a case that made national and international headlines and sparked a major campaign for refugee rights.

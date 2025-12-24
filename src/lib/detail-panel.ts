@@ -6,6 +6,7 @@ interface EventData {
   desc: string;
   year: number;
   end: number | null;
+  author: string | null;
 }
 
 interface GalleryFile {
@@ -19,6 +20,7 @@ export class DetailPanel {
   private image: HTMLImageElement;
   private yearEl: HTMLElement;
   private titleEl: HTMLElement;
+  private authorEl: HTMLElement;
   private textEl: HTMLElement;
   private galleryEl: HTMLElement;
   private lightbox: HTMLElement;
@@ -33,6 +35,7 @@ export class DetailPanel {
     this.image = document.getElementById('detail-image') as HTMLImageElement;
     this.yearEl = document.getElementById('detail-year')!;
     this.titleEl = document.getElementById('detail-title')!;
+    this.authorEl = document.getElementById('detail-author')!;
     this.textEl = document.getElementById('detail-text')!;
     this.galleryEl = document.getElementById('detail-gallery')!;
     this.lightbox = document.getElementById('detail-lightbox')!;
@@ -78,6 +81,15 @@ export class DetailPanel {
       this.yearEl.textContent = String(year);
     }
     this.titleEl.textContent = event?.title || eventId;
+
+    // Display author if present
+    if (event?.author) {
+      this.authorEl.textContent = event.author;
+      this.authorEl.classList.remove('hidden');
+    } else {
+      this.authorEl.textContent = '';
+      this.authorEl.classList.add('hidden');
+    }
 
     // Load cover image
     await this.loadCoverImage(eventId);

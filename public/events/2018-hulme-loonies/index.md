@@ -3,7 +3,7 @@ start: 2018
 title: "Hulme Loonies"
 desc: "Photo project documenting Hulme's contemporary counterculture community"
 timeline: community
-author: Hulme History Team
+author: AI generated summary
 ---
 
 **Hulme Loonies** is an ongoing photography project by **Anni Kay**, documenting the anarchist and countercultural community of Hulme through her Instagram account.
