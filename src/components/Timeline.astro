@@ -1,4 +1,7 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 interface Props {
   decades: Record<number, Array<{
     id: string;
@@ -12,6 +15,20 @@ interface Props {
 }
 
 const { decades } = Astro.props;
+
+// Helper to check if cover image exists
+function getCoverImage(eventId: string): string | null {
+  const publicDir = path.join(process.cwd(), 'public', 'events', eventId);
+  try {
+    if (fs.existsSync(path.join(publicDir, 'cover.jpg'))) {
+      return `/events/${eventId}/cover.jpg`;
+    }
+    if (fs.existsSync(path.join(publicDir, 'cover.png'))) {
+      return `/events/${eventId}/cover.png`;
+    }
+  } catch (e) {}
+  return null;
+}
 ---
 
 <aside id="sidebar">
@@ -21,19 +38,19 @@ const { decades } = Astro.props;
         <div class="decade-label">{decade}<span class="decade-suffix">s</span></div>
         {decadeEvents.map(event => {
           const eventId = event.id.replace('/index', '').replace('.md', '');
+          const coverImg = getCoverImage(eventId);
           return (
             <div
               class={`event ${event.data.timeline || 'buildings'}`}
               data-id={eventId}
               data-year={event.data.start}
             >
-              <div class="event-cover" data-event-id={eventId}></div>
+              {coverImg && (
+                <div class="event-cover" style={`background-image: url(${coverImg})`}></div>
+              )}
               <div class="event-content">
                 <span class="event-year">{event.data.start}</span>
                 <span class="event-title">{event.data.title}</span>
-                {event.data.desc && (
-                  <span class="event-desc">{event.data.desc}</span>
-                )}
               </div>
               <div class="event-accent"></div>
             </div>
@@ -173,19 +190,19 @@ const { decades } = Astro.props;
     right: 0;
     top: 0;
     bottom: 0;
-    width: 70px;
+    width: 80px;
     background-size: cover;
     background-position: center;
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity 0.3s ease;
-    mask-image: linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-    filter: sepia(30%) saturate(80%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    filter: sepia(40%) saturate(70%);
   }
 
   .event:hover .event-cover,
   .event:global(.active) .event-cover {
-    opacity: 1;
+    opacity: 0.8;
   }
 
   .event-content {
@@ -226,22 +243,7 @@ const { decades } = Astro.props;
     font-weight: 600;
     color: #2d2418;
     line-height: 1.3;
-    margin-bottom: 4px;
     padding-right: 50px;
-  }
-
-  .event-desc {
-    display: block;
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 0.78rem;
-    font-style: italic;
-    color: #6a5d50;
-    line-height: 1.4;
-    padding-right: 60px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
   }
 
   /* Subtle paper texture overlay */
@@ -281,31 +283,3 @@ const { decades } = Astro.props;
   }
 </style>
 
-<script>
-  // Load cover images for events
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.event-cover').forEach(async (el) => {
-      const eventId = (el as HTMLElement).dataset.eventId;
-      if (!eventId) return;
-
-      // Try jpg first, then png
-      const jpgUrl = `/events/${eventId}/cover.jpg`;
-      const pngUrl = `/events/${eventId}/cover.png`;
-
-      try {
-        const jpgRes = await fetch(jpgUrl, { method: 'HEAD' });
-        if (jpgRes.ok) {
-          (el as HTMLElement).style.backgroundImage = `url(${jpgUrl})`;
-          return;
-        }
-
-        const pngRes = await fetch(pngUrl, { method: 'HEAD' });
-        if (pngRes.ok) {
-          (el as HTMLElement).style.backgroundImage = `url(${pngUrl})`;
-        }
-      } catch (e) {
-        // No cover image
-      }
-    });
-  });
-</script>
