@@ -21,6 +21,7 @@ export class DetailPanel {
   private yearEl: HTMLElement;
   private titleEl: HTMLElement;
   private authorEl: HTMLElement;
+  private authorNameEl: HTMLElement;
   private textEl: HTMLElement;
   private galleryEl: HTMLElement;
   private lightbox: HTMLElement;
@@ -36,6 +37,7 @@ export class DetailPanel {
     this.yearEl = document.getElementById('detail-year')!;
     this.titleEl = document.getElementById('detail-title')!;
     this.authorEl = document.getElementById('detail-author')!;
+    this.authorNameEl = this.authorEl.querySelector('.author-name')!;
     this.textEl = document.getElementById('detail-text')!;
     this.galleryEl = document.getElementById('detail-gallery')!;
     this.lightbox = document.getElementById('detail-lightbox')!;
@@ -84,10 +86,10 @@ export class DetailPanel {
 
     // Display author if present
     if (event?.author) {
-      this.authorEl.textContent = event.author;
+      this.authorNameEl.textContent = event.author;
       this.authorEl.classList.remove('hidden');
     } else {
-      this.authorEl.textContent = '';
+      this.authorNameEl.textContent = '';
       this.authorEl.classList.add('hidden');
     }
 
