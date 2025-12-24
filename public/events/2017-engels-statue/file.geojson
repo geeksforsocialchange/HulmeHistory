@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Statue of Friedrich Engels",
+        "note": "Soviet-era statue at Tony Wilson Place",
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-2.2470693, 53.4732872]
+      }
+    }
+  ]
+}
