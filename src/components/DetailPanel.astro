@@ -9,12 +9,22 @@
     <div id="detail-year"></div>
     <h2 id="detail-title"></h2>
     <div id="detail-text"></div>
+    <div id="detail-gallery"></div>
   </div>
   <div id="detail-nav">
     <button id="prev-event">&larr; Prev</button>
     <button id="next-event">Next &rarr;</button>
   </div>
 </aside>
+
+<!-- Lightbox for gallery -->
+<div id="detail-lightbox" class="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-nav lightbox-prev">&larr;</button>
+  <img src="" alt="" />
+  <button class="lightbox-nav lightbox-next">&rarr;</button>
+  <div class="lightbox-caption"></div>
+</div>
 
 <style>
   #detail-panel {
@@ -147,6 +157,157 @@
 
   #detail-nav button:first-child {
     border-right: 1px solid rgba(180, 170, 155, 0.4);
+  }
+
+  /* Gallery in detail panel */
+  #detail-gallery {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(180, 170, 155, 0.4);
+  }
+
+  #detail-gallery:empty {
+    display: none;
+  }
+
+  #detail-gallery h4 {
+    font-size: 0.75rem;
+    color: #8b7355;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .detail-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .detail-gallery-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(200, 190, 175, 0.3);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .detail-gallery-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .detail-gallery-item img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+  }
+
+  .detail-gallery-item .file-icon {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200, 190, 175, 0.5);
+    font-size: 1.5rem;
+  }
+
+  .detail-gallery-item .file-name {
+    padding: 4px 6px;
+    font-size: 0.65rem;
+    line-height: 1.2;
+    color: #555;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+
+  .lightbox-caption {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    max-width: 80%;
   }
 
 </style>
