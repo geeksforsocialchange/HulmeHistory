@@ -199,13 +199,16 @@ export class MapManager {
         const hasPolygon = geomTypes.has('Polygon') || geomTypes.has('MultiPolygon');
         const hasLine = geomTypes.has('LineString') || geomTypes.has('MultiLineString');
 
+        // Padding to account for detail panel on right (400px + some margin)
+        const padding = { top: 50, bottom: 80, left: 20, right: 420 };
+
         if (hasPoint && !hasPolygon && !hasLine) {
           // Point-only: use marker
           const coords = features[0].geometry.coordinates;
           this.marker = new maplibregl.Marker({ color: '#8b4513' })
             .setLngLat(coords)
             .addTo(this.map);
-          this.map.flyTo({ center: coords, zoom: 15.5 });
+          this.map.flyTo({ center: coords, zoom: 15.5, padding });
         } else {
           // Mixed or polygon/line: use layers
           this.map.addSource('event-polygon', { type: 'geojson', data });
@@ -235,15 +238,66 @@ export class MapManager {
             });
           }
 
-          // Calculate centroid from first feature and fly to it
-          const center = this.getGeometryCentroid(features[0].geometry);
-          const zoom = hasLine && !hasPolygon ? 14.5 : 15.5;
-          this.map.flyTo({ center, zoom });
+          // Calculate bounds from all features and fit to them
+          const bounds = this.getFeaturesBounds(features);
+          if (bounds) {
+            this.map.fitBounds(bounds, {
+              padding,
+              maxZoom: 16,
+              duration: 1000,
+            });
+          } else {
+            // Fallback to centroid
+            const center = this.getGeometryCentroid(features[0].geometry);
+            this.map.flyTo({ center, zoom: 15, padding });
+          }
         }
       }
     } catch (e) {
       // No marker for this event
     }
+  }
+
+  private getFeaturesBounds(features: any[]): [[number, number], [number, number]] | null {
+    let minLng = Infinity, minLat = Infinity;
+    let maxLng = -Infinity, maxLat = -Infinity;
+
+    const processCoords = (coords: number[][]) => {
+      for (const [lng, lat] of coords) {
+        if (lng < minLng) minLng = lng;
+        if (lng > maxLng) maxLng = lng;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      }
+    };
+
+    for (const feature of features) {
+      const geom = feature.geometry;
+      if (!geom) continue;
+
+      if (geom.type === 'Point') {
+        const [lng, lat] = geom.coordinates;
+        if (lng < minLng) minLng = lng;
+        if (lng > maxLng) maxLng = lng;
+        if (lat < minLat) minLat = lat;
+        if (lat > maxLat) maxLat = lat;
+      } else if (geom.type === 'LineString') {
+        processCoords(geom.coordinates);
+      } else if (geom.type === 'MultiLineString') {
+        for (const line of geom.coordinates) {
+          processCoords(line);
+        }
+      } else if (geom.type === 'Polygon') {
+        processCoords(geom.coordinates[0]);
+      } else if (geom.type === 'MultiPolygon') {
+        for (const poly of geom.coordinates) {
+          processCoords(poly[0]);
+        }
+      }
+    }
+
+    if (minLng === Infinity) return null;
+    return [[minLng, minLat], [maxLng, maxLat]];
   }
 
   private getGeometryCentroid(geometry: any): [number, number] {
