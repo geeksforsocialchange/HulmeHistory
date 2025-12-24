@@ -37,5 +37,5 @@ First Street is now home to:
 
 ## Sources
 
-- [First Street - Oxford Road Corridor](https://oxfordroadcorridor.com/place/first-street/)
-- [Square Gardens announcement - About Manchester](https://aboutmanchester.co.uk/groundbreaking-400m-development-at-first-street-unveils-name-and-marks-major-construction-milestone/)
+- <a href="https://oxfordroadcorridor.com/place/first-street/" target="_blank">First Street - Oxford Road Corridor</a>
+- <a href="https://aboutmanchester.co.uk/groundbreaking-400m-development-at-first-street-unveils-name-and-marks-major-construction-milestone/" target="_blank">Square Gardens announcement - About Manchester</a>

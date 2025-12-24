@@ -34,4 +34,4 @@ Since opening, the venue has provided arts-based cultural activities and hosted 
 
 ## Sources
 
-- [Z-arts - Our History](https://www.z-arts.org/about-us/our-history/)
+- <a href="https://www.z-arts.org/about-us/our-history/" target="_blank">Z-arts - Our History</a>

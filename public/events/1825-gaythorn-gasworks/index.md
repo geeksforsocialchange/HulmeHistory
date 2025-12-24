@@ -31,5 +31,5 @@ The site now houses the **First Street** development, including HOME arts centre
 
 ## Sources
 
-- [Gaythorn Gas Works - Manchester History](https://manchesterhistory.net/manchester/gone/gaythorn.html)
-- [First Street - Oxford Road Corridor](https://oxfordroadcorridor.com/place/first-street/)
+- <a href="https://manchesterhistory.net/manchester/gone/gaythorn.html" target="_blank">Gaythorn Gas Works - Manchester History</a>
+- <a href="https://oxfordroadcorridor.com/place/first-street/" target="_blank">First Street - Oxford Road Corridor</a>

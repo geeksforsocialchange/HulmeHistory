@@ -34,7 +34,7 @@ Following rumours in 2020 of redevelopment to residential units, a campaign grou
 
 ## Sources
 
-- [Hulme Hippodrome - Wikipedia](https://en.wikipedia.org/wiki/Hulme_Hippodrome)
-- [Save Hulme Hippodrome Campaign](https://hulmehippodrome.org/)
-- [Historic England Listing](https://historicengland.org.uk/listing/the-list/list-entry/1283070)
-- [Theatres Trust - Theatres at Risk](https://www.theatrestrust.org.uk/how-we-help/theatres-at-risk/180-hulme-hippodrome)
+- <a href="https://en.wikipedia.org/wiki/Hulme_Hippodrome" target="_blank">Hulme Hippodrome - Wikipedia</a>
+- <a href="https://hulmehippodrome.org/" target="_blank">Save Hulme Hippodrome Campaign</a>
+- <a href="https://historicengland.org.uk/listing/the-list/list-entry/1283070" target="_blank">Historic England Listing</a>
+- <a href="https://www.theatrestrust.org.uk/how-we-help/theatres-at-risk/180-hulme-hippodrome" target="_blank">Theatres Trust - Theatres at Risk</a>

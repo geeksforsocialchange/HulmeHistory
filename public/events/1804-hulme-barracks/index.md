@@ -25,5 +25,5 @@ The building that remains today is the former officers' mess, officers' quarters
 
 ## Sources
 
-- [Hulme Barracks - Wikipedia](https://en.wikipedia.org/wiki/Hulme_Barracks)
-- [Manchester History - Hulme Barracks](https://manchesterhistory.net/manchester/gone/hulmebarracks.html)
+- <a href="https://en.wikipedia.org/wiki/Hulme_Barracks" target="_blank">Hulme Barracks - Wikipedia</a>
+- <a href="https://manchesterhistory.net/manchester/gone/hulmebarracks.html" target="_blank">Manchester History - Hulme Barracks</a>

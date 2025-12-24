@@ -30,5 +30,5 @@ Manchester inspired his first book and shaped his development as a socialist thi
 
 ## Sources
 
-- [Statue of Friedrich Engels, Manchester - Wikipedia](https://en.wikipedia.org/wiki/Statue_of_Friedrich_Engels,_Manchester)
-- [Soviet Engels Statue - Atlas Obscura](https://www.atlasobscura.com/places/soviet-engels-statue)
+- <a href="https://en.wikipedia.org/wiki/Statue_of_Friedrich_Engels,_Manchester" target="_blank">Statue of Friedrich Engels, Manchester - Wikipedia</a>
+- <a href="https://www.atlasobscura.com/places/soviet-engels-statue" target="_blank">Soviet Engels Statue - Atlas Obscura</a>

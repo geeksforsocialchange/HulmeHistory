@@ -37,5 +37,5 @@ The performance served as both celebration and protest as residents were displac
 
 ## Sources
 
-- [Dogs of Heaven - Made in Art](https://madeinart.weebly.com/dogs-of-heaven.html)
-- [Hulme Crescents Eagle Video 1993 - MDM Archive](https://www.mdmarchive.co.uk/artefact/33283/HULME_CRESCENTS_EAGLE,_HULME_VIDEO_1993)
+- <a href="https://madeinart.weebly.com/dogs-of-heaven.html" target="_blank">Dogs of Heaven - Made in Art</a>
+- <a href="https://www.mdmarchive.co.uk/artefact/33283/HULME_CRESCENTS_EAGLE,_HULME_VIDEO_1993" target="_blank">Hulme Crescents Eagle Video 1993 - MDM Archive</a>

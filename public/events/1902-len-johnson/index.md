@@ -35,7 +35,7 @@ A petition has been launched to have Johnson commemorated with a statue in Manch
 
 ## Sources
 
-- [Len Johnson (boxer) - Wikipedia](https://en.wikipedia.org/wiki/Len_Johnson_(boxer))
-- [Manchester Evening News - Len Johnson and the Colour Bar](https://www.manchestereveningnews.co.uk/news/greater-manchester-news/len-johnson-hulme-colour-bar-15859656)
-- [Tribune - Manchester's Black Champion](https://tribunemag.co.uk/2020/06/manchesters-black-champion)
-- [The Old Abbey Taphouse - Breaking the Colour Bar](https://www.theoldabbeytaphouse.org/breaking-the-colour-bar.html)
+- <a href="https://en.wikipedia.org/wiki/Len_Johnson_(boxer" target="_blank">Len Johnson (boxer) - Wikipedia</a>)
+- <a href="https://www.manchestereveningnews.co.uk/news/greater-manchester-news/len-johnson-hulme-colour-bar-15859656" target="_blank">Manchester Evening News - Len Johnson and the Colour Bar</a>
+- <a href="https://tribunemag.co.uk/2020/06/manchesters-black-champion" target="_blank">Tribune - Manchester's Black Champion</a>
+- <a href="https://www.theoldabbeytaphouse.org/breaking-the-colour-bar.html" target="_blank">The Old Abbey Taphouse - Breaking the Colour Bar</a>

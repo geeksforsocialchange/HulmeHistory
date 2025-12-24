@@ -36,5 +36,5 @@ The £25 million venue includes:
 
 ## Sources
 
-- [HOME Manchester](https://homemcr.org/)
-- [HOME - Wikipedia](https://en.wikipedia.org/wiki/HOME_(Manchester))
+- <a href="https://homemcr.org/" target="_blank">HOME Manchester</a>
+- <a href="https://en.wikipedia.org/wiki/HOME_(Manchester" target="_blank">HOME - Wikipedia</a>)

@@ -35,5 +35,5 @@ The Haçienda's influence on British music and club culture remains immense. Its
 
 ## Sources
 
-- [The Haçienda - Wikipedia](https://en.wikipedia.org/wiki/The_Ha%C3%A7ienda)
-- [The Haçienda Story - Manchester Historian](https://manchesterhistorian.com/2014/the-hacienda-story/)
+- <a href="https://en.wikipedia.org/wiki/The_Ha%C3%A7ienda" target="_blank">The Haçienda - Wikipedia</a>
+- <a href="https://manchesterhistorian.com/2014/the-hacienda-story/" target="_blank">The Haçienda Story - Manchester Historian</a>

@@ -29,4 +29,4 @@ The Big Life Group remains active today, a testament to the power of community-l
 
 ## Sources
 
-- [Big Life Group - Our Story in Pictures](https://www.thebiglifegroup.com/our-story-in-pictures/)
+- <a href="https://www.thebiglifegroup.com/our-story-in-pictures/" target="_blank">Big Life Group - Our Story in Pictures</a>

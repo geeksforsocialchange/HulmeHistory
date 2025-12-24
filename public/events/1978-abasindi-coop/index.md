@@ -36,4 +36,4 @@ The co-operative lost momentum in the 1990s, partly due to early deaths among fo
 
 ## Sources
 
-- [Black Women's Abasindi Co-operative - Huddersfield University News](https://news-archive.hud.ac.uk/news/2015/december/blackwomensabasindico-operativeintroubled1980smossside.php)
+- <a href="https://news-archive.hud.ac.uk/news/2015/december/blackwomensabasindico-operativeintroubled1980smossside.php" target="_blank">Black Women's Abasindi Co-operative - Huddersfield University News</a>

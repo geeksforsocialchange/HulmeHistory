@@ -33,7 +33,7 @@ Today NIAMOS is a community hub providing spaces to create, learn, dance and sha
 
 ## Sources
 
-- [History of the Nia Centre - NIAMOS](https://www.niamos.co.uk/history-of-the-nia-centre)
-- [NIAMOS Official Site](https://www.niamos.co.uk/)
-- [I Love Manchester - The Niamos Centre](https://ilovemanchester.com/the-niamos-centre-hulme)
-- [Playhouse Theatre, Manchester - Wikipedia](https://en.wikipedia.org/wiki/Playhouse_Theatre,_Manchester)
+- <a href="https://www.niamos.co.uk/history-of-the-nia-centre" target="_blank">History of the Nia Centre - NIAMOS</a>
+- <a href="https://www.niamos.co.uk/" target="_blank">NIAMOS Official Site</a>
+- <a href="https://ilovemanchester.com/the-niamos-centre-hulme" target="_blank">I Love Manchester - The Niamos Centre</a>
+- <a href="https://en.wikipedia.org/wiki/Playhouse_Theatre,_Manchester" target="_blank">Playhouse Theatre, Manchester - Wikipedia</a>

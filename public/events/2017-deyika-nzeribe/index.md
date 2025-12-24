@@ -34,6 +34,6 @@ A fundraising drive was organised to help pay for his funeral, reflecting the lo
 
 ## Sources
 
-- [Remembering Deyika Nzeribe - Bright Green](https://bright-green.org/2023/10/30/remembering-deyika-nzeribe/)
-- [Deyika Nzeribe Tribute - Peter Kalu](http://www.peterkalu.com/uncategorized/deyika-nzeribe-1966-2017-a-tribute/)
-- [Fundraising for Deyika's funeral - Manchester Evening News](https://www.manchestereveningnews.co.uk/news/greater-manchester-news/fundraising-drive-help-pay-funeral-12434559)
+- <a href="https://bright-green.org/2023/10/30/remembering-deyika-nzeribe/" target="_blank">Remembering Deyika Nzeribe - Bright Green</a>
+- <a href="http://www.peterkalu.com/uncategorized/deyika-nzeribe-1966-2017-a-tribute/" target="_blank">Deyika Nzeribe Tribute - Peter Kalu</a>
+- <a href="https://www.manchestereveningnews.co.uk/news/greater-manchester-news/fundraising-drive-help-pay-funeral-12434559" target="_blank">Fundraising for Deyika's funeral - Manchester Evening News</a>

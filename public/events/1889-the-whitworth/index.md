@@ -38,5 +38,5 @@ The gallery was the first UK public gallery to commission work from **Damien Hir
 
 ## Sources
 
-- [The Whitworth - History](https://www.whitworth.manchester.ac.uk/about/thegallery/history/)
-- [The Whitworth - Wikipedia](https://en.wikipedia.org/wiki/The_Whitworth)
+- <a href="https://www.whitworth.manchester.ac.uk/about/thegallery/history/" target="_blank">The Whitworth - History</a>
+- <a href="https://en.wikipedia.org/wiki/The_Whitworth" target="_blank">The Whitworth - Wikipedia</a>

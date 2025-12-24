@@ -32,5 +32,5 @@ The original 1988 building was demolished and replaced with a new three-storey f
 
 ## Sources
 
-- [The Proud Trust - History of The Proud Place](https://www.theproudtrust.org/the-proud-place/history/)
-- [We Were Born in the 80s - LGBT Centre History Tour](https://wewereborninthe80s.wordpress.com/)
+- <a href="https://www.theproudtrust.org/the-proud-place/history/" target="_blank">The Proud Trust - History of The Proud Place</a>
+- <a href="https://wewereborninthe80s.wordpress.com/" target="_blank">We Were Born in the 80s - LGBT Centre History Tour</a>
