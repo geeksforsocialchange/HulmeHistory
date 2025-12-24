@@ -37,12 +37,9 @@ npm run build
 
 ```
 src/
-├── content/events/          # Event folders with markdown + assets
+├── content/events/          # Event markdown content
 │   └── YYYY-event-slug/
-│       ├── index.md         # Event content
-│       ├── cover.jpg        # Cover image
-│       ├── file.geojson     # Map marker/polygon
-│       └── *.pdf            # Additional documents
+│       └── index.md         # Event content (frontmatter + markdown)
 ├── lib/                     # TypeScript modules
 │   ├── app.ts               # Main app initialization
 │   ├── map-manager.ts       # Map layer and marker handling
@@ -52,15 +49,18 @@ src/
 
 public/
 ├── gis/                     # Hand-traced historical GeoJSON layers
-└── events/                  # Static event assets (served via URL)
+└── events/                  # Event assets (images, PDFs, GeoJSON)
+    └── YYYY-event-slug/
+        ├── cover.webp/jpg/png  # Cover image
+        ├── file.geojson        # Map marker/polygon
+        └── *.jpg/*.pdf         # Gallery items
 
 tests/                       # Vitest test suite
 ```
 
 ## Adding Events
 
-1. Create a folder in `src/content/events/` named `YYYY-event-slug/`
-2. Add `index.md` with frontmatter:
+1. Create `src/content/events/YYYY-event-slug/index.md` with frontmatter:
 
    ```yaml
    ---
@@ -74,13 +74,11 @@ tests/                       # Vitest test suite
    Event content in markdown...
    ```
 
-3. Add assets to the same folder:
+2. Create `public/events/YYYY-event-slug/` folder with assets:
 
-   - `cover.jpg` or `cover.png` - Cover image
+   - `cover.webp`, `cover.jpg`, or `cover.png` - Cover image
    - `file.geojson` - GeoJSON Point, Polygon, or MultiPolygon for map
-   - Additional images and PDFs
-
-4. Copy assets to `public/events/YYYY-event-slug/` for URL access
+   - Additional images and PDFs (appear in gallery)
 
 ## Map Eras
 
