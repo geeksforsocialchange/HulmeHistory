@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "Central Hulme",
+        "note": "Memoir of growing up in Hulme around 1900"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.252,
+          53.467
         ]
       }
     }

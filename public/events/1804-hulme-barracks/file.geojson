@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "Hulme Barracks",
+        "note": "Site of cavalry barracks built 1804, now Manchester and Salford UOTC"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2409332,
+          53.4684574
         ]
       }
     }

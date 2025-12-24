@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "The Ha\u00e7ienda",
+        "note": "Site of FAC 51 nightclub (1982-1997), now Ha\u00e7ienda Apartments"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2476637,
+          53.4742582
         ]
       }
     }

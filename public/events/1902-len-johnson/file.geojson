@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "Old Abbey Taphouse",
+        "note": "Site of Len Johnson's 1953 colour bar protest"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2373999,
+          53.4621901
         ]
       }
     }

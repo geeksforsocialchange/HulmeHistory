@@ -4,14 +4,14 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Crescents (site)",
-        "note": "Project documenting life in the Crescents, now Birley Fields"
+        "name": "Central Hulme",
+        "note": "Publication about housing defects in Manchester's council housing"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -2.2471996,
-          53.4664673
+          -2.2505,
+          53.466
         ]
       }
     }
