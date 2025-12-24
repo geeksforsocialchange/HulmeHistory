@@ -4,7 +4,7 @@ end: 1988
 title: "Bloom Street Gay Centre"
 desc: "Expanded LGBT centre in the heart of the Gay Village"
 timeline: community
-author: AI Summary
+author: AI summary of Emily Crompton's work
 ---
 
 In 1981, the Manchester Gay Centre relocated from its cramped basement on Oxford Road to **61A Bloom Street** in what would become known as Manchester's Gay Village.

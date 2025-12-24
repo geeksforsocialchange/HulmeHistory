@@ -3,7 +3,7 @@ start: 2022
 title: "The Proud Place"
 desc: "New LGBT+ youth centre replacing the historic Sidney Street building"
 timeline: community
-author: AI Summary
+author: AI summary of Emily Crompton's work
 ---
 
 **The Proud Place** is a new three-storey LGBT+ community centre on Sidney Street, opened in 2022 on the site of the original 1988 Manchester Gay Centre.

@@ -4,7 +4,7 @@ end: 2019
 title: "Manchester Gay Centre (Sidney Street)"
 desc: "Europe's first purpose-built, publicly funded LGBT community centre"
 timeline: community
-author: AI Summary
+author: AI summary of Emily Crompton's work
 ---
 
 The **Manchester Gay Centre** on Sidney Street was Europe's first purpose-built, publicly funded gay community centre, opening on **27 November 1988**.

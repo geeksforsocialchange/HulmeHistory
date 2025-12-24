@@ -4,7 +4,7 @@ end: 1981
 title: "Manchester Gay Alliance"
 desc: "First council-funded gay centre in a 700 sq ft basement on Oxford Road"
 timeline: community
-author: AI Summary
+author: AI summary of Emily Crompton's work
 ---
 
 The **Manchester Gay Alliance** operated the first Gay Centre in Manchester from a 700 square foot basement at **178 Waterloo Place on Oxford Road**.
