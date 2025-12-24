@@ -2,6 +2,7 @@
 start: 1997
 title: "Homes & Work For Change"
 desc: Cooperative living and workspace set up, known locally as the Yellowbricks
+author: Hulme History Team
 ---
 
 Developed under the Hulme City Challenge programme, Homes for Change was accepted as one of the social housing developers in Hulme. The Guiness Trust was chosen as their development partner to allow them to afford the 3.8 million project. The project created 75 new flats available in Hulme.

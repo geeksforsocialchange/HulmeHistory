@@ -3,6 +3,7 @@ title: Views from the Crescents
 start: 1991
 end: 1992
 desc: Publication of a fifteen month project to record peoples experiences of Hulme and their aspirations
+author: Hulme History Team
 ---
 
 Writing, photographs and illustrations by people from the Crescents area of Hulme.

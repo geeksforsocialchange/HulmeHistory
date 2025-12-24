@@ -2,6 +2,7 @@
 start: 1988
 title: Housing Defects In Manchester
 desc: Publication by Manchester City Council detailing the terrible state of their council housing stock, railing at Central Government
+author: Hulme History Team
 ---
 Published by Manchester City Council in the late 1980's. We don't have the exact date, please let us know if you know the original publication date.
 
