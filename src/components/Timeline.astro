@@ -14,16 +14,10 @@ const { decades } = Astro.props;
 ---
 
 <aside id="sidebar">
-  <header>
-    <h1>Hulme History</h1>
-    <p class="era-display">
-      <span id="current-year">1860</span> · <span id="current-era">Victorian Hulme</span>
-    </p>
-  </header>
   <div id="timeline">
     {Object.entries(decades).sort(([a], [b]) => Number(a) - Number(b)).map(([decade, decadeEvents]) => (
       <div class="decade">
-        <div class="decade-label">{decade}s</div>
+        <div class="decade-label">{decade}<span class="decade-suffix">s</span></div>
         {decadeEvents.map(event => (
           <div
             class={`event ${event.data.timeline || 'buildings'}`}
@@ -52,26 +46,6 @@ const { decades } = Astro.props;
     flex-shrink: 0;
   }
 
-  header {
-    padding: 20px;
-    border-bottom: 1px solid rgba(180, 170, 155, 0.4);
-    background: rgba(255, 255, 255, 0.6);
-  }
-
-  h1 {
-    margin: 0 0 4px 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #2a2520;
-    letter-spacing: -0.02em;
-  }
-
-  .era-display {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #8b7355;
-  }
-
   #timeline {
     flex: 1;
     overflow-y: auto;
@@ -91,6 +65,11 @@ const { decades } = Astro.props;
     padding-bottom: 6px;
     margin-bottom: 6px;
     border-bottom: 1px solid rgba(180, 170, 155, 0.5);
+  }
+
+  .decade-suffix {
+    font-size: 0.55rem;
+    vertical-align: baseline;
   }
 
   .event {

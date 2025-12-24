@@ -145,8 +145,7 @@ export class MapManager {
     let victorianOpacity = 0;
     let os1940sOpacity = 0;
     let esri2014Opacity = 0;
-    let cartoOpacity = 0.15;
-    let cartoSaturation = -0.8;
+    let cartoOpacity = 0.1;
 
     if (value <= 33) {
       const t = value / 33;
@@ -159,15 +158,13 @@ export class MapManager {
     } else {
       const t = (value - 66) / 34;
       esri2014Opacity = (1 - t) * 0.95;
-      cartoOpacity = 0.15 + t * 0.85;
-      cartoSaturation = -0.8 + t * 0.8;
+      cartoOpacity = 0.1 + t * 0.9;
     }
 
     this.map.setPaintProperty('os-victorian', 'raster-opacity', victorianOpacity);
     this.map.setPaintProperty('os-1940s', 'raster-opacity', os1940sOpacity);
     this.map.setPaintProperty('esri-2014', 'raster-opacity', esri2014Opacity);
     this.map.setPaintProperty('carto', 'raster-opacity', cartoOpacity);
-    this.map.setPaintProperty('carto', 'raster-saturation', cartoSaturation);
   }
 
   async setMarker(eventId: string): Promise<void> {

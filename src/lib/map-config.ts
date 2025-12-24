@@ -23,8 +23,9 @@ export type EraKey = keyof typeof ERA_CONFIG;
 export const TILE_SOURCES = {
   carto: {
     type: 'raster' as const,
-    tiles: ['https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'],
+    tiles: ['https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}.png'],
     tileSize: 256,
+    attribution: '© Stadia Maps / Stamen / OpenStreetMap',
   },
   'os-victorian': {
     type: 'raster' as const,
@@ -55,7 +56,7 @@ export const BASE_LAYERS = [
     id: 'carto',
     type: 'raster' as const,
     source: 'carto',
-    paint: { 'raster-opacity': 0.1, 'raster-saturation': -0.5 },
+    paint: { 'raster-opacity': 0.1 },
   },
   {
     id: 'os-victorian',

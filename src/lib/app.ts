@@ -3,7 +3,6 @@
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapManager } from './map-manager';
 import { DetailPanel } from './detail-panel';
-import { ERA_CONFIG, type EraKey } from './map-config';
 
 interface EventData {
   id: string;
@@ -60,31 +59,24 @@ export function initApp(eventData: EventData[]): void {
       const era = (btn as HTMLElement).dataset.traced!;
       btn.classList.toggle('active', mapManager.activeTraced.has(era));
     });
-
-    // Update era display
-    const activeYears = Array.from(mapManager.activeTraced).sort((a, b) => Number(b) - Number(a));
-    if (activeYears.length > 0) {
-      const newest = activeYears[0] as EraKey;
-      document.getElementById('current-era')!.textContent = ERA_CONFIG[newest].label;
-    }
   }
 
   async function selectEvent(el: HTMLElement): Promise<void> {
     const id = el.dataset.id!;
-    const year = parseInt(el.dataset.year!);
 
     // Update active state
     document.querySelectorAll('.event').forEach(e => e.classList.remove('active'));
     el.classList.add('active');
     activeEventId = id;
 
-    // Update year display
-    document.getElementById('current-year')!.textContent = String(year);
+    // Update URL hash
+    history.pushState(null, '', `#${id}`);
 
     // Set marker
     await mapManager.setMarker(id);
 
     // Show panel
+    const year = parseInt(el.dataset.year!);
     await detailPanel.show(id, year, eventData);
   }
 
